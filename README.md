@@ -52,7 +52,7 @@ This is not a blockchain. It is a mesh that works when nodes are offline, when l
 
 Elara Core is the reference implementation of Layer 3 — a cognitive architecture that gives AI assistants persistent memory, emotional modeling, autonomous reasoning, and self-awareness.
 
-- **Repository:** [github.com/aivelikivodja-bot/elara-core](https://github.com/aivelikivodja-bot/elara-core)
+- **Repository:** [github.com/navigatorbuilds/elara-core](https://github.com/navigatorbuilds/elara-core)
 - **PyPI:** `pip install elara-core`
 - **Documentation:** [elara.navigatorbuilds.com](https://elara.navigatorbuilds.com)
 
@@ -83,7 +83,7 @@ Whitepapers are published for review, collaboration, and academic citation. The 
 
 **Nenad Vasic** — Solo developer, Montenegro
 - Email: nenadvasic@protonmail.com
-- GitHub: [@aivelikivodja-bot](https://github.com/aivelikivodja-bot)
+- GitHub: [@navigatorbuilds](https://github.com/navigatorbuilds)
 - Site: [navigatorbuilds.com](https://navigatorbuilds.com)
 
 ---
