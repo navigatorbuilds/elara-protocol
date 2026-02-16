@@ -36,8 +36,8 @@ Device Spectrum                      What They Run
 ─────────────────────────────────────────────────────
 Microcontroller (factory sensor)     Layer 1 only
 $30 Phone (Kenya)                    Layer 1 only
-Laptop (developer)                   Layer 1 + 2
-GPU Server (network node)            Layer 1 + 2 + 3 (Elara Core)
+Laptop (developer)                   Layer 1 + 1.5 (Rust) + 2
+GPU Server (network node)            Layer 1 + 1.5 + 2 + 3 (Elara Core)
 ```
 
 **No layer depends on the layers above it.** Layer 1 is universal. Layer 2 is accessible. Layer 3 is powerful.
@@ -63,6 +63,14 @@ Reference implementation of Layer 1 — post-quantum local validation with Dilit
 - **Repository:** [github.com/navigatorbuilds/elara-layer1](https://github.com/navigatorbuilds/elara-layer1)
 - **Crypto:** CRYSTALS-Dilithium3 (FIPS 204) + SPHINCS+-SHA2-192f (FIPS 205)
 - **Performance:** Identity generation in 2ms, file validation in 1-2ms
+
+### Layer 1.5: Elara Runtime (Rust DAM Virtual Machine)
+
+Rust implementation of DAM concepts with PyO3 bindings — crypto, wire format, dimensional storage, and all 9 DAM operations. Byte-identical wire format with Layer 1. Callable from Python as an optional fast path.
+
+- **Repository:** [github.com/navigatorbuilds/elara-runtime](https://github.com/navigatorbuilds/elara-runtime)
+- **Crypto:** Same liboqs algorithms via `oqs` Rust crate (vendored), cross-language sign/verify verified
+- **Features:** 5-tuple addressing, tiled storage, in-memory DAG index, parallel batch verify via rayon
 
 ### Layer 3: Elara Core (AI Intelligence)
 
