@@ -301,6 +301,8 @@ DAG (2D):        ●───●───●───●
 
 A blockchain is a line. A DAG is a surface. The Elara structure is a **mesh** — a network of interconnected DAGs that appears simple locally (each zone is a standard DAG) but forms a self-healing, multi-path topology globally.
 
+<div style="page-break-before: always;"></div>
+
 #### 3.3.3 Formal Definition: Directed Acyclic Mesh (DAM)
 
 A **Directed Acyclic Mesh** is a distributed data structure defined as a tuple **M = (Z, V, E, C, π, A)** where Z is a set of zones, V is a set of validation records, E ⊂ V × V is a set of directed causal edges (acyclic), C is a classification function C: V × Observer → View, π is the partition-merge operator, and A is the cross-zone analytics function. The DAM satisfies the following properties:
@@ -2716,6 +2718,18 @@ Every data structure in computing history was designed after the hardware, const
 The DAM inverts this relationship. The structure comes first. The hardware follows.
 
 The DAM operates today on the hardware that exists today. It is designed to operate natively on the hardware that will exist by 2035. The protocol arrives first. The hardware follows.
+
+**Implications for known limitations.** Native hardware does not merely improve performance — it transforms the protocol's security model and resolves limitations that are otherwise permanent on conventional architectures (see Section 14):
+
+| Limitation | Impact of Native Hardware |
+|---|---|
+| **14.3 Post-Quantum ZKP Immaturity** | **Resolved.** On conventional hardware, PRIVATE and RESTRICTED classifications depend on zero-knowledge proofs — cryptographic constructions with known quantum vulnerabilities. On native DAM hardware, classification becomes dimension 4: physical inaccessibility. Data at a given classification level exists in a physical dimension that is unreachable without the corresponding sensor or interface. Privacy is enforced by physics, not cryptography. The quantum vulnerability disappears because there is no cryptographic proof to break — the data is dimensionally inaccessible. |
+| **14.5 Storage Sustainability at Full Scale** | **Significantly reduced.** The ~7 PB/year estimate (Section 11.32) assumes one-dimensional storage: every record must be serialized, indexed, and augmented with hash maps and traversal structures to enable multi-dimensional queries on a linear medium. Native hardware stores data in its dimensional form. Indexes become unnecessary when the storage medium is natively addressable across all five dimensions. Storage overhead could decrease by an order of magnitude — not through compression, but through elimination of the serialization infrastructure itself. |
+| **14.1 No Proof of Creation** | **Marginally improved.** Native temporal ordering as a physical axis provides stronger, hardware-enforced temporal guarantees. However, no hardware — regardless of dimensionality — can prove that a key holder is the original creator of content. This remains a fundamental limitation. |
+| **14.6 Formal Verification Completeness** | **Partially addressed.** Protocol properties that must be verified mathematically on conventional hardware may become trivially true by construction when the hardware physically enforces them. A record that does not fit the mesh topology cannot exist — there is nothing to verify. |
+| **14.2, 14.4, 14.7** | **Not affected.** Cold start economics, governance capture, and regulatory uncertainty are human-system problems — economic, social, and legal — that no hardware architecture can resolve. |
+
+The two limitations most dangerous to the protocol's long-term viability — quantum vulnerability of privacy classifications and storage sustainability at planetary scale — are precisely the two that native hardware eliminates. This is not coincidental. The DAM's five dimensions were not chosen arbitrarily; they describe the minimum physical properties required for a universal validation substrate. Hardware that implements these dimensions inherently resolves the constraints that arise from simulating them.
 
 ---
 
