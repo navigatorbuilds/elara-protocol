@@ -18,8 +18,9 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Description | Status |
 |----------|-------------|--------|
-| [**Elara Protocol Whitepaper v0.2.5**](ELARA-PROTOCOL-WHITEPAPER.v0.2.5.md) | Complete protocol specification: DAM architecture, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis | Published, OTS timestamped |
-| [**Elara Core Whitepaper v1.3.0**](ELARA-CORE-WHITEPAPER.v1.3.0.md) | Layer 3 reference implementation: persistent memory, 3D Cognition, emotional modeling, continuous autonomous thinking, deployment modularity | Published, OTS timestamped |
+| [**Elara Protocol Whitepaper v0.2.6**](ELARA-PROTOCOL-WHITEPAPER.v0.2.6.md) ([PDF](ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf)) | Complete protocol specification: DAM architecture, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware | Published, OTS timestamped |
+| [**Elara Core Whitepaper v1.3.0**](ELARA-CORE-WHITEPAPER.v1.3.0.md) ([PDF](ELARA-CORE-WHITEPAPER.v1.3.0.pdf)) | Layer 3 reference implementation: persistent memory, 3D Cognition, emotional modeling, continuous autonomous thinking, deployment modularity | Published, OTS timestamped |
+| [**Elara Hardware Whitepaper v0.1.0**](ELARA-HARDWARE-WHITEPAPER.v0.1.0.md) ([PDF](ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf)) | Native hardware architecture for the DAM: 9-op ISA, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis | Published, OTS timestamped |
 
 ## Architecture
 
@@ -64,8 +65,9 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) | OTS Proof |
 |----------|---------------|-----------|
-| Protocol v0.2.5 | See document footer | `.ots` file included |
+| Protocol v0.2.6 | See document footer | `.ots` file included |
 | Core v1.3.0 | `6b7da9f2b92e08344572f20f0098f3e686cf3ccc9bd0bd7af8b76e90bdc0a0e7` | `.ots` file included |
+| Hardware v0.1.0 | `e0f27ed98f7ccd6ef2db04b6c911712b60cbc1bbe4256d1141a93b97924c6225` | `.ots` file included |
 
 Hash chain is maintained across all versions. Each document includes previous version hashes for verification.
 
