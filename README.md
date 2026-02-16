@@ -22,10 +22,10 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | *Complete protocol specification: DAM architecture, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
 | **Elara Core Whitepaper v1.3.0** | 26 | [**PDF**](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition, emotional modeling, continuous autonomous thinking, deployment modularity* |||
-| **Elara Hardware Whitepaper v0.1.0** | 35 | [**PDF**](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf) |
+| **Elara Hardware Whitepaper v0.1.1** | 35 | [**PDF**](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf) — v0.2.6 adds Phase 6: Native Hardware Architecture (2033–2040).
+**Previous versions:** [Protocol v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf) — v0.2.6 adds Phase 6: Native Hardware Architecture (2033–2040). [Hardware v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf) — v0.1.1 adds Layer 1.5 Rust runtime references and clarifies current-hardware compatibility.
 
 Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
@@ -88,7 +88,7 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 |----------|---------------|
 | Protocol v0.2.6 | See document footer |
 | Core v1.3.0 | `6b7da9f2b92e08344572f20f0098f3e686cf3ccc9bd0bd7af8b76e90bdc0a0e7` |
-| Hardware v0.1.0 | `e0f27ed98f7ccd6ef2db04b6c911712b60cbc1bbe4256d1141a93b97924c6225` |
+| Hardware v0.1.1 | `ddcb1bb9ae4f083c48d6169fdc612ac7244a467691a6b540a2e1a23dda84a662` |
 
 ## Intellectual Property
 
