@@ -8,21 +8,26 @@
 
 The Elara Protocol is a three-layer architecture for cryptographically validating all forms of digital work — from a poem written on a $30 phone in Kenya to telemetry data from a Mars colony operations center.
 
-- **Layer 1: Local Validation** — Hash, sign, prove. Works offline, on any device, in under 50ms. Post-quantum from genesis.
+- **Layer 1: Local Validation** — Hash, sign, prove. Works offline, on any device, in under 2ms. Post-quantum from genesis.
 - **Layer 2: Network Consensus** — Adaptive Witness Consensus (AWC) across partitioned networks, including interplanetary delays.
 - **Layer 3: AI Intelligence** — Persistent cognitive architecture for pattern recognition, anomaly detection, and collective learning across the network.
 
 The minimum viable network is **one device**. No blockchain required. No cloud dependency. No subscription.
 
-## Documents
+## Whitepapers
 
-| Document | Description | Status |
-|----------|-------------|--------|
-| [**Elara Protocol Whitepaper v0.2.6**](ELARA-PROTOCOL-WHITEPAPER.v0.2.6.md) ([PDF](ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf)) | Complete protocol specification: DAM architecture, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware | Published, OTS timestamped |
-| [**Elara Core Whitepaper v1.3.0**](ELARA-CORE-WHITEPAPER.v1.3.0.md) ([PDF](ELARA-CORE-WHITEPAPER.v1.3.0.pdf)) | Layer 3 reference implementation: persistent memory, 3D Cognition, emotional modeling, continuous autonomous thinking, deployment modularity | Published, OTS timestamped |
-| [**Elara Hardware Whitepaper v0.1.0**](ELARA-HARDWARE-WHITEPAPER.v0.1.0.md) ([PDF](ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf)) | Native hardware architecture for the DAM: 9-op ISA, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis | Published, OTS timestamped |
+| Document | Pages | Download |
+|----------|-------|----------|
+| **Elara Protocol Whitepaper v0.2.6** | 49 | [**PDF**](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf) |
+| *Complete protocol specification: DAM architecture, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
+| **Elara Core Whitepaper v1.3.0** | 26 | [**PDF**](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf) |
+| *Layer 3 reference implementation: persistent memory, 3D Cognition, emotional modeling, continuous autonomous thinking, deployment modularity* |||
+| **Elara Hardware Whitepaper v0.1.0** | 35 | [**PDF**](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf) |
+| *Native hardware architecture for the DAM: 9-op ISA, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.5](ELARA-PROTOCOL-WHITEPAPER.v0.2.5.md) ([PDF](ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf)) — v0.2.6 adds Phase 6: Native Hardware Architecture (2033–2040).
+**Previous versions:** [Protocol v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf) — v0.2.6 adds Phase 6: Native Hardware Architecture (2033–2040).
+
+Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
 ## Architecture
 
@@ -35,9 +40,7 @@ Laptop (developer)                   Layer 1 + 2
 GPU Server (network node)            Layer 1 + 2 + 3 (Elara Core)
 ```
 
-**No layer depends on the layers above it.** Layer 1 is universal. Layer 2 is accessible. Layer 3 is powerful. The girl in Kenya never needs a GPU. The factory microcontroller never needs Python. They validate locally, for free, with post-quantum cryptographic proof.
-
-Dedicated Elara Core nodes provide AI intelligence *to the network* — pattern detection across millions of validations, anomaly alerts, cognitive models that strengthen over time, creative drift that discovers unexpected connections.
+**No layer depends on the layers above it.** Layer 1 is universal. Layer 2 is accessible. Layer 3 is powerful.
 
 ## Key Innovation: The Directed Acyclic Mesh (DAM)
 
@@ -71,15 +74,13 @@ Reference implementation of Layer 3 — a cognitive architecture that gives AI a
 
 ## Provenance
 
-All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/) — cryptographic proofs anchored in the Bitcoin blockchain.
+All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/) — cryptographic proofs anchored in the Bitcoin blockchain. OTS proof files (`.ots`) are included in [`docs/`](docs/).
 
-| Document | Hash (SHA-256) | OTS Proof |
-|----------|---------------|-----------|
-| Protocol v0.2.6 | See document footer | `.ots` file included |
-| Core v1.3.0 | `6b7da9f2b92e08344572f20f0098f3e686cf3ccc9bd0bd7af8b76e90bdc0a0e7` | `.ots` file included |
-| Hardware v0.1.0 | `e0f27ed98f7ccd6ef2db04b6c911712b60cbc1bbe4256d1141a93b97924c6225` | `.ots` file included |
-
-Hash chain is maintained across all versions. Each document includes previous version hashes for verification.
+| Document | Hash (SHA-256) |
+|----------|---------------|
+| Protocol v0.2.6 | See document footer |
+| Core v1.3.0 | `6b7da9f2b92e08344572f20f0098f3e686cf3ccc9bd0bd7af8b76e90bdc0a0e7` |
+| Hardware v0.1.0 | `e0f27ed98f7ccd6ef2db04b6c911712b60cbc1bbe4256d1141a93b97924c6225` |
 
 ## Intellectual Property
 
