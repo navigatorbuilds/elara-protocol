@@ -22,6 +22,8 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | [**Elara Core Whitepaper v1.3.0**](ELARA-CORE-WHITEPAPER.v1.3.0.md) ([PDF](ELARA-CORE-WHITEPAPER.v1.3.0.pdf)) | Layer 3 reference implementation: persistent memory, 3D Cognition, emotional modeling, continuous autonomous thinking, deployment modularity | Published, OTS timestamped |
 | [**Elara Hardware Whitepaper v0.1.0**](ELARA-HARDWARE-WHITEPAPER.v0.1.0.md) ([PDF](ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf)) | Native hardware architecture for the DAM: 9-op ISA, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis | Published, OTS timestamped |
 
+**Previous versions:** [Protocol v0.2.5](ELARA-PROTOCOL-WHITEPAPER.v0.2.5.md) ([PDF](ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf)) — v0.2.6 adds Phase 6: Native Hardware Architecture (2033–2040).
+
 ## Architecture
 
 ```
