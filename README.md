@@ -51,15 +51,23 @@ The protocol introduces a novel data structure — the **Directed Acyclic Mesh**
 
 This is not a blockchain. It is a mesh that works when nodes are offline, when light-speed delays span 4-22 minutes, and when the network is partitioned across planets.
 
-## Related: Elara Core (Layer 3 Implementation)
+## Implementations
 
-Elara Core is the reference implementation of Layer 3 — a cognitive architecture that gives AI assistants persistent memory, emotional modeling, autonomous reasoning, and self-awareness.
+### Layer 1: Elara Layer 1 (Local Validation)
+
+Reference implementation of Layer 1 — post-quantum local validation with Dilithium3 + SPHINCS+, SQLite-backed DAG, and a CLI for validating files from the terminal.
+
+- **Repository:** [github.com/navigatorbuilds/elara-layer1](https://github.com/navigatorbuilds/elara-layer1)
+- **Crypto:** CRYSTALS-Dilithium3 (FIPS 204) + SPHINCS+-SHA2-192f (FIPS 205)
+- **Performance:** Identity generation in 2ms, file validation in 1-2ms
+
+### Layer 3: Elara Core (AI Intelligence)
+
+Reference implementation of Layer 3 — a cognitive architecture that gives AI assistants persistent memory, emotional modeling, autonomous reasoning, and self-awareness.
 
 - **Repository:** [github.com/navigatorbuilds/elara-core](https://github.com/navigatorbuilds/elara-core)
 - **PyPI:** `pip install elara-core`
 - **Documentation:** [elara.navigatorbuilds.com](https://elara.navigatorbuilds.com)
-
-Elara Core runs locally, thinks continuously, and builds understanding that accumulates over time. It serves both industrial applications (manufacturing monitoring, research assistants, anomaly detection) and emotional companionship systems (humanoid robotics, therapeutic AI, personal companions) from a single codebase — see the [Core Whitepaper](ELARA-CORE-WHITEPAPER.v1.3.0.md), Section 2.3.
 
 ## Provenance
 
