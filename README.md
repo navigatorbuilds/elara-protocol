@@ -87,8 +87,8 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 | Document | Hash (SHA-256) |
 |----------|---------------|
 | Protocol v0.2.7 | `b9a249c93ae082b20269aa3bbd338d8e2740b15339ce473304f02c0ed81d166f` |
-| Core v1.3.1 | `832a8821544bb6b68c3e8e8df529a76846f960da5783bfcdf1a43116d161cdc7` |
-| Hardware v0.1.3 | `617557a7d76a7a537f6da77931ab239b63400bbb0b5ad1301ae39e4638c99237` |
+| Core v1.3.1 | `de47fb536973050c90693414075161bbb2eac6e001353b7db1a6041c8b3a5c1c` |
+| Hardware v0.1.3 | `0d0ecbc02c817bb0f076e867eb30598741bce5cf805ef5a24553a97ed9a448e5` |
 
 ## Intellectual Property
 
