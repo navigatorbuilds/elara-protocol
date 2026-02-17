@@ -6,9 +6,10 @@
 
 ## What is this?
 
-The Elara Protocol is a three-layer architecture for cryptographically validating all forms of digital work — from a poem written on a $30 phone in Kenya to telemetry data from a Mars colony operations center.
+The Elara Protocol is a layered architecture for cryptographically validating all forms of digital work — from a poem written on a $30 phone in Kenya to telemetry data from a Mars colony operations center.
 
 - **Layer 1: Local Validation** — Hash, sign, prove. Works offline, on any device, in under 2ms. Post-quantum from genesis.
+- **Layer 1.5: Performance Runtime** — Optional Rust DAM VM with 9 ISA operations, parallel batch verify, and PyO3 bindings. Same wire format as Layer 1.
 - **Layer 2: Network Consensus** — Adaptive Witness Consensus (AWC) across partitioned networks, including interplanetary delays.
 - **Layer 3: AI Intelligence** — Persistent cognitive architecture for pattern recognition, anomaly detection, and collective learning across the network.
 
@@ -18,14 +19,14 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Pages | Download |
 |----------|-------|----------|
-| **Elara Protocol Whitepaper v0.2.7** | 49 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf) |
-| *Complete protocol specification: DAM architecture, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
-| **Elara Core Whitepaper v1.3.1** | 26 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.1.pdf) |
+| **Elara Protocol Whitepaper v0.2.8** | 51 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf) |
+| *Complete protocol specification: DAM architecture, Layer 1.5 performance runtime, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
+| **Elara Core Whitepaper v1.3.2** | 26 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.2.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition, emotional modeling, continuous autonomous thinking, deployment modularity* |||
-| **Elara Hardware Whitepaper v0.1.3** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf) |
+| **Elara Hardware Whitepaper v0.1.4** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.2.7/v1.3.1/v0.1.3: cross-whitepaper consistency fixes (crypto primitives, energy numbers, ISA-to-protocol mapping clarification).
+**Previous versions:** [Protocol v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.2.8/v1.3.2/v0.1.4: Layer 1.5 (Rust DAM VM) added to protocol architecture. v0.2.7/v1.3.1/v0.1.3: cross-whitepaper consistency fixes.
 
 Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
@@ -86,9 +87,9 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.2.7 | `b9a249c93ae082b20269aa3bbd338d8e2740b15339ce473304f02c0ed81d166f` |
-| Core v1.3.1 | `de47fb536973050c90693414075161bbb2eac6e001353b7db1a6041c8b3a5c1c` |
-| Hardware v0.1.3 | `0d0ecbc02c817bb0f076e867eb30598741bce5cf805ef5a24553a97ed9a448e5` |
+| Protocol v0.2.8 | `371a933a20f9de7a457200f8fe108a9a9113dd0c64b73d2b4e54ec845237a762` |
+| Core v1.3.2 | `236dbd191425e9ab7bee791c2cc5b4c91a6919bee1e2a41c990a868bfd25c0a3` |
+| Hardware v0.1.4 | `1c36e4af613d714a931d01f2f2b8de55081e4b8bda944c14e08a17d053e359c9` |
 
 ## Intellectual Property
 
