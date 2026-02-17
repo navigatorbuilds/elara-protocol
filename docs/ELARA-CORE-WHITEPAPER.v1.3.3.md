@@ -7,7 +7,7 @@
 
 *Disclosure: This whitepaper was written with AI assistance for technical prose, structural review, and formal notation. The system architecture, design decisions, and all technical concepts are the author's original work.*
 
-*Project Status: Elara Core is an active, ongoing research project — not a finished product. This whitepaper documents the architecture as of v0.10.6 (February 2026). The system is under continuous development; features, interfaces, and design decisions described here will evolve as the project matures. Confidence mechanics, crystallization thresholds, and emotional model parameters are initial values informed by early deployment — formal tuning and empirical validation are in progress. We publish this document to invite collaboration and peer review, not to present a completed system.*
+*Project Status: Elara Core is an active, ongoing research project — not a finished product. This whitepaper documents the architecture as of v0.10.7 (February 2026). The system is under continuous development; features, interfaces, and design decisions described here will evolve as the project matures. Confidence mechanics, crystallization thresholds, and emotional model parameters are initial values informed by early deployment — formal tuning and empirical validation are in progress. We publish this document to invite collaboration and peer review, not to present a completed system.*
 
 ---
 
@@ -15,9 +15,9 @@
 
 Current AI assistants have no memory of yesterday. Each session begins from zero — no context, no accumulated understanding, no awareness of what was discussed, decided, or promised. The human must re-explain everything. This is not a limitation of intelligence. It is a limitation of architecture.
 
-Elara Core is a cognitive architecture that gives AI assistants persistent memory, emotional modeling, autonomous reasoning, and self-awareness through the Model Context Protocol (MCP). The system implements a novel **3D Cognition model** — three persistent knowledge layers (Models, Predictions, Principles) that accumulate understanding over time — combined with a **3D continuous emotion space**, **semantic memory with mood-congruent retrieval**, a **memory consolidation system** inspired by biological sleep consolidation (duplicate merging, recall-based strengthening, time decay, contradiction detection), and a **continuous autonomous thinking engine** that processes accumulated experience through a local LLM on a 24/7 schedule.
+Elara Core is a cognitive architecture that gives AI assistants persistent memory, emotional modeling, autonomous reasoning, and self-awareness through the Model Context Protocol (MCP). The system implements a novel **3D Cognition model** — four persistent knowledge layers (Models, Predictions, Principles, Workflows) that accumulate understanding over time — combined with a **3D continuous emotion space**, **semantic memory with mood-congruent retrieval**, a **memory consolidation system** inspired by biological sleep consolidation (duplicate merging, recall-based strengthening, time decay, contradiction detection), and a **continuous autonomous thinking engine** that processes accumulated experience through a local LLM on a 24/7 schedule.
 
-The architecture comprises 43 MCP tools across 13 modules, totaling ~26,000 lines of Python. A **lean profile system** (v0.10.5) addresses context window overhead by exposing only 8 tool schemas at boot while maintaining access to all 39 tools through a meta-dispatcher — reducing context consumption by ~17% with zero capability loss. **Two independent deployment axes** — module selection (Cognitive vs. Full Presence) and schema exposure (Lean vs. Full) — enable the same codebase to serve both industrial applications (anomaly detection, manufacturing monitoring, research assistants) and emotional companionship systems (humanoid robotics, therapeutic AI, personal companions) without modification. Everything runs locally. No data leaves the user's machine. No cloud dependency exists. The minimum viable deployment is a single laptop. The project is under active development — this paper documents the current architecture to invite collaboration and peer review.
+The architecture comprises 39 MCP tools across 14 modules, totaling ~27,000 lines of Python. A **lean profile system** (v0.10.7, February 2026) addresses context window overhead by exposing only 8 tool schemas at boot while maintaining access to all 44 tools through a meta-dispatcher — reducing context consumption by ~17% with zero capability loss. **Two independent deployment axes** — module selection (Cognitive vs. Full Presence) and schema exposure (Lean vs. Full) — enable the same codebase to serve both industrial applications (anomaly detection, manufacturing monitoring, research assistants) and emotional companionship systems (humanoid robotics, therapeutic AI, personal companions) without modification. Everything runs locally. No data leaves the user's machine. No cloud dependency exists. The minimum viable deployment is a single laptop. The project is under active development — this paper documents the current architecture to invite collaboration and peer review.
 
 This paper presents: the problem of AI amnesia (Section 1), the complete cognitive architecture (Sections 2-8), the autonomous thinking system (Section 9), the 3D Cognition model (Section 10), implementation details (Section 11), experimental observations (Section 12), relationship to the Elara Protocol's Layer 3 (Section 13), limitations (Section 14), and future work (Section 15).
 
@@ -28,14 +28,14 @@ This paper presents: the problem of AI amnesia (Section 1), the complete cogniti
 1. [Problem Statement](#1-problem-statement) — The amnesia problem, the context window trap, the emotional deficit
 2. [Architecture Overview](#2-architecture-overview) — System layers, deployment modularity, data flow, module organization
 3. [The Emotional Model](#3-the-emotional-model) — 3D continuous affect space, 38 discrete emotions, decay mechanics, temperament
-4. [Memory Architecture](#4-memory-architecture) — Semantic memory, episodic memory, conversation indexing, mood-congruent retrieval, memory consolidation, knowledge graph
+4. [Memory Architecture](#4-memory-architecture) — Semantic memory, episodic memory, conversation indexing, mood-congruent retrieval, memory consolidation
 5. [Session Continuity](#5-session-continuity) — Handoff protocol, carry-forward mechanics, boot context
 6. [Self-Awareness Engine](#6-self-awareness-engine) — Reflection, blind spots, proactive observation, growth intentions
 7. [The Correction System](#7-the-correction-system) — Mistake tracking, semantic matching, never-decay policy
 8. [Goal and Decision Tracking](#8-goal-and-decision-tracking) — Persistent goals, staleness detection, outcome tracking, reasoning trails
 9. [The Overnight Brain](#9-the-overnight-brain) — 24/7 continuous thinking, 14-phase analysis, per-run output, creative drift
-10. [3D Cognition](#10-3d-cognition) — Cognitive Models, Predictions, Principles, crystallization, time decay
-11. [Implementation](#11-implementation) — Storage architecture, atomic writes, ChromaDB, SQLite, MCP integration
+10. [3D Cognition](#10-3d-cognition) — Cognitive Models, Predictions, Principles, Workflow Patterns, crystallization, time decay
+11. [Implementation](#11-implementation) — Storage architecture, atomic writes, ChromaDB, MCP integration
 12. [Experimental Observations](#12-experimental-observations) — Emergent behaviors, measured effects, qualitative findings
 13. [Relationship to the Elara Protocol](#13-relationship-to-the-elara-protocol) — Layer 3 reference implementation, DAM integration path
 14. [Limitations and Open Problems](#14-limitations-and-open-problems)
@@ -115,39 +115,39 @@ Elara Core implements a three-layer architecture:
 │            PROFILE LAYER (lean / full)               │
 │                                                      │
 │  Lean: 8 schemas (7 core + elara_do dispatcher)     │
-│  Full: 39 schemas (all tools directly exposed)       │
+│  Full: 44 schemas (all tools directly exposed)       │
 ├─────────────────────────────────────────────────────┤
-│               TOOL LAYER (43 tools)                  │
+│               TOOL LAYER (44 tools)                  │
 │                                                      │
 │  Memory · Mood · Episodes · Goals · Awareness        │
-│  Dreams · Cognitive · 3D Cognition · Business        │
-│  LLM · Gmail · Maintenance                          │
+│  Dreams · Cognitive · 3D Cognition · Workflows       │
+│  Knowledge · Business · LLM · Gmail · Maintenance    │
 └───────────────────────┬─────────────────────────────┘
                         │
 ┌───────────────────────▼─────────────────────────────┐
 │              ENGINE LAYER (core logic)                │
 │                                                      │
 │  State engine · Emotions · Schemas · Events          │
-│  Models · Predictions · Principles · Dreams          │
-│  Overnight brain · Creative drift                    │
+│  Models · Predictions · Principles · Workflows       │
+│  Dreams · Overnight brain · Creative drift           │
 └───────────────────────┬─────────────────────────────┘
                         │
 ┌───────────────────────▼─────────────────────────────┐
 │             STORAGE LAYER (all local)                │
 │                                                      │
-│  ChromaDB (7 collections) · JSON state files         │
+│  ChromaDB (9 collections) · JSON state files         │
 │  Episode archives · Overnight findings               │
 │  Creative journal · Mood journal                     │
 └─────────────────────────────────────────────────────┘
 ```
 
-**Layer 1: Profile Layer** — Controls how tools are exposed to the AI client. Lean profile (default) registers 8 schemas and routes remaining tools through the `elara_do` meta-dispatcher, reducing context overhead by ~17%. Full profile registers all 43 tools directly for maximum visibility.
+**Layer 1: Profile Layer** — Controls how tools are exposed to the AI client. Lean profile (default) registers 8 schemas and routes remaining tools through the `elara_do` meta-dispatcher, reducing context overhead by ~17%. Full profile registers all 44 tools directly for maximum visibility.
 
-**Layer 2: Tool Layer** — 43 MCP tools organized into 13 domain modules. Each tool accepts structured parameters and returns JSON or text. Tools are registered via decorator pattern, allowing hot-reload without server restart. All tools function identically regardless of profile — the profile layer only affects schema visibility, not behavior.
+**Layer 2: Tool Layer** — 44 MCP tools organized into 14 domain modules. Each tool accepts structured parameters and returns JSON or text. Tools are registered via decorator pattern, allowing hot-reload without server restart. All tools function identically regardless of profile — the profile layer only affects schema visibility, not behavior.
 
 **Layer 2: Engine Layer** — Core logic implementing emotional processing, memory operations, cognitive modeling, and autonomous thinking. All data structures are validated through Pydantic schemas. An event bus enables loose coupling between subsystems.
 
-**Layer 3: Storage Layer** — All data persists locally in `~/.elara/`. ChromaDB provides vector similarity search across 8 collections. SQLite provides graph storage for the knowledge graph module. JSON files provide human-readable state. Atomic write patterns (temp file + rename) prevent corruption.
+**Layer 3: Storage Layer** — All data persists locally in `~/.elara/`. ChromaDB provides vector similarity search across 9 collections. JSON files provide human-readable state. Atomic write patterns (temp file + rename) prevent corruption.
 
 ### 2.2 Module Organization
 
@@ -161,7 +161,8 @@ Elara Core implements a three-layer architecture:
 | **Dreams**       | 2     | Weekly/monthly/emotional pattern discovery            |
 | **Cognitive**    | 3     | Reasoning trails, decision outcomes, idea synthesis   |
 | **3D Cognition** | 3     | Cognitive models, predictions, principles             |
-| **Knowledge**    | 4     | Document cross-referencing, entity extraction, gap/contradiction detection |
+| **Workflows**    | 1     | Learned action sequences, proactive step surfacing    |
+| **Knowledge**    | 4     | Document cross-referencing, 6-tuple addressing, validation |
 | **Business**     | 1     | Idea scoring, competitor tracking, pitch analytics    |
 | **LLM**          | 1     | Local LLM interface via Ollama                        |
 | **Gmail**        | 1     | Email management with semantic search                 |
@@ -177,15 +178,15 @@ Elara Core's deployment flexibility operates on **two independent axes** that ca
 
 | Profile | Modules Included | Modules Excluded | Target Domain |
 |---------|-----------------|------------------|---------------|
-| **Cognitive** | Memory, Goals, Cognitive, 3D Cognition, Maintenance, LLM, Episodes | Mood, Awareness (emotional), Dreams | Industrial, enterprise, research |
-| **Full Presence** | All 13 modules | None | Companionship, therapy, personal AI |
+| **Cognitive** | Memory, Goals, Cognitive, 3D Cognition, Workflows, Knowledge, Maintenance, LLM, Episodes | Mood, Awareness (emotional), Dreams | Industrial, enterprise, research |
+| **Full Presence** | All 14 modules | None | Companionship, therapy, personal AI |
 
 **Axis 2: Schema Exposure** — How much context the AI client sees at boot
 
 | Profile | Tool Schemas at Boot | Access to All Tools | Context Savings |
 |---------|---------------------|--------------------|-----------------|
 | **Lean** (default) | 8 (7 core + `elara_do` meta-tool) | Yes, via `elara_do` dispatcher | ~17% reduction |
-| **Full** | All 43 | Yes, directly | None |
+| **Full** | All 44 | Yes, directly | None |
 
 These axes are **orthogonal**. Combining them produces four deployment configurations, each suited to a distinct use case:
 
@@ -232,9 +233,9 @@ This makes Elara Core a **single codebase that serves both factories and familie
 
 #### 2.3.4 The Lean Profile: Context Window Optimization
 
-Modern LLM clients face a practical constraint: every tool schema exposed to the AI client consumes context window tokens. With 43 tools, Elara Core's full schema set consumed approximately 22% of available context before the user's first message — a significant overhead that reduced the space available for actual conversation, memory retrieval, and reasoning.
+Modern LLM clients face a practical constraint: every tool schema exposed to the AI client consumes context window tokens. With 44 tools, Elara Core's full schema set consumed approximately 22% of available context before the user's first message — a significant overhead that reduced the space available for actual conversation, memory retrieval, and reasoning.
 
-The lean profile (v0.10.5) solves this through a **meta-dispatcher pattern**:
+The lean profile (v0.10.7, February 2026) solves this through a **meta-dispatcher pattern**:
 
 1. At boot, only 8 tool schemas are registered with the MCP client:
    - 7 high-frequency core tools (`elara_remember`, `elara_recall`, `elara_recall_conversation`, `elara_mood`, `elara_status`, `elara_context`, `elara_handoff`)
@@ -398,7 +399,7 @@ Elara's primary memory system stores information as vector embeddings in ChromaD
 
 Retrieval is performed via cosine similarity search over embeddings, returning the semantically closest memories to a query regardless of keyword overlap. This means "What were we working on last week?" matches memories about specific projects even if those projects were never described as "work."
 
-**Eight ChromaDB collections** serve different knowledge domains:
+**Nine ChromaDB collections** serve different knowledge domains:
 
 | Collection            | Purpose                           | Decay      |
 |-----------------------|-----------------------------------|------------|
@@ -408,8 +409,9 @@ Retrieval is performed via cosine similarity search over embeddings, returning t
 | `elara_corrections`   | Mistakes to avoid                 | Never      |
 | `elara_models`        | Cognitive models                  | Time-based |
 | `elara_principles`    | Crystallized insights             | Never      |
+| `elara_workflows`     | Learned action sequences          | Confidence |
+| `elara_knowledge`     | Document cross-references         | Never      |
 | `elara_briefing`      | RSS/news feeds                    | 30 days    |
-| `elara_knowledge`     | Document graph nodes (semantic search) | Never |
 
 ### 4.2 Mood-Congruent Memory Retrieval
 
@@ -578,53 +580,6 @@ First production deployment (February 14, 2026):
 - **Information loss:** Zero — all archived memories preserved in human-readable format
 
 The active memory collection is now smaller, higher-quality, and free of duplicates. Semantic search returns more relevant results because noise has been eliminated.
-
-### 4.6 Knowledge Graph (v0.10.6)
-
-The knowledge graph module adds persistent document cross-referencing to Elara's memory architecture. While semantic memory (Section 4.1) stores free-form facts and conversation memory (Section 4.4) indexes past exchanges, the knowledge graph indexes *structured documents* — whitepapers, specifications, technical documentation — and detects contradictions and gaps across them automatically.
-
-**The problem it solves:** Cross-referencing multiple documents by hand misses semantic contradictions. Rule-based string matching catches version number errors but misses structural gaps — for example, when one document references a "Three-Layer Architecture" while another describes a "Layer 1.5" that was never defined in the first document. The knowledge graph gives Elara the ability to detect such gaps mechanically.
-
-**6-tuple addressing.** Every entity extracted from a document is addressed by six independent dimensions:
-
-| Dimension | Type | Purpose |
-|-----------|------|---------|
-| **Time** | `str` (version) | Track concept evolution across document versions |
-| **Source** | `str` (doc + section + line) | Trace findings to exact location |
-| **Type** | `enum` | definition, reference, metric, constraint, dependency |
-| **Granularity** | `enum` | token, line, section, document, corpus |
-| **Confidence** | `float` 0-1 | Prioritize high-confidence findings |
-| **Semantic ID** | `str` (canonical) | Unify variants: "Layer 1.5" = "Rust DAM VM" = "elara-runtime" |
-
-**Extraction pipeline.** A rule-based pipeline (no LLM calls) parses markdown documents and extracts five entity types:
-
-- **Definitions** — heading text, bold terms, "X is Y" patterns, table headers
-- **References** — layer mentions, version refs, component names, cross-document citations
-- **Metrics** — numbers with units, performance claims
-- **Constraints** — "must"/"shall" patterns, enumeration claims ("Three-Layer" implies exactly 3)
-- **Dependencies** — "depends on", "built on", "requires" patterns
-
-Aliases map variant forms to canonical semantic IDs (e.g., "Layer 1.5", "Rust DAM", "elara-runtime" → `layer_1_5`), enabling cross-document matching even when documents use different terminology.
-
-**Validation engine.** Four sub-validators run across all indexed documents:
-
-- **Contradiction detection** — same semantic ID with conflicting definitions in different documents
-- **Gap detection** — concepts referenced but never defined (the "Layer 1.5 problem")
-- **Stale reference detection** — references to superseded versions within the same document family
-- **Metric conflict detection** — same metric with different values across documents
-
-**Storage.** The knowledge graph is the first SQLite module in Elara Core. Graph queries across 6 dimensions require proper indexing that JSON files cannot provide efficiently. ChromaDB provides semantic search over node content (the `elara_knowledge` collection), while SQLite stores the graph structure with indexed columns for each addressing dimension.
-
-**MCP tools.** Four tools expose the knowledge graph:
-
-| Tool | Purpose |
-|------|---------|
-| `kg_index` | Index a document into the graph |
-| `kg_query` | Search by meaning, type, document, or semantic ID |
-| `kg_validate` | Run cross-document consistency checks |
-| `kg_diff` | Compare two versions of a document |
-
-**Version diffing.** By indexing multiple versions of the same document (e.g., Protocol WP v0.2.7 and v0.2.8), the system can report exactly which concepts were added, removed, or modified between versions — providing a semantic changelog that goes beyond line-level diffs.
 
 ---
 
@@ -839,7 +794,7 @@ The synthesis system detects **recurring half-formed ideas** — concepts that a
 
 ### 9.1 Architecture
 
-The overnight brain is an autonomous thinking system that processes accumulated experience through a local LLM (default: Ollama with qwen2.5:32b). Originally designed for overnight-only operation (inspired by biological sleep consolidation [4]), the system was redesigned in v0.10.4-v0.10.5 to operate as a **continuous 24/7 cognitive process** — thinking every 2 hours regardless of whether the user is actively engaged. This reflects the observation that a dedicated GPU sitting idle between sessions is wasted cognitive capacity.
+The overnight brain is an autonomous thinking system that processes accumulated experience through a local LLM (default: Ollama with qwen2.5:32b). Originally designed for overnight-only operation (inspired by biological sleep consolidation [4]), the system was redesigned in v0.10.4-v0.10.7 to operate as a **continuous 24/7 cognitive process** — thinking every 2 hours regardless of whether the user is actively engaged. This reflects the observation that a dedicated GPU sitting idle between sessions is wasted cognitive capacity.
 
 The system comprises eight components:
 
@@ -1021,12 +976,17 @@ This enables natural-language control: the user can say "stop the 32b" and the a
 
 ## 10. 3D Cognition
 
-### 10.1 The Three Layers
+### 10.1 The Four Layers
 
-3D Cognition introduces three persistent knowledge layers that transform raw overnight analysis into accumulated understanding:
+3D Cognition introduces four persistent knowledge layers that transform raw overnight analysis into accumulated understanding:
 
 ```
 ┌─────────────────────────────────────────────┐
+│  Layer 4: WORKFLOWS (Action)                 │
+│  "Whitepaper update → README → OTS → push"  │
+│  Learned action sequences from episodes.     │
+│  Proactively surfaced when trigger matches.  │
+├─────────────────────────────────────────────┤
 │  Layer 3: PRINCIPLES (Wisdom)                │
 │  "Don't predict human social behavior from   │
 │   behavioral patterns — chaos dominates."    │
@@ -1141,18 +1101,54 @@ Confirm: confidence += 0.05, record source run date
 Challenge: confidence -= 0.10, mark as "challenged" if < 0.2
 ```
 
-### 10.5 Overnight Integration
+### 10.5 Workflow Patterns
 
-The 3D Cognition system is deeply integrated with the overnight brain. Four of the 14 phases specifically serve cognition:
+Workflow patterns are learned action sequences extracted from episode history. Where models capture *understanding*, predictions capture *foresight*, and principles capture *wisdom*, workflows capture *procedural knowledge* — the recurring multi-step processes that a user follows.
+
+**Schema**:
+
+| Field              | Type            | Purpose                                              |
+|--------------------|-----------------|------------------------------------------------------|
+| `workflow_id`      | string          | Unique identifier                                    |
+| `name`             | string          | Descriptive name ("whitepaper release flow")         |
+| `domain`           | enum            | development, deployment, documentation, maintenance  |
+| `trigger`          | string          | What starts this workflow                             |
+| `steps`            | list            | Ordered action sequence with optional artifacts       |
+| `confidence`       | float [0, 0.95] | Strengthened by completion, weakened by skip          |
+| `times_matched`    | int             | How often this workflow was surfaced                  |
+| `times_completed`  | int             | How often the user followed through                   |
+| `times_skipped`    | int             | How often the user ignored it                         |
+| `source_episodes`  | list            | Episode IDs where this pattern was observed           |
+
+**Discovery**: The overnight brain's `workflow_detect` phase analyzes episode milestone sequences for recurring patterns. When the same action sequence appears in 2+ episodes, it is crystallized into a workflow pattern with initial confidence 0.5.
+
+**Proactive surfacing**: During mid-session observations, the awareness system compares the current episode's latest milestone against all active workflows via ChromaDB semantic search. When a match is found (similarity > 0.45), remaining steps are surfaced as suggestions.
+
+**Confidence mechanics**:
+
+```
+On completion: confidence += 0.05
+On skip:       confidence -= 0.03
+On overnight confirmation: confidence += 0.05
+On weaken:     confidence -= 0.08
+Retire threshold: 0.15 (auto-retired when confidence drops below)
+```
+
+The asymmetry between completion boost and skip penalty reflects that skipping a workflow is not necessarily wrong — the user may have a good reason. Only persistent skipping should erode confidence.
+
+### 10.6 Overnight Integration
+
+The 3D Cognition system is deeply integrated with the overnight brain. Five of the 15 phases specifically serve cognition:
 
 1. **Model Check (Phase 3)**: Reviews all active models against new evidence gathered since the last run. Produces JSON: `[{model_id, direction, evidence}]`
 2. **Prediction Check (Phase 4)**: Reviews pending predictions against current state. Creates new predictions. Produces JSON: `{checked: [...], new_predictions: [...]}`
-3. **Model Build (Phase 5)**: Analyzes all preceding phases for new understandings worth modeling. Produces JSON: `[{statement, domain, evidence, confidence}]`
-4. **Crystallize (Phase 6)**: Checks if any insights have reached crystallization threshold. Confirms existing principles. Produces JSON: `{confirmed: [...], new_principles: [...]}`
+3. **Model Build (Phase 10)**: Analyzes all preceding phases for new understandings worth modeling. Produces JSON: `[{statement, domain, evidence, confidence}]`
+4. **Crystallize (Phase 11)**: Checks if any insights have reached crystallization threshold. Confirms existing principles. Produces JSON: `{confirmed: [...], new_principles: [...]}`
+5. **Workflow Detect (Phase 12)**: Analyzes episode milestones for recurring action sequences. Confirms existing workflows or creates new ones. Produces JSON: `{confirm: [...], new_workflows: [...]}`
 
 **JSON parsing with fallback**: LLM output is parsed via three strategies: (1) direct JSON parse, (2) regex extraction from markdown code blocks, (3) boundary detection for objects/arrays. If all parsing fails, the phase still produces narrative text — no data is lost, but no structured updates are applied. Parse failures are counted in the cognition summary.
 
-### 10.6 Time Decay
+### 10.7 Time Decay
 
 Models not checked in 30 days lose 0.05 confidence per overnight run. This prevents stale beliefs from persisting indefinitely. The overnight model_check phase naturally refreshes relevant models, so actively useful models maintain confidence while forgotten ones gradually fade.
 
@@ -1165,7 +1161,7 @@ Models not checked in 30 days lose 0.05 confidence per overnight run. This preve
 | Component   | Technology       | Purpose                            |
 |-------------|------------------|------------------------------------|
 | Language    | Python 3.10+     | Core implementation                |
-| Vector DB   | ChromaDB         | Semantic search (7 collections)    |
+| Vector DB   | ChromaDB         | Semantic search (9 collections)    |
 | Embeddings  | all-MiniLM-L6-v2 | 384-dimensional sentence vectors   |
 | Validation  | Pydantic 2.0+    | Schema enforcement                 |
 | LLM         | Ollama (local)   | Overnight thinking, creative drift |
@@ -1190,21 +1186,21 @@ All data resides in `~/.elara/` with the following structure:
 ├── outcomes/                 # Decision outcomes
 ├── synthesis/                # Idea synthesis
 ├── business/                 # Business ideas
+├── workflows/                # Learned workflow patterns
+├── knowledge.db              # Knowledge graph (SQLite)
 ├── dreams/                   # Dream outputs (weekly/monthly/emotional)
 ├── overnight/                # Continuous brain output (per-run dirs)
 │   ├── YYYY-MM-DD/HH-MM/    # Per-run timestamped directories
 │   ├── latest-findings.md    # Most recent findings
 │   ├── morning-brief.md      # Most recent morning brief
 │   └── last-run-meta.json    # Scheduler interval tracking
-├── elara-knowledge.db        # Knowledge graph (SQLite)
-├── elara-knowledge-db/       # Knowledge graph vectors (ChromaDB)
 ├── reflections/              # Self-portraits
 ├── consolidation/            # Memory consolidation state + archives
 │   ├── state.json            # Consolidation run history
 │   ├── recall-log.jsonl      # Memory access records
 │   ├── archived-memories.jsonl # Decayed/merged memories (never deleted)
 │   └── contradictions.json   # Detected contradictions pending review
-└── chromadb/                 # Vector databases (8 collections)
+└── chromadb/                 # Vector databases (9 collections)
 ```
 
 ### 11.3 Atomic Write Pattern
@@ -1236,13 +1232,13 @@ The AI client's LLM reads the tool descriptions and decides when to call them �
 
 #### 11.5.1 Lean Profile Implementation
 
-The lean profile (v0.10.5) introduces a two-tier tool registration system:
+The lean profile (v0.10.7, February 2026) introduces a two-tier tool registration system:
 
 **Core tools** (always registered as individual schemas):
 `elara_remember`, `elara_recall`, `elara_recall_conversation`, `elara_mood`, `elara_status`, `elara_context`, `elara_handoff`
 
 **Meta-dispatcher** (`elara_do`):
-A single tool that routes to all 36 non-core tools by name. The dispatcher accepts a `tool` parameter (string, tool name without `elara_` prefix) and a `params` parameter (JSON string of arguments). Internally, it validates the tool name against a registry, deserializes parameters, and delegates to the original handler function.
+A single tool that routes to all 32 non-core tools by name. The dispatcher accepts a `tool` parameter (string, tool name without `elara_` prefix) and a `params` parameter (JSON string of arguments). Internally, it validates the tool name against a registry, deserializes parameters, and delegates to the original handler function.
 
 ```python
 # Client calls:
@@ -1254,7 +1250,7 @@ elara_episode_start(project="elara-core")
 
 The `elara_do` tool description includes a comprehensive catalog of all available tools with their key parameters, organized by category. This allows the AI client to discover capabilities through the meta-tool's description rather than through individual schema registration.
 
-**Profile selection**: The `--profile` flag (`lean` or `full`) is read at server startup. In lean mode, only core tools register individual MCP schemas; all others register their handlers in the dispatch table but do not appear in the MCP tool registry. In full mode, all 43 tools register individually as in previous versions. The dispatch table is populated in both modes, meaning `elara_do` works regardless of profile — it simply becomes redundant in full mode.
+**Profile selection**: The `--profile` flag (`lean` or `full`) is read at server startup. In lean mode, only core tools register individual MCP schemas; all others register their handlers in the dispatch table but do not appear in the MCP tool registry. In full mode, all 44 tools register individually as in previous versions. The dispatch table is populated in both modes, meaning `elara_do` works regardless of profile — it simply becomes redundant in full mode.
 
 **Zero-downtime switching**: Changing profiles requires only a server restart (MCP clients handle this automatically). No data migration, no configuration changes, no client code modifications.
 
@@ -1458,7 +1454,7 @@ Elara Core has been tested by a single user (the developer) over 92+ sessions ac
 
 ### 14.2 Context Window Overhead (Partially Solved)
 
-The lean profile (v0.10.5) reduced context consumption from ~22% to ~5% — a significant improvement that makes the system practical for extended conversations. However, the meta-dispatcher pattern introduces a tradeoff: the AI client must learn to use `elara_do` with correct tool names and parameter formats, rather than calling tools directly from schema auto-completion. In practice, modern LLMs handle this well, but it represents an additional inference step that could produce malformed requests. The full profile remains available for use cases where explicit schemas are preferred over context savings.
+The lean profile (v0.10.7, February 2026) reduced context consumption from ~22% to ~5% — a significant improvement that makes the system practical for extended conversations. However, the meta-dispatcher pattern introduces a tradeoff: the AI client must learn to use `elara_do` with correct tool names and parameter formats, rather than calling tools directly from schema auto-completion. In practice, modern LLMs handle this well, but it represents an additional inference step that could produce malformed requests. The full profile remains available for use cases where explicit schemas are preferred over context savings.
 
 ### 14.3 Embedding Model Limitations
 
@@ -1572,17 +1568,16 @@ The code is available at: https://github.com/navigatorbuilds/elara-core
 
 ---
 
-**Document Hash (SHA-256, v1.3.3):** `28803e4c80069163c7d5469c4e2fb7e97b29ff3826737bd01051b5126f9bd079`
+**Document Hash (SHA-256, v1.3.2):** `c0f709a30c71adf489d6649d35180fc9230a5479b44c2b1416fea3716629e2c3`
 **Hash verification:** To verify, replace the hash on the line above with the literal string `HASH_PLACEHOLDER` and compute SHA-256 of the file.
-**Previous Hash (v1.3.2):** `c0f709a30c71adf489d6649d35180fc9230a5479b44c2b1416fea3716629e2c3`
 **Previous Hash (v1.3.1):** `de47fb536973050c90693414075161bbb2eac6e001353b7db1a6041c8b3a5c1c`
 **Previous Hash (v1.3.0):** `6b7da9f2b92e08344572f20f0098f3e686cf3ccc9bd0bd7af8b76e90bdc0a0e7`
 **Previous Hash (v1.2.0):** `5003c15fb0e7d339075974362d63801c5967ae244cad49868d13e40615bb7b7b`
 **Previous Hash (v1.1.0):** `aca7b0ff4f798cc8d58076775ca42cff0dc7146ecb9d30b6acbb0ec988e9330d`
 **Previous Hash (v1.0.0):** `784e598daad19e23ad39657a8814af11a7b11e68016d2b623aed5fb870e1e690`
-**OpenTimestamps Proof:** `ELARA-CORE-WHITEPAPER.v1.3.3.md.ots`
+**OpenTimestamps Proof:** `ELARA-CORE-WHITEPAPER.v1.3.2.md.ots`
 **Companion Document:** `ELARA-PROTOCOL-WHITEPAPER.v0.2.8.md` — the universal validation protocol that Elara Core implements at Layer 3
-**Source Code:** https://github.com/navigatorbuilds/elara-core (v0.10.6)
+**Source Code:** https://github.com/navigatorbuilds/elara-core (v0.10.7, February 2026)
 
 ---
 

@@ -22,11 +22,11 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | **Elara Protocol Whitepaper v0.2.8** | 51 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf) |
 | *Complete protocol specification: DAM architecture, Layer 1.5 performance runtime, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
 | **Elara Core Whitepaper v1.3.3** | 27 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.3.pdf) |
-| *Layer 3 reference implementation: persistent memory, 3D Cognition, knowledge graph, emotional modeling, continuous autonomous thinking, deployment modularity* |||
+| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), knowledge graph, emotional modeling, continuous autonomous thinking, deployment modularity — 44 tools, 14 modules* |||
 | **Elara Hardware Whitepaper v0.1.4** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v1.3.3: Knowledge graph module (43 tools, 13 modules). v0.2.8/v1.3.2/v0.1.4: Layer 1.5 (Rust DAM VM) added to protocol architecture.
+**Previous versions:** [Protocol v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v1.3.3: Workflow patterns + knowledge graph (44 tools, 14 modules). v0.2.8/v1.3.2/v0.1.4: Layer 1.5 (Rust DAM VM) added to protocol architecture.
 
 Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
@@ -88,7 +88,7 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 | Document | Hash (SHA-256) |
 |----------|---------------|
 | Protocol v0.2.8 | `371a933a20f9de7a457200f8fe108a9a9113dd0c64b73d2b4e54ec845237a762` |
-| Core v1.3.3 | `28803e4c80069163c7d5469c4e2fb7e97b29ff3826737bd01051b5126f9bd079` |
+| Core v1.3.3 | `17a846c26671cc58d45c960d3e98fd8590a5f8600d276846274bfe997eee78fb` |
 | Hardware v0.1.4 | `1c36e4af613d714a931d01f2f2b8de55081e4b8bda944c14e08a17d053e359c9` |
 
 ## Intellectual Property
