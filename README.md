@@ -18,14 +18,14 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Pages | Download |
 |----------|-------|----------|
-| **Elara Protocol Whitepaper v0.2.6** | 49 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf) |
+| **Elara Protocol Whitepaper v0.2.7** | 49 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf) |
 | *Complete protocol specification: DAM architecture, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
-| **Elara Core Whitepaper v1.3.0** | 26 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.0.pdf) |
+| **Elara Core Whitepaper v1.3.1** | 26 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.1.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition, emotional modeling, continuous autonomous thinking, deployment modularity* |||
-| **Elara Hardware Whitepaper v0.1.2** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf) |
+| **Elara Hardware Whitepaper v0.1.3** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf) — v0.2.6 adds Phase 6: Native Hardware Architecture (2033–2040). [Hardware v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf) — v0.1.2 addresses 5 external review concerns: photonic-electronic boundary security, memristive crossbar SRAM fallback, Gen 1 photonic scope contingency, logical-to-physical address translation, and funding realism.
+**Previous versions:** [Protocol v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.2.7/v1.3.1/v0.1.3: cross-whitepaper consistency fixes (crypto primitives, energy numbers, ISA-to-protocol mapping clarification).
 
 Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
@@ -86,9 +86,9 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.2.6 | See document footer |
-| Core v1.3.0 | `6b7da9f2b92e08344572f20f0098f3e686cf3ccc9bd0bd7af8b76e90bdc0a0e7` |
-| Hardware v0.1.2 | `a430462502ded675d2ee4ddc21768f86c7a7e30992beb846849883cbe267fed5` |
+| Protocol v0.2.7 | `b9a249c93ae082b20269aa3bbd338d8e2740b15339ce473304f02c0ed81d166f` |
+| Core v1.3.1 | `832a8821544bb6b68c3e8e8df529a76846f960da5783bfcdf1a43116d161cdc7` |
+| Hardware v0.1.3 | `617557a7d76a7a537f6da77931ab239b63400bbb0b5ad1301ae39e4638c99237` |
 
 ## Intellectual Property
 
