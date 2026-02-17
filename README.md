@@ -21,12 +21,12 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 |----------|-------|----------|
 | **Elara Protocol Whitepaper v0.2.9** | 51 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.2.9.pdf) |
 | *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
-| **Elara Core Whitepaper v1.3.3** | 27 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.3.pdf) |
-| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), knowledge graph, emotional modeling, continuous autonomous thinking, deployment modularity — 44 tools, 14 modules* |||
+| **Elara Core Whitepaper v1.3.4** | 43 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.4.pdf) |
+| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), prompt-level intention resolution, knowledge graph, emotional modeling, continuous autonomous thinking, deployment modularity — 44 tools, 14 modules* |||
 | **Elara Hardware Whitepaper v0.1.5** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.5.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.8 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf), [v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.4 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf), [v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.2.9/v0.1.5: Dimensional extensibility — architecture supports N dimensions, Lineage Depth as first D6 candidate. v1.3.3: Workflow patterns + knowledge graph (44 tools, 14 modules).
+**Previous versions:** [Protocol v0.2.8 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf), [v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.3 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.3.pdf), [v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.4 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf), [v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.2.9/v0.1.5: Dimensional extensibility — architecture supports N dimensions, Lineage Depth as first D6 candidate. v1.3.3: Workflow patterns + knowledge graph (44 tools, 14 modules). v1.3.4: Prompt-level intention resolution — proactive context enrichment via semantic search hooks.
 
 Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
@@ -90,7 +90,7 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 | Document | Hash (SHA-256) |
 |----------|---------------|
 | Protocol v0.2.9 | `82afe9b3f50c71f16f982fb9cc36ef42a43fdf8398a7d6adaad8e7f54ebbc3a1` |
-| Core v1.3.3 | `17a846c26671cc58d45c960d3e98fd8590a5f8600d276846274bfe997eee78fb` |
+| Core v1.3.4 | `b3e98bc42f53a9811e3ddc633bb9eb2fec7dd8d0b5dabf33a1a1dcebbfd4e23b` |
 | Hardware v0.1.5 | `eb2ef4fd2fbc0c81c7df1b3936fff7f48d97c354f3f7f836df4263a0826d2142` |
 
 ## Intellectual Property
