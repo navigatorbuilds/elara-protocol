@@ -19,16 +19,16 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Pages | Download |
 |----------|-------|----------|
-| **Elara Protocol Whitepaper v0.4.0** | 49 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.4.0.pdf) |
-| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 33 attack vector analysis, Phase 6 native hardware. Token economics slimmed — full specification in Tokenomics Paper.* |||
-| **Elara Core Whitepaper v1.3.5** | 43 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.5.pdf) |
-| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), prompt-level intention resolution, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub + testnet, emotional modeling, continuous autonomous thinking, deployment modularity — 45 tools, 15 modules* |||
-| **Elara Hardware Whitepaper v0.1.6** | 66 | *Available on request* |
-| *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
-| **Elara Tokenomics Paper v0.1.0** | 18 | *Available on request* |
-| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics, launch strategy* |||
+| **Elara Protocol Whitepaper v0.5.0** | 67 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.0.pdf) |
+| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 33 attack vector analysis, Phase 6 native hardware. Unified trust model (node-level + record-level), combined governance formula, AWC implementation status.* |||
+| **Elara Core Whitepaper v1.3.6** | 32 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.6.pdf) |
+| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), prompt-level intention resolution, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking, deployment modularity — 45 tools, 15 modules* |||
+| **Elara Hardware Whitepaper v0.1.7** | 51 | *Available on request* |
+| *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference* |||
+| **Elara Tokenomics Paper v0.2.0** | 15 | *Available on request* |
+| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy* |||
 
-All documents have undergone 7 audit passes for cross-reference consistency, formula verification, and numerical accuracy. Previous versions and source files are maintained privately.
+All documents have undergone 8 audit passes for cross-reference consistency, formula verification, numerical accuracy, and cross-document coherence. Previous versions and source files are maintained privately.
 
 ## Architecture
 
@@ -89,10 +89,10 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.4.0 | `91a9205a5b9008e1f6340a7991a9decda9211e40d369c38b7ea11f12c1db12a4` |
-| Core v1.3.5 | `34c0f5251d9817bc6e43bedd8d9d6f2707b79b895e87a287286ce30a9904f329` |
-| Hardware v0.1.6 | `47ea3cf0ea325dcb2eb287c2a88e1c96eaf24a19c27e079a75e43ce0b310fa75` |
-| Tokenomics v0.1.0 | `160c64333d80262a40426b5b01906796ebc2d79194cbec839d9e4c3cc5d5c94a` |
+| Protocol v0.5.0 | `8f8472f4b9d34890eacfd2be64db231933096aa6f1a59656165e66fb63fcef96` |
+| Core v1.3.6 | `7b6125ad813ad2b1b7b1fe2b1dd5deaccec551a232a5b3f2c7af733c148dde54` |
+| Hardware v0.1.7 | `1a2c624a57f5bc6f4725acf76beed247e9f34da5cc8b0c80e80bf6780394a322` |
+| Tokenomics v0.2.0 | `937d26387c5bc18c81e76dc716736f5944a04373754dc80e78b7d9a8d4640c22` |
 
 ## Intellectual Property
 
