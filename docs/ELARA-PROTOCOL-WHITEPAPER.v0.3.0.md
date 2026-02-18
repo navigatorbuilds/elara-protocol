@@ -1973,7 +1973,7 @@ The ELA token is designed to fail the Howey test on questions 3 and 4:
 
 **Honest acknowledgment:** regulatory classification is ultimately determined by regulators, not by protocol designers. The above measures minimize risk but cannot eliminate it. The protocol's design prioritizes genuine utility over speculative value, which is the strongest possible defense. Regulatory posture toward digital assets varies by jurisdiction and administration, and can shift rapidly. The protocol's utility-first design is intentionally administration-agnostic — it does not rely on favorable regulatory climate but rather on structural compliance with existing legal frameworks.
 
-### Protocol Mechanics (11.22–11.32)
+### Protocol Mechanics (11.22–11.33)
 
 ### 11.22 Cross-Zone Trust Reconciliation
 
@@ -2104,7 +2104,7 @@ End users see a simple app: create, validate, browse. The underlying DAM complex
 | Layer 2 (propagation)      | ~2,000 MWh            |
 | Layer 2 (witnessing PoWaS) | ~5,000 MWh            |
 | Anchor nodes               | ~88 MWh               |
-| Layer 3 AI (optional)      | ~7,300 MWh            |
+| Layer 3 AI (optional, ~10% of nodes) | ~7,300 MWh            |
 | **Total**                  | **~14,400 MWh/year**  |
 
 **Comparison:**

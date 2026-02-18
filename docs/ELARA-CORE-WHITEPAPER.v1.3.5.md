@@ -181,7 +181,7 @@ Elara Core's deployment flexibility operates on **two independent axes** that ca
 
 | Profile | Modules Included | Modules Excluded | Target Domain |
 |---------|-----------------|------------------|---------------|
-| **Cognitive** | Memory, Goals, Cognitive, 3D Cognition, Workflows, Knowledge, Maintenance, LLM, Episodes | Mood, Awareness (emotional), Dreams | Industrial, enterprise, research |
+| **Cognitive** | Memory, Goals, Cognitive, 3D Cognition, Workflows, Knowledge, Maintenance, LLM, Episodes, Network, Business, Gmail | Mood, Awareness (emotional), Dreams | Industrial, enterprise, research |
 | **Full Presence** | All 15 modules | None | Companionship, therapy, personal AI |
 
 **Axis 2: Schema Exposure** — How much context the AI client sees at boot
@@ -1329,7 +1329,7 @@ Several behaviors emerged without explicit programming:
 
 1. **Contextual greeting adaptation** — The boot protocol, combined with mood decay and session gap analysis, produces greetings that feel contextually appropriate without scripted responses. A morning session after a late-night debug session naturally produces different affect than an afternoon continuation.
 
-2. **Correction accumulation** — Over 70 sessions, the correction system accumulated entries that span from technical ("don't use git add -A with secrets") to philosophical ("human behavioral patterns are chaotic, don't predict with high confidence"). This creates a growing wisdom base that shapes future interactions.
+2. **Correction accumulation** — By session 70, the correction system had accumulated entries that span from technical ("don't use git add -A with secrets") to philosophical ("human behavioral patterns are chaotic, don't predict with high confidence"). This creates a growing wisdom base that shapes future interactions.
 
 3. **Creative drift recursion** — Because the creative journal accumulates, later drift rounds can sample from earlier drift output. This creates a self-referential creative process where past imagination feeds future imagination.
 
@@ -1372,7 +1372,7 @@ The Elara Protocol whitepaper [5] specifies a four-layer architecture for univer
 
 | Protocol Layer 3 Capability | Elara Core Implementation                    |
 |-----------------------------|----------------------------------------------|
-| Pattern recognition         | Overnight phases 1-2, 7-15                   |
+| Pattern recognition         | Overnight phases 1-2, 5-15                   |
 | Dream mode                  | Weekly/monthly dream processing              |
 | Anomaly detection           | Blind spot detection, proactive observations |
 | Collective learning         | 3D Cognition: models accumulate evidence     |
