@@ -15,9 +15,9 @@
 
 Current AI assistants have no memory of yesterday. Each session begins from zero — no context, no accumulated understanding, no awareness of what was discussed, decided, or promised. The human must re-explain everything. This is not a limitation of intelligence. It is a limitation of architecture.
 
-Elara Core is a cognitive architecture that gives AI assistants persistent memory, emotional modeling, autonomous reasoning, and self-awareness through the Model Context Protocol (MCP). The system implements a novel **3D Cognition model** — four persistent knowledge layers (Models, Predictions, Principles, Workflows) that accumulate understanding over time — combined with a **3D continuous emotion space**, **semantic memory with mood-congruent retrieval**, a **memory consolidation system** inspired by biological sleep consolidation (duplicate merging, recall-based strengthening, time decay, contradiction detection), and a **continuous autonomous thinking engine** that processes accumulated experience through a local LLM on a 24/7 schedule.
+Elara Core is a cognitive architecture that gives AI assistants persistent memory, emotional modeling, autonomous reasoning, and self-awareness through the Model Context Protocol (MCP) [6]. The system implements a novel **3D Cognition model** — four persistent knowledge layers (Models, Predictions, Principles, Workflows) that accumulate understanding over time — combined with a **3D continuous emotion space**, **semantic memory with mood-congruent retrieval**, a **memory consolidation system** inspired by biological sleep consolidation (duplicate merging, recall-based strengthening, time decay, contradiction detection), and a **continuous autonomous thinking engine** that processes accumulated experience through a local LLM on a 24/7 schedule.
 
-The architecture comprises 45 MCP tools across 16 modules, totaling ~28,000 lines of Python. A **lean profile system** (v0.10.7, February 2026) addresses context window overhead by exposing only 8 tool schemas at boot while maintaining access to all 45 tools through a meta-dispatcher — reducing context consumption by ~17% with zero capability loss. A **prompt-level Intention Resolver** (v0.10.8, February 2026) enriches every user prompt before the AI processes it — injecting relevant corrections, matching workflow patterns, active goals, and carry-forward items via semantic search, achieving proactive context enrichment without LLM calls and without waiting for the AI to request it. **Two independent deployment axes** — module selection (Cognitive vs. Full Presence) and schema exposure (Lean vs. Full) — enable the same codebase to serve both industrial applications (anomaly detection, manufacturing monitoring, research assistants) and emotional companionship systems (humanoid robotics, therapeutic AI, personal companions) without modification. Everything runs locally. No data leaves the user's machine. No cloud dependency exists. The minimum viable deployment is a single laptop. The project is under active development — this paper documents the current architecture to invite collaboration and peer review.
+The architecture comprises 45 MCP tools across 15 modules, totaling ~28,000 lines of Python. A **lean profile system** (v0.10.7, February 2026) addresses context window overhead by exposing only 8 tool schemas at boot while maintaining access to all 45 tools through a meta-dispatcher — reducing context consumption by ~17% with zero capability loss. A **prompt-level Intention Resolver** (v0.10.8, February 2026) enriches every user prompt before the AI processes it — injecting relevant corrections, matching workflow patterns, active goals, and carry-forward items via semantic search, achieving proactive context enrichment without LLM calls and without waiting for the AI to request it. **Two independent deployment axes** — module selection (Cognitive vs. Full Presence) and schema exposure (Lean vs. Full) — enable the same codebase to serve both industrial applications (anomaly detection, manufacturing monitoring, research assistants) and emotional companionship systems (humanoid robotics, therapeutic AI, personal companions) without modification. Everything runs locally. No data leaves the user's machine. No cloud dependency exists. The minimum viable deployment is a single laptop. The project is under active development — this paper documents the current architecture to invite collaboration and peer review.
 
 This paper presents: the problem of AI amnesia (Section 1), the complete cognitive architecture (Sections 2-8), the autonomous thinking system (Section 9), the 3D Cognition model (Section 10), implementation details (Section 11), experimental observations (Section 12), relationship to the Elara Protocol's Layer 3 (Section 13), limitations (Section 14), and future work (Section 15).
 
@@ -33,7 +33,7 @@ This paper presents: the problem of AI amnesia (Section 1), the complete cogniti
 6. [Self-Awareness Engine](#6-self-awareness-engine) — Reflection, blind spots, proactive observation, growth intentions
 7. [The Correction System](#7-the-correction-system) — Mistake tracking, semantic matching, never-decay policy
 8. [Goal and Decision Tracking](#8-goal-and-decision-tracking) — Persistent goals, staleness detection, outcome tracking, reasoning trails
-9. [The Overnight Brain](#9-the-overnight-brain) — 24/7 continuous thinking, 14-phase analysis, per-run output, creative drift
+9. [The Overnight Brain](#9-the-overnight-brain) — 24/7 continuous thinking, 15-phase analysis, per-run output, creative drift
 10. [3D Cognition](#10-3d-cognition) — Cognitive Models, Predictions, Principles, Workflow Patterns, crystallization, time decay
 11. [Implementation](#11-implementation) — Storage architecture, atomic writes, ChromaDB, MCP integration
 12. [Experimental Observations](#12-experimental-observations) — Emergent behaviors, measured effects, qualitative findings
@@ -115,9 +115,9 @@ Elara Core implements a three-layer architecture:
 │            PROFILE LAYER (lean / full)               │
 │                                                      │
 │  Lean: 8 schemas (7 core + elara_do dispatcher)     │
-│  Full: 44 schemas (all tools directly exposed)       │
+│  Full: 45 schemas (all tools directly exposed)       │
 ├─────────────────────────────────────────────────────┤
-│               TOOL LAYER (44 tools)                  │
+│               TOOL LAYER (45 tools)                  │
 │                                                      │
 │  Memory · Mood · Episodes · Goals · Awareness        │
 │  Dreams · Cognitive · 3D Cognition · Workflows       │
@@ -141,13 +141,13 @@ Elara Core implements a three-layer architecture:
 └─────────────────────────────────────────────────────┘
 ```
 
-**Layer 1: Profile Layer** — Controls how tools are exposed to the AI client. Lean profile (default) registers 8 schemas and routes remaining tools through the `elara_do` meta-dispatcher, reducing context overhead by ~17%. Full profile registers all 44 tools directly for maximum visibility.
+**Layer 1: Profile Layer** — Controls how tools are exposed to the AI client. Lean profile (default) registers 8 schemas and routes remaining tools through the `elara_do` meta-dispatcher, reducing context overhead by ~17%. Full profile registers all 45 tools directly for maximum visibility.
 
-**Layer 2: Tool Layer** — 44 MCP tools organized into 14 domain modules. Each tool accepts structured parameters and returns JSON or text. Tools are registered via decorator pattern, allowing hot-reload without server restart. All tools function identically regardless of profile — the profile layer only affects schema visibility, not behavior.
+**Layer 2: Tool Layer** — 45 MCP tools organized into 15 domain modules. Each tool accepts structured parameters and returns JSON or text. Tools are registered via decorator pattern, allowing hot-reload without server restart. All tools function identically regardless of profile — the profile layer only affects schema visibility, not behavior.
 
 **Layer 2: Engine Layer** — Core logic implementing emotional processing, memory operations, cognitive modeling, and autonomous thinking. All data structures are validated through Pydantic schemas. An event bus enables loose coupling between subsystems.
 
-**Layer 3: Storage Layer** — All data persists locally in `~/.elara/`. ChromaDB provides vector similarity search across 9 collections. JSON files provide human-readable state. Atomic write patterns (temp file + rename) prevent corruption.
+**Layer 3: Storage Layer** — All data persists locally in `~/.elara/`. ChromaDB [7] provides vector similarity search across 9 collections. JSON files provide human-readable state. Atomic write patterns (temp file + rename) prevent corruption.
 
 ### 2.2 Module Organization
 
@@ -167,6 +167,7 @@ Elara Core implements a three-layer architecture:
 | **LLM**          | 1     | Local LLM interface via Ollama                        |
 | **Gmail**        | 1     | Email management with semantic search                 |
 | **Maintenance**  | 4     | Index rebuilds, RSS briefing, snapshot, memory consolidation |
+| **Network**      | 1     | Layer 2 network: status, peers, start, stop, push, sync, witness |
 
 ### 2.3 Deployment Modularity: Two Independent Axes
 
@@ -179,7 +180,7 @@ Elara Core's deployment flexibility operates on **two independent axes** that ca
 | Profile | Modules Included | Modules Excluded | Target Domain |
 |---------|-----------------|------------------|---------------|
 | **Cognitive** | Memory, Goals, Cognitive, 3D Cognition, Workflows, Knowledge, Maintenance, LLM, Episodes | Mood, Awareness (emotional), Dreams | Industrial, enterprise, research |
-| **Full Presence** | All 16 modules | None | Companionship, therapy, personal AI |
+| **Full Presence** | All 15 modules | None | Companionship, therapy, personal AI |
 
 **Axis 2: Schema Exposure** — How much context the AI client sees at boot
 
@@ -827,7 +828,7 @@ The system comprises eight components:
 |---------------|-------|------------------------------------------------------|
 | **Runner**    | 286   | Orchestration, PID management, signal handling       |
 | **Thinker**   | 554   | LLM thinking loop, 3D cognition processing           |
-| **Prompts**   | 589   | 14 phase templates with structured output specs      |
+| **Prompts**   | 589   | 15 phase templates with structured output specs      |
 | **Gather**    | 532   | Knowledge collection from all subsystems             |
 | **Drift**     | 340   | Creative free-association engine                     |
 | **Output**    | 380   | Findings formatting, morning brief, per-run output   |
@@ -865,9 +866,9 @@ In addition to raw data, the system aggregates temporal patterns at three scales
 
 This multi-scale view enables the LLM to detect patterns that only emerge at specific time scales — a project that's active daily but stalling weekly, or a mood trend that's stable within days but declining over months.
 
-### 9.4 The 14-Phase Thinking Loop
+### 9.4 The 15-Phase Thinking Loop
 
-The overnight brain processes knowledge through 14 themed phases, each with a specific analytical focus:
+The overnight brain processes knowledge through 15 themed phases, each with a specific analytical focus:
 
 | Phase | Name             | Output Type | Purpose                                      |
 |-------|------------------|-------------|----------------------------------------------|
@@ -875,22 +876,23 @@ The overnight brain processes knowledge through 14 themed phases, each with a sp
 | 2     | Patterns         | Text        | Recurring behaviors                          |
 | 3     | Model Check      | **JSON**    | Verify cognitive models against new evidence |
 | 4     | Prediction Check | **JSON**    | Verify predictions, make new ones            |
-| 5     | Model Build      | **JSON**    | Construct new models from analysis           |
-| 6     | Crystallize      | **JSON**    | Check if insights should become principles   |
-| 7     | Connections      | Text        | Link disparate ideas                         |
-| 8     | Gaps             | Text        | Find missing information                     |
-| 9     | Contradictions   | Text        | Detect inconsistencies                       |
-| 10    | Risks            | Text        | Identify threats                             |
-| 11    | Opportunities    | Text        | Find openings                                |
-| 12    | Decisions        | Text        | Recommend actions                            |
-| 13    | Questions        | Text        | Flag unknowns                                |
-| 14    | Synthesis        | Text        | Final integration                            |
+| 5     | Connections      | Text        | Link disparate ideas                         |
+| 6     | Blind Spots      | Text        | Find missing information, broken promises    |
+| 7     | Risks            | Text        | Identify threats                             |
+| 8     | Opportunities    | Text        | Find openings                                |
+| 9     | Priorities       | Text        | Recommend prioritized actions                |
+| 10    | Model Build      | **JSON**    | Construct new models from analysis           |
+| 11    | Crystallize      | **JSON**    | Check if insights should become principles   |
+| 12    | Workflow Detect  | **JSON**    | Detect recurring action sequences            |
+| 13    | Synthesis        | Text        | Final integration                            |
+| 14    | Self-Review      | Text        | Elara's own behavior and correction check    |
+| 15    | Evolution        | Text        | Propose one concrete improvement to Elara    |
 
-Phases 3-6 produce structured JSON output that is parsed and applied to the 3D Cognition system (Section 10). Phases 1-2 and 7-14 produce narrative text for human review.
+Phases 3-4 and 10-12 produce structured JSON output that is parsed and applied to the 3D Cognition system (Section 10). Phases 1-2, 5-9, and 13-15 produce narrative text for human review.
 
 **Sliding context window**: Each phase receives the context text plus a rolling window of the previous phase's output (last 3,000 characters). This creates continuity across phases — insights from early phases inform later analysis.
 
-**Stop conditions**: A single thinking run terminates when any of: all 14 phases complete, maximum hours exceeded (default 6), or external signal received (SIGTERM/SIGINT). The scheduler then waits for the configured interval before starting the next run.
+**Stop conditions**: A single thinking run terminates when any of: all 15 phases complete, maximum hours exceeded (default 6), or external signal received (SIGTERM/SIGINT). The scheduler then waits for the configured interval before starting the next run.
 
 ### 9.5 Directed Problem-Solving
 
@@ -1287,7 +1289,7 @@ The `elara_do` tool description includes a comprehensive catalog of all availabl
 | Episode lookup             | 2-10ms     | Indexed by date                     |
 | Handoff read/write         | < 1ms      | Single JSON file                    |
 | Mood adjustment            | < 1ms      | In-memory + JSON write              |
-| Thinking run (14 phases)   | 30-90 min  | Depends on model size and hardware  |
+| Thinking run (15 phases)   | 30-90 min  | Depends on model size and hardware  |
 | Creative drift (5 rounds)  | 15-30 min  | Higher temperature = more tokens    |
 
 ### 11.7 Storage Footprint
@@ -1393,9 +1395,9 @@ The Elara Protocol claims universality — a teenager in Kenya with a $30 phone 
 | Operation | Computation | Hardware | Latency |
 |-----------|------------|----------|---------|
 | SHA3-256 hash | Cryptographic hash | Any processor | < 1ms |
-| CRYSTALS-Dilithium sign | Post-quantum signature | Any processor | < 1ms |
+| CRYSTALS-Dilithium sign | Post-quantum signature | Any processor | < 1ms (modern); ~20ms ($30 phone) |
 | DAM insertion | Local data structure | ~1KB memory | < 1ms |
-| **Total** | | **$30 phone, microcontroller, Raspberry Pi** | **< 50ms** |
+| **Total** | | **$30 phone, microcontroller, Raspberry Pi** | **< 25ms** |
 
 A device running only Layer 1 can: create digital work, hash it, sign it, and store the proof locally. The work is validated — cryptographically provable as created by this author at this time. No network needed. No AI needed. No GPU needed.
 
@@ -1593,15 +1595,16 @@ The code is available at: https://github.com/navigatorbuilds/elara-core
 
 ---
 
-**Document Hash (SHA-256, v1.3.4):** *see previous version for hash chain*
+**Document Hash (SHA-256, v1.3.5):** *see previous version for hash chain*
 **Hash verification:** To verify, replace the hash on the line above with the literal string `HASH_PLACEHOLDER` and compute SHA-256 of the file.
+**Previous Hash (v1.3.4):** `673531e8317b3dc7ce569b92d173dbb69998bcb99544654862f938f84499b365`
 **Previous Hash (v1.3.2):** `c0f709a30c71adf489d6649d35180fc9230a5479b44c2b1416fea3716629e2c3`
 **Previous Hash (v1.3.1):** `de47fb536973050c90693414075161bbb2eac6e001353b7db1a6041c8b3a5c1c`
 **Previous Hash (v1.3.0):** `6b7da9f2b92e08344572f20f0098f3e686cf3ccc9bd0bd7af8b76e90bdc0a0e7`
 **Previous Hash (v1.2.0):** `5003c15fb0e7d339075974362d63801c5967ae244cad49868d13e40615bb7b7b`
 **Previous Hash (v1.1.0):** `aca7b0ff4f798cc8d58076775ca42cff0dc7146ecb9d30b6acbb0ec988e9330d`
 **Previous Hash (v1.0.0):** `784e598daad19e23ad39657a8814af11a7b11e68016d2b623aed5fb870e1e690`
-**OpenTimestamps Proof:** `ELARA-CORE-WHITEPAPER.v1.3.4.md.ots`
+**OpenTimestamps Proof:** `ELARA-CORE-WHITEPAPER.v1.3.5.md.ots`
 **Companion Document:** `ELARA-PROTOCOL-WHITEPAPER.v0.3.0.md` — the universal validation protocol that Elara Core implements at Layer 3
 **Source Code:** https://github.com/navigatorbuilds/elara-core (v0.11.0, February 2026)
 

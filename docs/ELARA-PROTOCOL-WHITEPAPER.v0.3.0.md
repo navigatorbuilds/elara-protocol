@@ -568,7 +568,7 @@ Post-quantum cryptography provides stronger security at a measurable cost in siz
 | SPHINCS+-SHA2-192f  | 48 bytes    | 35,664 bytes   | Ed25519: 32 + 64 bytes |
 | CRYSTALS-Kyber768   | 1,184 bytes | 1,088 bytes    | X25519: 32 bytes       |
 
-Dilithium signatures are **~33x larger** than ECDSA. For a datacenter or laptop, this is negligible. For an ESP32 sending thousands of signed readings over LoRa (max payload ~242 bytes), it is prohibitive.
+Dilithium signatures are **~46x larger** than ECDSA signatures (3,293 vs ~72 bytes). For a datacenter or laptop, this is negligible. For an ESP32 sending thousands of signed readings over LoRa (max payload ~242 bytes), it is prohibitive.
 
 **Solution: Tiered Cryptographic Profiles**
 
@@ -648,7 +648,7 @@ Proof:          "I know a content_hash and private_key such that:
                     (uniqueness via Merkle non-membership proof)"
 ```
 
-The uniqueness check (step 3) uses a sparse Merkle tree accumulator maintained by anchor nodes. The accumulator root is a public input, allowing the proof to verify non-membership without revealing the content hash. Using the Groth16 proving system [14], the proof is ~288 bytes (3 group elements on BN254) and verifies in ~10 ms on commodity hardware — consistent with published Groth16 benchmarks for circuits of this complexity [15]. It reveals nothing about the content or the creator's private key. (Note: the BN254 curve provides ~100-bit security against classical attacks and is NOT post-quantum. See Section 14.3 for the migration timeline to post-quantum ZKP constructions.)
+The uniqueness check (step 3) uses a sparse Merkle tree accumulator maintained by anchor nodes. The accumulator root is a public input, allowing the proof to verify non-membership without revealing the content hash. Using the Groth16 proving system [18], the proof is ~288 bytes (3 group elements on BN254) and verifies in ~10 ms on commodity hardware — consistent with published Groth16 benchmarks for circuits of this complexity [18]. It reveals nothing about the content or the creator's private key. (Note: the BN254 curve provides ~100-bit security against classical attacks and is NOT post-quantum. See Section 14.3 for the migration timeline to post-quantum ZKP constructions.)
 
 For SOVEREIGN classification, the protocol uses zk-STARKs (Scalable Transparent Arguments of Knowledge), which are larger (~100 KB) but do not require a trusted setup — important for the highest security tier where no trusted third party should be involved in the cryptographic ceremony.
 
@@ -2964,14 +2964,15 @@ The following companion documents will be published separately during Phase 1 de
 
 ---
 
-**Document Hash (SHA-256, v0.2.9):** *see previous version for hash chain*
+**Document Hash (SHA-256, v0.3.0):** *see previous version for hash chain*
 **Hash verification:** To verify, replace the hash on the line above with the literal string `HASH_PLACEHOLDER` and compute SHA-256 of the file.
+**Previous Hash (v0.2.9):** `5db16af282aded38d34802f4b0f8a15ef0f65f4c945d53a513b59d6e99ee4339`
 **Previous Hash (v0.2.8):** `b5ccc415492d63275bbe80acb1deafd1ad7a64388d940f425fd29e497a5ccdf4`
 **Previous Hash (v0.2.7):** `b9a249c93ae082b20269aa3bbd338d8e2740b15339ce473304f02c0ed81d166f`
 **Previous Hash (v0.2.6):** `ec1c676b447c9082a4ecd3079f4b74057f64d7f41bdd282e77af31e84d667e26`
 **Previous Hash (v0.2.5):** `25dfbe17d91208ad28feb1263105b818a367680539a9d506ac6191d80c5b4c12`
 **Previous Hash (v0.2.3):** `b7220126fc907685ee946ea0226f49688a6fc3e585c1055811368d0c223a6336`
-**OpenTimestamps Proof:** `ELARA-PROTOCOL-WHITEPAPER.v0.2.9.md.ots`
+**OpenTimestamps Proof:** `ELARA-PROTOCOL-WHITEPAPER.v0.3.0.md.ots`
 **Genesis Document:** `ELARA-PROTOCOL-GENESIS.md` (2026-02-09, OpenTimestamps verified on Bitcoin blocks 935812, 935817, 935820, 935861)
 
 ---

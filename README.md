@@ -22,11 +22,11 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | **Elara Protocol Whitepaper v0.3.0** | 51 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.3.0.pdf) |
 | *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
 | **Elara Core Whitepaper v1.3.5** | 43 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.5.pdf) |
-| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), prompt-level intention resolution, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub + testnet, emotional modeling, continuous autonomous thinking, deployment modularity — 45 tools, 16 modules* |||
+| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), prompt-level intention resolution, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub + testnet, emotional modeling, continuous autonomous thinking, deployment modularity — 45 tools, 15 modules* |||
 | **Elara Hardware Whitepaper v0.1.6** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.6.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.9 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.9.pdf), [v0.2.8 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf), [v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.4 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.4.pdf), [v1.3.3 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.3.pdf), [v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.5 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.5.pdf), [v0.1.4 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf), [v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.3.0: Layer 2 testnet operational, L1↔L3 bridge shipped, Phase 1 roadmap items marked as shipped. v1.3.5: 45 tools across 16 modules, v0.11.0 references, bridge hardening details. v0.1.6: 100 total tests (72 Rust + 28 cross-lang Python), updated cross-references.
+**Previous versions:** [Protocol v0.2.9 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.9.pdf), [v0.2.8 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf), [v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.4 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.4.pdf), [v1.3.3 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.3.pdf), [v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.5 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.5.pdf), [v0.1.4 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf), [v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.3.0: Layer 2 testnet operational, L1↔L3 bridge shipped, Phase 1 roadmap items marked as shipped. v1.3.5: 45 tools across 15 modules, 15-phase overnight brain, v0.11.0 references, bridge hardening details. v0.1.6: 100 total tests (72 Rust + 28 cross-lang Python), updated cross-references. All three documents audited for cross-reference consistency, hash chains corrected, reference citations fixed.
 
 Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
@@ -89,9 +89,9 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.3.0 | `70e1936824390dac076ee5a1e31479b866b28d6bf8a25476f9a93793502a3e2d` |
-| Core v1.3.5 | `d70ae5f9a61c0779622226337d20829d5846de6883d621af6d5abdc519013f79` |
-| Hardware v0.1.6 | `9cfb049d48765e4d4a1a67e900ab6cbc30a7f211e68ed55fd6655cad4ff6239c` |
+| Protocol v0.3.0 | `ba4b03c736153c9c3a7196c4a23031064d876c547f3b3705549be3bd35006ae0` |
+| Core v1.3.5 | `61ffd5c6a33695a30d1a28b6b340dfe803faedb0830911d54dd7089652bc1322` |
+| Hardware v0.1.6 | `9f869020d2d9ac796e9538e996b5be832582ca3f625c16e5f1fcde9201f4c93f` |
 
 ## Intellectual Property
 
