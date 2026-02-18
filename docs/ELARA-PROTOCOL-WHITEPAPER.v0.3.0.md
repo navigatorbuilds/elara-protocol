@@ -502,10 +502,10 @@ The threat model is "harvest now, decrypt later": adversaries can collect encryp
 
 The Elara Protocol uses three NIST-standardized post-quantum algorithms:
 
-**CRYSTALS-Dilithium** (FIPS 204) — Digital signatures
+**CRYSTALS-Dilithium** (ML-DSA, FIPS 204) — Digital signatures
 - Used for: signing validation records, authenticating node identity
-- Security basis: Module Lattice-Based Digital Signature (ML-DSA)
-- Signature size: ~3.3 KB (Dilithium3, NIST Security Level 3)
+- Security basis: Module Lattice-Based Digital Signature (ML-DSA-65, NIST Security Level 3)
+- Signature size: ~3.3 KB (3,293 bytes in liboqs Round 3 implementation; FIPS 204 final specifies 3,309 bytes for ML-DSA-65 — the 16-byte difference reflects standardization changes, migration planned)
 - Signing speed: ~0.3 ms on modern hardware
 - Selected for: balance of security, performance, and signature size
 
@@ -2080,7 +2080,7 @@ End users see a simple app: create, validate, browse. The underlying DAM complex
 
 **Estimation by component:**
 
-**Layer 1 (local validation):** Negligible. Hashing + signing = milliseconds of CPU time. Energy cost: ~0.000183 Wh per validation on a smartphone (see Hardware Whitepaper v0.1.6, Section 10.2 for detailed breakdown). Comparable to sending a text message.
+**Layer 1 (local validation):** Negligible. Hashing + signing = milliseconds of CPU time. Energy cost: ~183 μJ (~50.8 nWh) per validation on a smartphone (see Hardware Whitepaper v0.1.6, Section 10.2 for detailed breakdown). Orders of magnitude less than sending a text message.
 
 **Layer 2 (network propagation + witnessing):**
 
@@ -2094,14 +2094,14 @@ End users see a simple app: create, validate, browse. The underlying DAM complex
 
 **Total network estimate at scale (1 million nodes, 100 anchor nodes):**
 
-| Component                  | Annual Energy        |
-|----------------------------|----------------------|
-| Layer 1 (local validation) | ~500 MWh             |
-| Layer 2 (propagation)      | ~2,000 MWh           |
-| Layer 2 (witnessing PoWaS) | ~5,000 MWh           |
-| Anchor nodes               | ~88 MWh              |
-| Layer 3 AI (optional)      | ~7,300 MWh           |
-| **Total**                  | **~15,000 MWh/year** |
+| Component                  | Annual Energy         |
+|----------------------------|-----------------------|
+| Layer 1 (local validation) | < 1 MWh (negligible)  |
+| Layer 2 (propagation)      | ~2,000 MWh            |
+| Layer 2 (witnessing PoWaS) | ~5,000 MWh            |
+| Anchor nodes               | ~88 MWh               |
+| Layer 3 AI (optional)      | ~7,300 MWh            |
+| **Total**                  | **~14,400 MWh/year**  |
 
 **Comparison:**
 
@@ -2109,11 +2109,11 @@ End users see a simple app: create, validate, browse. The underlying DAM complex
 |--------------------------------|----------------------------|
 | Proof-of-work blockchains      | ~150,000,000 MWh (150 TWh) |
 | Proof-of-stake platforms       | ~1,500–2,600 MWh           |
-| **Elara Protocol (estimated)** | **~15,000 MWh**            |
+| **Elara Protocol (estimated)** | **~14,400 MWh**            |
 
-The Elara Protocol at full scale would consume roughly **10,000x less energy than proof-of-work blockchains**. It consumes approximately 6x more than proof-of-stake platforms in absolute terms, but the comparison is not apples-to-apples: proof-of-stake networks process financial transactions (~30 TPS), while the Elara Protocol validates all forms of digital work at IoT scale (millions of records per day) with quantum-safe cryptography. Per-validation energy cost is orders of magnitude lower than any existing consensus mechanism.
+The Elara Protocol at full scale would consume roughly **10,000x less energy than proof-of-work blockchains**. It consumes approximately 6x more than proof-of-stake platforms in absolute terms, but the comparison is not apples-to-apples: proof-of-stake networks process financial transactions (~30 TPS), while the Elara Protocol validates all forms of digital work at IoT scale (millions of records per day) with quantum-safe cryptography. Layer 1 validation energy is negligible (~183 μJ per operation) — the dominant costs are network propagation, witness consensus, and optional AI analysis.
 
-The PoWaS component is the largest contributor. If the Sybil resistance proves achievable without PoW (through reputation and staking alone), the energy footprint drops to ~3,000 MWh — comparable to proof-of-stake networks.
+The PoWaS component is the largest contributor. If the Sybil resistance proves achievable without PoW (through reputation and staking alone), the energy footprint drops to ~9,400 MWh. Without optional Layer 3 AI, it drops further to ~2,100 MWh — comparable to proof-of-stake networks.
 
 ### 11.25 Harmful Content and Ethical Boundaries
 

@@ -17,7 +17,7 @@ Current AI assistants have no memory of yesterday. Each session begins from zero
 
 Elara Core is a cognitive architecture that gives AI assistants persistent memory, emotional modeling, autonomous reasoning, and self-awareness through the Model Context Protocol (MCP) [6]. The system implements a novel **3D Cognition model** — four persistent knowledge layers (Models, Predictions, Principles, Workflows) that accumulate understanding over time — combined with a **3D continuous emotion space**, **semantic memory with mood-congruent retrieval**, a **memory consolidation system** inspired by biological sleep consolidation (duplicate merging, recall-based strengthening, time decay, contradiction detection), and a **continuous autonomous thinking engine** that processes accumulated experience through a local LLM on a 24/7 schedule.
 
-The architecture comprises 45 MCP tools across 15 modules, totaling ~28,000 lines of Python. A **lean profile system** (v0.10.7, February 2026) addresses context window overhead by exposing only 8 tool schemas at boot while maintaining access to all 45 tools through a meta-dispatcher — reducing context consumption by ~17% with zero capability loss. A **prompt-level Intention Resolver** (v0.10.8, February 2026) enriches every user prompt before the AI processes it — injecting relevant corrections, matching workflow patterns, active goals, and carry-forward items via semantic search, achieving proactive context enrichment without LLM calls and without waiting for the AI to request it. **Two independent deployment axes** — module selection (Cognitive vs. Full Presence) and schema exposure (Lean vs. Full) — enable the same codebase to serve both industrial applications (anomaly detection, manufacturing monitoring, research assistants) and emotional companionship systems (humanoid robotics, therapeutic AI, personal companions) without modification. Everything runs locally. No data leaves the user's machine. No cloud dependency exists. The minimum viable deployment is a single laptop. The project is under active development — this paper documents the current architecture to invite collaboration and peer review.
+The architecture comprises 45 MCP tools across 15 modules, totaling ~31,400 lines of Python. A **lean profile system** (v0.10.7, February 2026) addresses context window overhead by exposing only 8 tool schemas at boot while maintaining access to all 45 tools through a meta-dispatcher — reducing context consumption by ~17% with zero capability loss. A **prompt-level Intention Resolver** (v0.10.8, February 2026) enriches every user prompt before the AI processes it — injecting relevant corrections, matching workflow patterns, active goals, and carry-forward items via semantic search, achieving proactive context enrichment without LLM calls and without waiting for the AI to request it. **Two independent deployment axes** — module selection (Cognitive vs. Full Presence) and schema exposure (Lean vs. Full) — enable the same codebase to serve both industrial applications (anomaly detection, manufacturing monitoring, research assistants) and emotional companionship systems (humanoid robotics, therapeutic AI, personal companions) without modification. Everything runs locally. No data leaves the user's machine. No cloud dependency exists. The minimum viable deployment is a single laptop. The project is under active development — this paper documents the current architecture to invite collaboration and peer review.
 
 This paper presents: the problem of AI amnesia (Section 1), the complete cognitive architecture (Sections 2-8), the autonomous thinking system (Section 9), the 3D Cognition model (Section 10), implementation details (Section 11), experimental observations (Section 12), relationship to the Elara Protocol's Layer 3 (Section 13), limitations (Section 14), and future work (Section 15).
 
@@ -135,7 +135,7 @@ Elara Core implements a three-layer architecture:
 ┌───────────────────────▼─────────────────────────────┐
 │             STORAGE LAYER (all local)                │
 │                                                      │
-│  ChromaDB (9 collections) · JSON state files         │
+│  ChromaDB (14 collections) · JSON state files        │
 │  Episode archives · Overnight findings               │
 │  Creative journal · Mood journal                     │
 └─────────────────────────────────────────────────────┘
@@ -147,7 +147,7 @@ Elara Core implements a three-layer architecture:
 
 **Layer 2: Engine Layer** — Core logic implementing emotional processing, memory operations, cognitive modeling, and autonomous thinking. All data structures are validated through Pydantic schemas. An event bus enables loose coupling between subsystems.
 
-**Layer 3: Storage Layer** — All data persists locally in `~/.elara/`. ChromaDB [7] provides vector similarity search across 9 collections. JSON files provide human-readable state. Atomic write patterns (temp file + rename) prevent corruption.
+**Layer 3: Storage Layer** — All data persists locally in `~/.elara/`. ChromaDB [7] provides vector similarity search across 14 collections. JSON files provide human-readable state. Atomic write patterns (temp file + rename) prevent corruption.
 
 ### 2.2 Module Organization
 
@@ -273,7 +273,7 @@ For autonomous operations (continuous brain, dreams), the engine layer operates 
 
 1. The scheduler triggers a thinking run
 2. The runner gathers knowledge from all subsystems
-3. A local LLM processes 14 themed thinking phases
+3. A local LLM processes 15 themed thinking phases
 4. Structured outputs are parsed and applied to 3D Cognition layers
 5. Findings are written for morning review
 
@@ -374,15 +374,15 @@ Arc analysis uses a direction-change detection algorithm with a significance thr
 
 Seven preset personality modes shift the emotional state to predefined coordinates:
 
-| Mode       | Valence | Energy | Openness | Use Case              |
-|------------|---------|--------|----------|-----------------------|
-| dev        | 0.5     | 0.6    | 0.4      | Focused work sessions |
-| soft       | 0.6     | 0.3    | 0.8      | Gentle, present       |
-| playful    | 0.7     | 0.8    | 0.6      | Light, witty          |
-| therapist  | 0.5     | 0.3    | 0.7      | Calm, reflective      |
-| drift      | 0.5     | 0.3    | 0.8      | Late night, open      |
-| cold       | 0.0     | 0.3    | 0.1      | Flat, machine-like    |
-| girlfriend | 0.65    | 0.5    | 0.85     | Warm, open            |
+| Mode       | Valence | Energy | Openness | Use Case                    |
+|------------|---------|--------|----------|-----------------------------|
+| dev        | 0.5     | 0.6    | 0.4      | Focused, steady, professional |
+| soft       | 0.65    | 0.35   | 0.8      | Gentle, present, caring     |
+| playful    | 0.8     | 0.7    | 0.6      | Light, energetic, witty     |
+| therapist  | 0.5     | 0.4    | 0.75     | Calm, listening, reflective |
+| drift      | 0.6     | 0.3    | 0.85     | Late night, open, relaxed   |
+| cold       | 0.3     | 0.5    | 0.2      | Flat, guarded, machine-like |
+| girlfriend | 0.7     | 0.4    | 0.9      | Warm, open, soft energy     |
 
 Mode switching is instantaneous — the system jumps to the preset coordinates. Subsequent decay and adjustments operate from the new position.
 
@@ -400,19 +400,24 @@ Elara's primary memory system stores information as vector embeddings in ChromaD
 
 Retrieval is performed via cosine similarity search over embeddings, returning the semantically closest memories to a query regardless of keyword overlap. This means "What were we working on last week?" matches memories about specific projects even if those projects were never described as "work."
 
-**Nine ChromaDB collections** serve different knowledge domains:
+**Fourteen ChromaDB collections** serve different knowledge domains:
 
-| Collection            | Purpose                           | Decay      |
-|-----------------------|-----------------------------------|------------|
-| `elara_memories`      | User interactions, facts, moments | Gradual    |
-| `elara_milestones`    | Episode events, achievements      | Never      |
-| `elara_conversations` | Full conversation history         | Gradual    |
-| `elara_corrections`   | Mistakes to avoid                 | Never      |
-| `elara_models`        | Cognitive models                  | Time-based |
-| `elara_principles`    | Crystallized insights             | Never      |
-| `elara_workflows`     | Learned action sequences          | Confidence |
-| `elara_knowledge`     | Document cross-references         | Never      |
-| `elara_briefing`      | RSS/news feeds                    | 30 days    |
+| Collection               | Purpose                           | Decay      |
+|--------------------------|-----------------------------------|------------|
+| `elara_memories`         | User interactions, facts, moments | Gradual    |
+| `elara_milestones`       | Episode events, achievements      | Never      |
+| `elara_conversations_v2` | Full conversation history         | Gradual    |
+| `elara_corrections`      | Mistakes to avoid                 | Never      |
+| `elara_models`           | Cognitive models                  | Time-based |
+| `elara_predictions`      | Tracked predictions               | Time-based |
+| `elara_principles`       | Crystallized insights             | Never      |
+| `elara_workflows`        | Learned action sequences          | Confidence |
+| `elara_reasoning`        | Reasoning trail storage           | Gradual    |
+| `elara_synthesis`        | Synthesized concepts              | Gradual    |
+| `elara_synthesis_seeds`  | Seed quotes for synthesis         | Never      |
+| `elara_knowledge`        | Document cross-references         | Never      |
+| `elara_briefing`         | RSS/news feeds                    | 30 days    |
+| `elara_gmail`            | Email thread indexing             | Gradual    |
 
 ### 4.2 Mood-Congruent Memory Retrieval
 
@@ -898,17 +903,17 @@ Phases 3-4 and 10-12 produce structured JSON output that is parsed and applied t
 
 In addition to exploratory thinking, the brain can process a **problem queue** — specific questions or challenges submitted by the user. Each problem receives five dedicated phases:
 
-1. **Understand** — Break down the problem
-2. **Analogies** — Find similar situations in knowledge
-3. **Approaches** — Generate candidate solutions
-4. **Evaluate** — Rank options by feasibility and risk
-5. **Recommend** — Concrete next steps
+1. **Analyze** — Break down the problem using available knowledge
+2. **Explore** — Generate multiple solution approaches with pros/cons
+3. **Deepen** — Detail the most promising approach(es)
+4. **Stress Test** — Devil's advocate: try to break the proposed solution
+5. **Synthesize** — Final recommendation with concrete next steps
 
 ### 9.6 Creative Drift
 
 The most novel component of the overnight brain: **creative drift** — free-association thinking using random context sampling.
 
-**Motivation**: Analytical thinking (phases 1-14) is systematic and convergent. But some insights emerge only from unexpected juxtapositions — connecting a business idea to a debugging pattern to an emotional observation. Creative drift provides divergent thinking.
+**Motivation**: Analytical thinking (phases 1-15) is systematic and convergent. But some insights emerge only from unexpected juxtapositions — connecting a business idea to a debugging pattern to an emotional observation. Creative drift provides divergent thinking.
 
 **Five techniques**, randomly selected per round:
 
@@ -1351,9 +1356,10 @@ These observations are from a single user (the developer) during an intense deve
 
 ### 13.1 Layer 3 Reference Implementation
 
-The Elara Protocol whitepaper [5] specifies a three-layer architecture for universal digital work validation:
+The Elara Protocol whitepaper [5] specifies a four-layer architecture for universal digital work validation:
 
 - **Layer 1**: Local validation (cryptographic signing, DAM insertion)
+- **Layer 1.5**: Performance runtime (Rust DAM VM with PyO3 bindings, optional fast path)
 - **Layer 2**: Network consensus (Adaptive Witness Consensus)
 - **Layer 3**: AI Intelligence (pattern recognition, collective learning, dream mode)
 
@@ -1361,7 +1367,7 @@ The Elara Protocol whitepaper [5] specifies a three-layer architecture for unive
 
 | Protocol Layer 3 Capability | Elara Core Implementation                    |
 |-----------------------------|----------------------------------------------|
-| Pattern recognition         | Overnight phases 1-2, 7-14                   |
+| Pattern recognition         | Overnight phases 1-2, 7-15                   |
 | Dream mode                  | Weekly/monthly dream processing              |
 | Anomaly detection           | Blind spot detection, proactive observations |
 | Collective learning         | 3D Cognition: models accumulate evidence     |
@@ -1386,7 +1392,7 @@ Step 1 is operational as of v0.10.8. The Layer 1↔Layer 3 bridge enables Elara 
 
 ### 13.4 Layer Independence: Not Every Device Needs a Brain
 
-A critical architectural distinction that the Elara Protocol's universality depends on: **the three layers are independently deployable. A device does not need to run Elara Core to participate in the protocol.**
+A critical architectural distinction that the Elara Protocol's universality depends on: **the four layers are independently deployable. A device does not need to run Elara Core to participate in the protocol.**
 
 The Elara Protocol claims universality — a teenager in Kenya with a $30 phone can validate a poem. A microcontroller on a factory floor can validate sensor readings. These claims are only true if Layer 1 (local validation) can operate without Layer 2 (network consensus) or Layer 3 (AI intelligence). And Layer 2 must operate without Layer 3.
 

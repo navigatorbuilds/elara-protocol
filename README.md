@@ -26,7 +26,7 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | **Elara Hardware Whitepaper v0.1.6** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.6.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.9 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.9.pdf), [v0.2.8 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf), [v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.4 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.4.pdf), [v1.3.3 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.3.pdf), [v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.5 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.5.pdf), [v0.1.4 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf), [v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.3.0: Layer 2 testnet operational, L1↔L3 bridge shipped, Phase 1 roadmap items marked as shipped. v1.3.5: 45 tools across 15 modules, 15-phase overnight brain, v0.11.0 references, bridge hardening details. v0.1.6: 100 total tests (72 Rust + 28 cross-lang Python), updated cross-references. All three documents audited for cross-reference consistency, hash chains corrected, reference citations fixed.
+**Previous versions:** [Protocol v0.2.9 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.9.pdf), [v0.2.8 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf), [v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.4 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.4.pdf), [v1.3.3 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.3.pdf), [v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.5 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.5.pdf), [v0.1.4 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf), [v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.3.0: Layer 2 testnet operational, L1↔L3 bridge shipped, Phase 1 roadmap items marked as shipped. v1.3.5: 45 tools across 15 modules, 15-phase overnight brain, v0.11.0 references, bridge hardening details. v0.1.6: 100 total tests (72 Rust + 28 cross-lang Python), updated cross-references. All three documents audited for cross-reference consistency, hash chains corrected, reference citations fixed. Second audit: energy μJ→Wh conversion corrected (was 3,600x inflated), ChromaDB 9→14 collections, personality mode values synced with code, directed phase names synced with code, four-layer architecture (was three), Dilithium3 Round 3 vs FIPS 204 clarified, line count updated to ~31,400.
 
 Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
@@ -89,9 +89,9 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.3.0 | `ba4b03c736153c9c3a7196c4a23031064d876c547f3b3705549be3bd35006ae0` |
-| Core v1.3.5 | `61ffd5c6a33695a30d1a28b6b340dfe803faedb0830911d54dd7089652bc1322` |
-| Hardware v0.1.6 | `9f869020d2d9ac796e9538e996b5be832582ca3f625c16e5f1fcde9201f4c93f` |
+| Protocol v0.3.0 | `edd981c2fe17564b24a7be810a24b7a60f8e1dcf98721be22a2915bd63ea58bb` |
+| Core v1.3.5 | `a65f0978cac0f01a5bb56612ead74293317cabe22a06dc0875e6c15ea02c0fa3` |
+| Hardware v0.1.6 | `6fd33c13aa2ecb6058ae044f176da228aa40a5ff852d88bf3cea26f8fa1a7d83` |
 
 ## Intellectual Property
 
