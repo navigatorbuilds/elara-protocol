@@ -35,7 +35,7 @@ The minimum viable network is one device. A $30 phone can validate creative work
 10. [Governance](#10-governance) — Multi-zone autonomy, voting, graceful divergence
 11. [Adversarial Resilience](#11-adversarial-resilience) — Threat model + 33 subsections covering attacks, defenses, legal, ethical, storage economics, and formal verification
 12. [Longevity and Seed Vault Architecture](#12-longevity-and-seed-vault-architecture) — 1,000-year design, storage tiers, emergency protocols
-13. [Roadmap](#13-roadmap) — Including Phase 6: Native Hardware Architecture (2033–2040)
+13. [Roadmap](#13-roadmap) — Including Phase 6: Native Hardware Architecture (2026–2040)
 14. [Limitations and Open Problems](#14-limitations-and-open-problems) — Honest acknowledgment of unsolved challenges
 15. [Conclusion](#15-conclusion)
 16. [References](#16-references)

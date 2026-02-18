@@ -307,7 +307,7 @@ While the internal representation is continuous, humans communicate in discrete 
 d(s, eᵢ) = √(wᵥ(sᵥ - eᵢᵥ)² + wₑ(sₑ - eᵢₑ)² + wₒ(sₒ - eᵢₒ)²)
 ```
 
-Where weights `wᵥ = 1.3, wₑ = 1.0, wₒ = 0.8` reflect the psychological primacy of valence in emotion perception [2]. Note: Because Valence spans [-1, +1] (range 2.0) while Energy and Openness span [0, 1] (range 1.0), the effective contribution of Valence to distance is amplified beyond its weight — approximately 5-6x larger than Openness in the worst case. This is by design: valence shift (positive↔negative) is the most psychologically salient dimension change.
+Where weights `wᵥ = 1.3, wₑ = 1.0, wₒ = 0.8` reflect the psychological primacy of valence in emotion perception [2]. Note: Because Valence spans [-1, +1] (range 2.0) while Energy and Openness span [0, 1] (range 1.0), the effective contribution of Valence to distance is amplified beyond its weight — approximately 6-7x larger than Openness in the worst case (1.3 × 2² / 0.8 × 1² = 6.5). This is by design: valence shift (positive↔negative) is the most psychologically salient dimension change.
 
 The 38 emotions span six affective regions (clustered along V/E/O axes):
 
