@@ -94,7 +94,7 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 | Protocol v0.4.0 | `91a9205a5b9008e1f6340a7991a9decda9211e40d369c38b7ea11f12c1db12a4` |
 | Core v1.3.5 | `34c0f5251d9817bc6e43bedd8d9d6f2707b79b895e87a287286ce30a9904f329` |
 | Hardware v0.1.6 | `47ea3cf0ea325dcb2eb287c2a88e1c96eaf24a19c27e079a75e43ce0b310fa75` |
-| Tokenomics v0.1.0 | `b091c996980cc5e4980c4260ede6aa3af2d6b5a75ae5f069a7f7c24cf93fd2d7` |
+| Tokenomics v0.1.0 | `160c64333d80262a40426b5b01906796ebc2d79194cbec839d9e4c3cc5d5c94a` |
 
 ## Intellectual Property
 
