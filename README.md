@@ -23,10 +23,10 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 33 attack vector analysis, Phase 6 native hardware. Token economics slimmed — full specification in Tokenomics Paper.* |||
 | **Elara Core Whitepaper v1.3.5** | 43 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.5.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), prompt-level intention resolution, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub + testnet, emotional modeling, continuous autonomous thinking, deployment modularity — 45 tools, 15 modules* |||
-| **Elara Hardware Whitepaper v0.1.6** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.6.pdf) |
+| **Elara Hardware Whitepaper v0.1.6** | 66 | *Available on request* |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
-| **Elara Tokenomics Paper v0.1.0** | 18 | [**PDF**](ELARA-TOKENOMICS.v0.1.0.pdf) |
-| *Token economic model: conservation supply (fixed, no inflation, no gas fees), storage delegation market, witness incentive mechanics, anti-centralization (diminishing returns, quadratic governance, trust-weighted random committees), securities law analysis, launch strategy* |||
+| **Elara Tokenomics Paper v0.1.0** | 18 | *Available on request* |
+| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics, launch strategy* |||
 
 All documents have undergone 7 audit passes for cross-reference consistency, formula verification, and numerical accuracy. Previous versions and source files are maintained privately.
 
