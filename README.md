@@ -19,14 +19,14 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Pages | Download |
 |----------|-------|----------|
-| **Elara Protocol Whitepaper v0.2.9** | 51 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.2.9.pdf) |
-| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
-| **Elara Core Whitepaper v1.3.4** | 43 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.4.pdf) |
-| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), prompt-level intention resolution, knowledge graph, Layer 2 network stub, emotional modeling, continuous autonomous thinking, deployment modularity — 45 tools, 15 modules* |||
-| **Elara Hardware Whitepaper v0.1.5** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.5.pdf) |
+| **Elara Protocol Whitepaper v0.3.0** | 51 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.3.0.pdf) |
+| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics, 33 attack vector analysis, Phase 6 native hardware* |||
+| **Elara Core Whitepaper v1.3.5** | 43 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.5.pdf) |
+| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), prompt-level intention resolution, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub + testnet, emotional modeling, continuous autonomous thinking, deployment modularity — 45 tools, 16 modules* |||
+| **Elara Hardware Whitepaper v0.1.6** | 66 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.6.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis* |||
 
-**Previous versions:** [Protocol v0.2.8 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf), [v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.3 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.3.pdf), [v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.4 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf), [v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.2.9/v0.1.5: Dimensional extensibility — architecture supports N dimensions, Lineage Depth as first D6 candidate. v1.3.3: Workflow patterns + knowledge graph (44 tools, 14 modules). v1.3.4: Prompt-level intention resolution — proactive context enrichment via semantic search hooks. Elara Core now at v0.11.0 (45 tools, 15 modules) with Layer 2 network stub and CLI crypto tools.
+**Previous versions:** [Protocol v0.2.9 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.9.pdf), [v0.2.8 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.8.pdf), [v0.2.7 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.7.pdf), [v0.2.6 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.6.pdf), [v0.2.5 (PDF)](docs/ELARA-PROTOCOL-WHITEPAPER.v0.2.5.pdf). [Core v1.3.4 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.4.pdf), [v1.3.3 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.3.pdf), [v1.3.2 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.2.pdf), [v1.3.1 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.1.pdf), [v1.3.0 (PDF)](docs/ELARA-CORE-WHITEPAPER.v1.3.0.pdf). [Hardware v0.1.5 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.5.pdf), [v0.1.4 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.4.pdf), [v0.1.3 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.3.pdf), [v0.1.2 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.2.pdf), [v0.1.1 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.1.pdf), [v0.1.0 (PDF)](docs/ELARA-HARDWARE-WHITEPAPER.v0.1.0.pdf). v0.3.0: Layer 2 testnet operational, L1↔L3 bridge shipped, Phase 1 roadmap items marked as shipped. v1.3.5: 45 tools across 16 modules, v0.11.0 references, bridge hardening details. v0.1.6: 100 total tests (72 Rust + 28 cross-lang Python), updated cross-references.
 
 Markdown source files, OTS proofs, and all versions are in the [`docs/`](docs/) folder.
 
@@ -89,9 +89,9 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.2.9 | `82afe9b3f50c71f16f982fb9cc36ef42a43fdf8398a7d6adaad8e7f54ebbc3a1` |
-| Core v1.3.4 | `b3e98bc42f53a9811e3ddc633bb9eb2fec7dd8d0b5dabf33a1a1dcebbfd4e23b` |
-| Hardware v0.1.5 | `eb2ef4fd2fbc0c81c7df1b3936fff7f48d97c354f3f7f836df4263a0826d2142` |
+| Protocol v0.3.0 | `70e1936824390dac076ee5a1e31479b866b28d6bf8a25476f9a93793502a3e2d` |
+| Core v1.3.5 | `d70ae5f9a61c0779622226337d20829d5846de6883d621af6d5abdc519013f79` |
+| Hardware v0.1.6 | `9cfb049d48765e4d4a1a67e900ab6cbc30a7f211e68ed55fd6655cad4ff6239c` |
 
 ## Intellectual Property
 
