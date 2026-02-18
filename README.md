@@ -63,7 +63,7 @@ This is not a blockchain. It is a mesh that works when nodes are offline, when l
 
 Reference implementation of Layer 1 — post-quantum local validation with Dilithium3 + SPHINCS+, SQLite-backed DAG, and a CLI for validating files from the terminal.
 
-- **Repository:** [github.com/navigatorbuilds/elara-layer1](https://github.com/navigatorbuilds/elara-layer1)
+- **Repository:** Private (patent pending)
 - **Crypto:** CRYSTALS-Dilithium3 (FIPS 204) + SPHINCS+-SHA2-192f (FIPS 205)
 - **Performance:** Identity generation in 2ms, file validation in 1-2ms
 
@@ -71,7 +71,7 @@ Reference implementation of Layer 1 — post-quantum local validation with Dilit
 
 Rust implementation of DAM concepts with PyO3 bindings — crypto, wire format, dimensional storage, and all 9 DAM operations. Byte-identical wire format with Layer 1. Callable from Python as an optional fast path.
 
-- **Repository:** [github.com/navigatorbuilds/elara-runtime](https://github.com/navigatorbuilds/elara-runtime)
+- **Repository:** Private (patent pending)
 - **Crypto:** Same liboqs algorithms via `oqs` Rust crate (vendored), cross-language sign/verify verified
 - **Features:** 5-tuple addressing, tiled storage, in-memory DAG index, parallel batch verify via rayon
 
