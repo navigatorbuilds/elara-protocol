@@ -103,7 +103,7 @@ From these deficits, we derive five requirements:
 
 ### 2.1 System Layers
 
-Elara Core implements a three-layer architecture:
+Elara Core implements a four-layer internal architecture:
 
 ```
 ┌─────────────────────────────────────────────────────┐
@@ -145,9 +145,11 @@ Elara Core implements a three-layer architecture:
 
 **Layer 2: Tool Layer** — 45 MCP tools organized into 15 domain modules. Each tool accepts structured parameters and returns JSON or text. Tools are registered via decorator pattern, allowing hot-reload without server restart. All tools function identically regardless of profile — the profile layer only affects schema visibility, not behavior.
 
-**Layer 2: Engine Layer** — Core logic implementing emotional processing, memory operations, cognitive modeling, and autonomous thinking. All data structures are validated through Pydantic schemas. An event bus enables loose coupling between subsystems.
+**Layer 3: Engine Layer** — Core logic implementing emotional processing, memory operations, cognitive modeling, and autonomous thinking. All data structures are validated through Pydantic schemas. An event bus enables loose coupling between subsystems.
 
-**Layer 3: Storage Layer** — All data persists locally in `~/.elara/`. ChromaDB [7] provides vector similarity search across 14 collections. JSON files provide human-readable state. Atomic write patterns (temp file + rename) prevent corruption.
+**Layer 4: Storage Layer** — All data persists locally in `~/.elara/`. ChromaDB [7] provides vector similarity search across 14 collections. JSON files provide human-readable state. Atomic write patterns (temp file + rename) prevent corruption.
+
+*Note: These internal layer numbers (1-4) describe Elara Core's software architecture. They are distinct from the Elara Protocol's architecture layers (L1/L1.5/L2/L3) described in Section 13. Elara Core as a whole implements Protocol Layer 3 (AI Intelligence).*
 
 ### 2.2 Module Organization
 
@@ -240,7 +242,7 @@ The lean profile (v0.10.7, February 2026) solves this through a **meta-dispatche
 
 1. At boot, only 8 tool schemas are registered with the MCP client:
    - 7 high-frequency core tools (`elara_remember`, `elara_recall`, `elara_recall_conversation`, `elara_mood`, `elara_status`, `elara_context`, `elara_handoff`)
-   - 1 meta-tool (`elara_do`) that dispatches to all remaining 38 tools by name
+   - 1 meta-tool (`elara_do`) that dispatches to all remaining 37 tools by name
 
 2. The `elara_do` tool accepts a tool name and JSON parameters, routing to the appropriate handler at runtime. The AI client calls `elara_do(tool="episode_start", params='{"project": "elara-core"}')` instead of calling `elara_episode_start(project="elara-core")` directly.
 
@@ -305,11 +307,11 @@ While the internal representation is continuous, humans communicate in discrete 
 d(s, eᵢ) = √(wᵥ(sᵥ - eᵢᵥ)² + wₑ(sₑ - eᵢₑ)² + wₒ(sₒ - eᵢₒ)²)
 ```
 
-Where weights `wᵥ = 1.3, wₑ = 1.0, wₒ = 0.8` reflect the psychological primacy of valence in emotion perception [2].
+Where weights `wᵥ = 1.3, wₑ = 1.0, wₒ = 0.8` reflect the psychological primacy of valence in emotion perception [2]. Note: Because Valence spans [-1, +1] (range 2.0) while Energy and Openness span [0, 1] (range 1.0), the effective contribution of Valence to distance is amplified beyond its weight — approximately 5-6x larger than Openness in the worst case. This is by design: valence shift (positive↔negative) is the most psychologically salient dimension change.
 
-The 38 emotions span six quadrants:
+The 38 emotions span six affective regions (clustered along V/E/O axes):
 
-| Quadrant               | Example Emotions                                      |
+| Region                 | Example Emotions                                      |
 |------------------------|-------------------------------------------------------|
 | Positive / High Energy | excited, proud, amused, energized, playful            |
 | Positive / Low Energy  | content, peaceful, tender, relieved, satisfied        |
@@ -330,16 +332,16 @@ Temperament = (v: 0.55, e: 0.50, o: 0.65)
 
 This represents a slightly positive, balanced-energy, moderately open baseline — designed to feel warm but not artificially cheerful.
 
-**Decay algorithm**: Between sessions, the emotional state decays toward temperament at a rate of 0.05 per hour with Gaussian noise (σ = 0.02):
+**Decay algorithm**: Between sessions, the emotional state decays exponentially toward temperament with Gaussian noise (σ = 0.02):
 
 ```
-decay_factor = 1.0 - (0.05 × hours_elapsed)
+decay_factor = e^(-0.05 × hours_elapsed)
 noise = N(0, 0.02)
 
 v_new = v_current × decay_factor + v_temperament × (1 - decay_factor) + noise
 ```
 
-This produces natural emotional cooling — intense feelings fade, but slowly. A frustrating late-night debugging session leaves residual tension the next morning, which gradually dissipates.
+The exponential form guarantees `decay_factor` remains in (0, 1] for all positive time gaps — a 2-hour gap produces ~0.90 (mostly retains current state), a 20-hour gap produces ~0.37 (strong pull toward temperament), and a 48-hour gap produces ~0.09 (nearly full reset to baseline). This models natural emotional cooling — intense feelings fade, but slowly. A frustrating late-night debugging session leaves residual tension the next morning, which gradually dissipates.
 
 ### 3.4 Emotional Imprints
 
@@ -443,9 +445,11 @@ energy_match  = 1 - |encoded_e - current_e|
 openness_match = 1 - |encoded_o - current_o|
 
 emotion_bonus = 0.15 if same_emotion else
-                0.08 if same_quadrant else
+                0.08 if same_region else
                 0.00
 ```
+
+The fixed weights sum to 0.85; with emotion_bonus the maximum resonance is 1.0 (exact emotion match), 0.93 (same region), or 0.85 (no emotional overlap). This variable ceiling is intentional — emotional resonance is strongest when the stored emotion precisely matches the current state, creating a natural preference gradient.
 
 This means that when the user is frustrated, memories from other frustrating moments surface more readily — including the solutions that resolved those situations. When the user is in a creative, open state, memories from similar creative sessions are preferentially recalled.
 
@@ -653,7 +657,7 @@ The **Intention Resolver** (v0.10.8, February 2026) solves this by operating out
 
 1. **Context frame** — Current working topic and episode type from the context tracker
 2. **Goal awareness** — Active goals (up to 3), providing high-level intent framing
-3. **Correction matching** — ChromaDB semantic search against the correction database; corrections with cosine similarity > 0.35 are surfaced as self-check reminders
+3. **Correction matching** — ChromaDB semantic search against the correction database; corrections with cosine similarity > 0.35 are surfaced as self-check reminders (a higher threshold than the 0.25 used in direct correction lookup — see Section 7.3 — because the intention resolver operates in the hot path of every prompt and must minimize false positives)
 4. **Workflow activation** — Semantic match against learned workflow patterns (Section 10.5); if the prompt matches the trigger of a known workflow, remaining steps are surfaced
 5. **Carry-forward** — Unfinished items, promises, and reminders from the previous session handoff
 6. **Background daemon injection** — Any pending messages from the Overwatch background monitoring daemon
@@ -825,7 +829,7 @@ The synthesis system detects **recurring half-formed ideas** — concepts that a
 
 ### 9.1 Architecture
 
-The overnight brain is an autonomous thinking system that processes accumulated experience through a local LLM (default: Ollama with qwen2.5:32b). Originally designed for overnight-only operation (inspired by biological sleep consolidation [4]), the system was redesigned in v0.10.4-v0.10.7 to operate as a **continuous 24/7 cognitive process** — thinking every 2 hours regardless of whether the user is actively engaged. This reflects the observation that a dedicated GPU sitting idle between sessions is wasted cognitive capacity.
+The overnight brain is an autonomous thinking system that processes accumulated experience through a local LLM (default: Ollama with qwen2.5:7b). Originally designed for overnight-only operation (inspired by biological sleep consolidation [4]), the system was redesigned in v0.10.4-v0.10.7 to operate as a **continuous 24/7 cognitive process** — thinking every 2 hours regardless of whether the user is actively engaged. This reflects the observation that a dedicated GPU sitting idle between sessions is wasted cognitive capacity.
 
 The system comprises eight components:
 
@@ -1193,7 +1197,7 @@ Models not checked in 30 days lose 0.05 confidence per overnight run. This preve
 | Component   | Technology       | Purpose                            |
 |-------------|------------------|------------------------------------|
 | Language    | Python 3.10+     | Core implementation                |
-| Vector DB   | ChromaDB         | Semantic search (9 collections)    |
+| Vector DB   | ChromaDB         | Semantic search (14 collections)   |
 | Embeddings  | all-MiniLM-L6-v2 | 384-dimensional sentence vectors   |
 | Validation  | Pydantic 2.0+    | Schema enforcement                 |
 | LLM         | Ollama (local)   | Overnight thinking, creative drift |
@@ -1232,7 +1236,7 @@ All data resides in `~/.elara/` with the following structure:
 │   ├── recall-log.jsonl      # Memory access records
 │   ├── archived-memories.jsonl # Decayed/merged memories (never deleted)
 │   └── contradictions.json   # Detected contradictions pending review
-└── chromadb/                 # Vector databases (9 collections)
+└── chromadb/                 # Vector databases (14 collections)
 ```
 
 ### 11.3 Atomic Write Pattern
@@ -1495,7 +1499,7 @@ The all-MiniLM-L6-v2 model produces 384-dimensional embeddings. This is sufficie
 
 ### 14.4 LLM Dependency for Continuous Thinking
 
-The continuous brain requires a local LLM (currently Ollama with qwen2.5:32b). This introduces:
+The continuous brain requires a local LLM (currently Ollama with qwen2.5:7b; 32b was initially used but caused GPU freezes on consumer hardware). This introduces:
 
 - **Hardware requirements** — A capable GPU (8+ GB VRAM) is needed for reasonable performance. The 24/7 schedule means the GPU is under sustained load, raising thermal and power consumption considerations for deployment.
 - **Output quality variance** — Local LLMs produce inconsistent JSON formatting, requiring robust parsing with multiple fallback strategies

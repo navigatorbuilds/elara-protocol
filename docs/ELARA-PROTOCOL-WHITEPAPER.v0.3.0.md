@@ -648,7 +648,7 @@ Proof:          "I know a content_hash and private_key such that:
                     (uniqueness via Merkle non-membership proof)"
 ```
 
-The uniqueness check (step 3) uses a sparse Merkle tree accumulator maintained by anchor nodes. The accumulator root is a public input, allowing the proof to verify non-membership without revealing the content hash. Using the Groth16 proving system [18], the proof is ~288 bytes (3 group elements on BN254) and verifies in ~10 ms on commodity hardware — consistent with published Groth16 benchmarks for circuits of this complexity [18]. It reveals nothing about the content or the creator's private key. (Note: the BN254 curve provides ~100-bit security against classical attacks and is NOT post-quantum. See Section 14.3 for the migration timeline to post-quantum ZKP constructions.)
+The uniqueness check (step 3) uses a sparse Merkle tree accumulator maintained by anchor nodes. The accumulator root is a public input, allowing the proof to verify non-membership without revealing the content hash. Using the Groth16 proving system [18], the proof is ~192-288 bytes depending on serialization format (3 group elements on BN254: 2 G1 + 1 G2) and verifies in ~10 ms on commodity hardware — consistent with published Groth16 benchmarks for circuits of this complexity [18]. It reveals nothing about the content or the creator's private key. (Note: the BN254 curve provides ~100-bit security against classical attacks and is NOT post-quantum. See Section 14.3 for the migration timeline to post-quantum ZKP constructions.)
 
 For SOVEREIGN classification, the protocol uses zk-STARKs (Scalable Transparent Arguments of Knowledge), which are larger (~100 KB) but do not require a trusted setup — important for the highest security tier where no trusted third party should be involved in the cryptographic ceremony.
 
@@ -1015,7 +1015,7 @@ The Elara Protocol's governance is federated, not centralized:
 Cross-zone decisions use a **conviction voting** model [36] (inspired by conviction voting mechanisms pioneered by Commons Stack and 1Hive, 2019):
 
 - Token holders express preferences by staking tokens toward proposals
-- Voting weight accrues over time according to: conviction(t) = stake × (1 - e^(-t/τ)) where t is days staked and τ = 7 days (half-life constant). Weight reaches ~63% at 7 days, ~86% at 14 days, and ~95% (effectively full conviction) at 21 days. Tokens staked for less than 7 days carry minimal weight, preventing flash-vote attacks.
+- Voting weight accrues over time according to: conviction(t) = stake × (1 - e^(-t/τ)) where t is days staked and τ = 7 days (time constant). Weight reaches ~63% at 7 days, ~86% at 14 days, ~95% at 21 days, and ~98.6% (effectively full conviction) at 30 days. The exponential ramp makes flash-vote attacks economically pointless — meaningful conviction requires sustained commitment.
 - Proposals require both **supermajority** (>67% of conviction-weighted stake) and **quorum** (>25% of all staked tokens participating)
 - Implementation is delayed 30 days after passing (allowing zones to prepare)
 
@@ -1025,7 +1025,7 @@ The conviction voting mechanism (Section 10.3) is designed to resist several kno
 
 **Sybil resistance:** Voting power is proportional to staked tokens, not identity count. Creating 1,000 identities with 1 token each provides the same voting power as 1 identity with 1,000 tokens — Sybil attacks gain nothing. The economic cost of acquiring sufficient tokens to dominate governance scales with network value.
 
-**Flash loan / flash vote attacks:** Conviction voting's time-weighted staking prevents an attacker from borrowing tokens, voting, and returning them in a single transaction. Tokens must be staked for a minimum of 7 days before accruing any voting weight, with full conviction reached at 30 days. This makes flash attacks economically pointless — the capital lockup cost exceeds any governance manipulation benefit.
+**Flash loan / flash vote attacks:** Conviction voting's time-weighted staking prevents an attacker from borrowing tokens, voting, and returning them in a single transaction. The exponential conviction curve means tokens staked for less than 7 days carry less than 63% weight, and full conviction (~98.6%) requires 30 days of sustained staking. This makes flash attacks economically pointless — the capital lockup cost exceeds any governance manipulation benefit.
 
 **Vote buying:** While the protocol cannot prevent off-chain vote buying, the 30-day implementation delay (Section 10.3) allows the community to detect and respond to suspicious voting patterns before changes take effect. Zones can invoke emergency veto (requiring >75% of anchor nodes) to block proposals that passed through suspected manipulation.
 
@@ -1700,7 +1700,7 @@ Once peers are discovered, validation records propagate via an epidemic gossip p
 3. Node forwards the record to selected peers
 4. Recipients repeat the process for records they haven't seen
 
-This achieves O(log n) propagation time to reach all nodes in the network. For 1 million nodes, a record reaches global coverage in ~20 gossip rounds — typically under 30 seconds on Earth-zone networks.
+With √n fan-out, theoretical propagation completes in ~2-3 rounds. In practice, duplicate messages, network latency, and partial peer overlap increase this to ~6-10 gossip rounds for 1 million nodes — typically under 15 seconds on Earth-zone networks.
 
 ### 11.15 Zero-Knowledge Proof Feasibility on Constrained Devices
 
@@ -1982,11 +1982,13 @@ The ELA token is designed to fail the Howey test on questions 3 and 4:
 Trust scores are computed **relative to zone size**, not as absolute witness counts:
 
 ```
-T_zone(r) = 1 - ∏(1 - w(n))  for all n in W(r) ∩ zone
+T_zone(r) = 1 - ∏(1 - w(n) × d(n, W_zone))  for all n in W(r) ∩ zone
 
 T_global(r) = weighted_average(T_zone_i(r) for each zone i that has witnessed r)
               where weight_i = ln(zone_size_i + 1) / Σ ln(zone_size_j + 1)
 ```
+
+Where d(n, W_zone) is the same correlation discount defined in Section 11.12, computed within the zone's witness set. This ensures that correlated witnesses within a zone do not inflate per-zone trust scores.
 
 **Interpretation:**
 
@@ -2711,7 +2713,7 @@ The emergency level is determined automatically by each zone based on observable
 - First off-world node deployment
 - Interplanetary sync protocol testing (simulated, then real)
 
-### Phase 6: Native Hardware Architecture (2033–2040)
+### Phase 6: Native Hardware Architecture (2026–2040)
 
 The Directed Acyclic Mesh operates fully on today's conventional computing hardware. Every feature described in this whitepaper — post-quantum cryptography, zero-knowledge validation, partition-tolerant consensus, interplanetary operations — runs on standard von Neumann processors available today. No specialized hardware is required. The DAM is production-ready on existing silicon.
 
