@@ -1,6 +1,6 @@
 # Elara Protocol: A Post-Quantum Universal Validation Layer for Digital Work
 
-**Version 0.3.0**
+**Version 0.4.0**
 **Date:** February 18, 2026
 **Author:** Nenad Vasic
 **Contact:** nenadvasic@protonmail.com
@@ -31,7 +31,7 @@ The minimum viable network is one device. A $30 phone can validate creative work
 6. [Identity and Attribution](#6-identity-and-attribution) — Self-sovereign identity, entity types, AI attribution, digital succession
 7. [Interplanetary Operations](#7-interplanetary-operations) — Latency, vector clocks, partition tolerance, bandwidth economics, zones
 8. [IoT and Hardware Integration](#8-iot-and-hardware-integration) — Device capabilities, protocols, use cases, physical authentication, firmware attestation
-9. [Token Economics](#9-token-economics) — Utility model, distribution, economic loops, launch strategy
+9. [Token Economics](#9-token-economics) — Summary and reference to the Elara Tokenomics Paper
 10. [Governance](#10-governance) — Multi-zone autonomy, voting, graceful divergence
 11. [Adversarial Resilience](#11-adversarial-resilience) — Threat model + 33 subsections covering attacks, defenses, legal, ethical, storage economics, and formal verification
 12. [Longevity and Seed Vault Architecture](#12-longevity-and-seed-vault-architecture) — 1,000-year design, storage tiers, emergency protocols
@@ -931,59 +931,39 @@ For the broader threat of device wipes, identity resets, and reputation escape t
 
 ## 9. Token Economics
 
-### 9.1 Utility Model
+> **Full specification:** The complete token economic model — including supply mechanics, distribution, governance economics, storage markets, anti-centralization mechanisms, and regulatory analysis — is specified in the companion **Elara Tokenomics Paper** (separate document, versioned independently). This section provides a protocol-level summary.
 
-The Elara Protocol token (working name: **ELA**) is a utility token that serves three functions:
+### 9.1 Role of the Token
 
-1. **Validation staking** — witness and anchor nodes stake tokens to participate in attestation. Malicious behavior (false attestation, timestamp manipulation) results in stake slashing.
+The Elara Protocol token (working name: **ELA**) is a utility token that enables three protocol functions:
 
-2. **Resource exchange** — querying the DAG, requesting synchronization priority, and accessing Layer 3 AI capabilities consume tokens. Contributing validation resources (storage, bandwidth, compute) earns tokens.
+1. **Witness incentives** — nodes earn tokens by witnessing (attesting to) other nodes' validation records. This creates economic incentive for honest participation in the consensus layer.
 
-3. **Governance participation** — token holders vote on protocol upgrades, zone policies, and cryptographic algorithm transitions. Voting weight is proportional to stake, with a cap to prevent plutocratic control.
+2. **Resource exchange** — requesting priority propagation, storage delegation, and Layer 3 AI capabilities consumes tokens. Contributing resources (storage, bandwidth, compute) earns tokens. Basic propagation and Layer 1 validation are always free (Section 3.5).
 
-### 9.2 Distribution
+3. **Governance participation** — token holders participate in protocol governance through conviction voting (Section 10.3), subject to anti-centralization constraints detailed in the Tokenomics Paper.
 
-```
-┌──────────────────────────────────────────┐
-│         Token Distribution               │
-├──────────────────────┬───────────────────┤
-│ Community/Ecosystem  │ 45%               │
-│ Development Fund     │ 20%               │
-│ Founding Team        │ 15% (4-year vest) │
-│ Early Contributors   │ 10% (2-year vest) │
-│ Reserve              │ 10%               │
-└──────────────────────┴───────────────────┘
-```
+### 9.2 Design Principles
 
-**Community/Ecosystem (45%)** — distributed through validation rewards, developer grants, research funding, and ecosystem growth initiatives. This is the largest allocation by design: the network's value comes from its participants, not its founders.
+The token economic model is guided by four principles:
 
-**Development Fund (20%)** — controlled by a multi-signature wallet (minimum 3-of-5 signers, geographically distributed). Funds protocol development, security audits, and infrastructure maintenance.
+- **Conservation over inflation** — the protocol targets a fixed-supply model where tokens circulate between producers (witnesses) and consumers (record submitters) rather than being continuously minted. See the Tokenomics Paper for supply mechanics.
+- **No gas fees** — transaction costs are borne by the network's reciprocal witnessing model, not by per-transaction fees. At scale (millions of nodes), gas fees would be economically prohibitive.
+- **Layer 1 is always free** — local validation never has a cost (Section 3.5, Section 11.10). The token economy applies only to Layer 2 network services.
+- **Utility, not speculation** — the token launches with network utility, not as an investment vehicle. No ICO, no pre-sale (see Tokenomics Paper for launch strategy and regulatory analysis).
 
-**Founding Team (15%)** — Minted at genesis into a time-locked smart contract. 4-year vesting with 1-year cliff (no tokens accessible in year 1, then linear monthly unlock over years 2-4). Aligned incentives: the team cannot dump tokens early. This allocation is not purchased — it is earned through protocol development.
+### 9.3 Protocol Integration Points
 
-**Early Contributors (10%)** — Minted at genesis into vesting contracts. 2-year linear vesting. For developers, testers, and researchers who contribute before mainnet launch. Allocated through a transparent grants process governed by multi-sig.
+The token interacts with the protocol at these specific points:
 
-**Reserve (10%)** — emergency fund for unforeseen circumstances (security incidents, legal defense, critical infrastructure).
+- **PoWaS attestation** (Section 11.1) — witnesses stake tokens to participate; difficulty scales with stake
+- **Priority propagation** (Section 11.10) — paid tier for faster global reach and requested witnessing
+- **Dispute arbitration** (Section 11.13) — parties stake tokens to invoke arbitration panels
+- **Conviction voting** (Section 10.3) — token-weighted governance with time-locked conviction
+- **Zone health metrics** (Section 11.22) — total staked tokens as a zone health indicator
+- **Storage delegation** — nodes delegate record storage to storage-specialized nodes in exchange for tokens (see Tokenomics Paper)
 
-### 9.3 Economic Loops
-
-**Earn:** Validate work → witness records → provide storage → contribute compute → earn ELA
-
-**Spend:** Query DAG → request priority sync → access AI layer → submit governance proposals → spend ELA
-
-**Stake:** Lock ELA to become witness/anchor → earn validation rewards → stake slashed for malicious behavior
-
-The token economy is designed to be self-sustaining, though this requires empirical validation through testnet economics. The theoretical loop: as more work is validated, demand for validation resources increases, which increases demand for ELA, which incentivizes more nodes to contribute resources. Whether this loop achieves equilibrium is an open question that testnet data must answer.
-
-### 9.4 Launch Strategy
-
-**Phase 1: Testnet** — No real tokens. Free validation for all participants. Identify economic imbalances.
-
-**Phase 2: Controlled launch** — Limited token distribution to early validators. DEX liquidity pool (Uniswap or equivalent).
-
-**Phase 3: Mainnet** — Full token distribution. CEX listings pursued after organic DEX volume establishes market price.
-
-The intended launch strategy avoids ICOs and pre-sales to venture capital. The token is designed to launch with utility, not speculation.
+For the complete economic specification — including supply model, distribution schedule, anti-centralization mechanisms (diminishing returns, quadratic governance, trust-weighted committee selection), storage delegation markets, Sybil cost analysis, and securities law analysis — refer to the **Elara Tokenomics Paper**.
 
 ---
 
@@ -1021,6 +1001,8 @@ Cross-zone decisions use a **conviction voting** model [36] (inspired by convict
 - Proposals require both **supermajority** (>67% of conviction-weighted stake) and **quorum** (>25% of all staked tokens participating)
 - Implementation is delayed 30 days after passing (allowing zones to prepare)
 
+> **Note:** The Tokenomics Paper specifies additional governance mechanisms — including trust-weighted random committee selection, identity-based voting caps, and anti-pooling measures — that complement the conviction voting model described here.
+
 ### 10.4 Governance Attack Mitigations
 
 The conviction voting mechanism (Section 10.3) is designed to resist several known governance attacks:
@@ -1031,7 +1013,7 @@ The conviction voting mechanism (Section 10.3) is designed to resist several kno
 
 **Vote buying:** While the protocol cannot prevent off-chain vote buying, the 30-day implementation delay (Section 10.3) allows the community to detect and respond to suspicious voting patterns before changes take effect. Zones can invoke emergency veto (requiring >75% of anchor nodes) to block proposals that passed through suspected manipulation.
 
-**Plutocracy mitigation:** Raw token-weighted voting favors wealthy participants. The protocol applies a **square-root dampening** to conviction weight: an entity staking 10,000 tokens has √10 ≈ 3.16× the influence of an entity staking 1,000 tokens, not 10×. This reduces whale dominance while still rewarding larger stake commitment.
+**Plutocracy mitigation:** Raw token-weighted voting favors wealthy participants. The protocol applies a **square-root dampening** to conviction weight: an entity staking 10,000 tokens has √10 ≈ 3.16× the influence of an entity staking 1,000 tokens, not 10×. This reduces whale dominance while still rewarding larger stake commitment. See the Tokenomics Paper for extended analysis of pool centralization risks and additional anti-centralization mechanisms.
 
 **Emergency veto abuse:** The emergency veto (>75% of anchor nodes) is a powerful mechanism that could itself be gamed. Constraints: (1) a veto can only block, never propose — it cannot be used to force changes, only prevent them; (2) vetoes are rate-limited to 2 per zone per quarter; (3) any veto triggers a mandatory public disclosure of the veto rationale within 72 hours; (4) if a vetoed proposal passes a second vote with >80% conviction after the disclosure period, the veto is overridden. This ensures the veto is a circuit breaker, not a permanent kill switch.
 
@@ -1117,7 +1099,7 @@ A witness staking 1,000 ELA solves a puzzle ~32x easier than a witness staking 1
 
 Difficulty adjusts per-zone every epoch to maintain a target attestation rate (~10 attestations per second per zone). This prevents both under-utilization (too hard) and spam (too easy).
 
-An adversary creating a million Sybil nodes would need to acquire tokens for each (economic barrier), solve puzzles for each attestation (computational barrier), and build reputation over time for each node (temporal barrier). The cost of attack scales linearly; the defense is multiplicative.
+An adversary creating a million Sybil nodes would need to acquire tokens for each (economic barrier), solve puzzles for each attestation (computational barrier), and build reputation over time for each node (temporal barrier). The cost of attack scales linearly; the defense is multiplicative. See the Tokenomics Paper for detailed Sybil cost analysis and diminishing returns per entity.
 
 **Layer 2: Social Graph Analysis**
 
@@ -1240,7 +1222,7 @@ Genesis anchors actively attest to new nodes' identity registrations. Early part
 - Participation in testnet validation (proving reliability)
 - Contribution to the codebase, documentation, or tooling (proof of commitment)
 
-Token incentives during this phase are elevated — early validators earn disproportionate rewards to compensate for the network's low utility.
+Token incentives during this phase are elevated — early validators earn disproportionate rewards to compensate for the network's low utility. See the Tokenomics Paper for distribution schedule and bootstrap economics.
 
 **Phase 3: Decentralization Threshold (nodes 1,000–10,000)**
 
@@ -1515,7 +1497,7 @@ Free-tier records propagate for free, get witnessed by community-funded anchors,
 
 **Earn-by-participation:**
 
-Nodes that contribute resources (relay bandwidth, storage, compute) earn ELA tokens. The teenager's phone, by relaying other users' records, earns enough tokens to request priority witnessing if she ever needs it. The protocol pays its participants.
+Nodes that contribute resources (relay bandwidth, storage, compute) earn ELA tokens. The teenager's phone, by relaying other users' records, earns enough tokens to request priority witnessing if she ever needs it. The protocol pays its participants. See the Tokenomics Paper for the complete tiered economic model, storage delegation markets, and earn-by-participation mechanics.
 
 ### 11.11 zk-SNARK Trusted Setup
 
@@ -1784,41 +1766,15 @@ The protocol requires anchor nodes on at least 3 continents for the decentraliza
 
 ### 11.17 Token Supply Model
 
-**The gap:** The paper describes token distribution percentages but not the fundamental economic model. Fixed supply, inflationary, deflationary? This determines whether the protocol incentivizes long-term participation or hoarding.
+> **Full specification:** The complete token supply model — including supply mechanics, minting schedule, burn mechanisms, and conservation economics — is specified in the **Elara Tokenomics Paper**. This section addresses only the adversarial implications.
 
-**Model: Bounded Inflation with Asymptotic Cap**
+The protocol's token supply model is designed as a **conservation system** — tokens circulate between producers (witnesses) and consumers (record submitters) rather than being continuously minted. This design choice has specific security implications:
 
-**Total supply:** No hard cap. Supply grows logarithmically — fast initially, approaching a practical ceiling.
+- **No inflationary dilution attack** — because supply is fixed, an attacker cannot devalue existing stakes by inflating the supply
+- **MEV prevention** — witness attestation order does not affect outcome (trust scores are order-independent — the same witnesses produce the same trust score regardless of when they attest). This eliminates Maximal Extractable Value by design. There is nothing to extract from reordering.
+- **No gas fee exploitation** — because the protocol does not charge per-transaction gas fees, there is no fee market to manipulate
 
-**Minting schedule:**
-
-```
-Annual new tokens(year) = INITIAL_RATE / (1 + ln(year))
-where INITIAL_RATE = 100,000,000 (100M)
-
-Year 1:   ~100M new tokens (high incentive for early validators)
-Year 2:    ~59M new tokens
-Year 5:    ~38M new tokens
-Year 10:   ~30M new tokens
-Year 50:   ~20M new tokens
-Year 100:  ~18M new tokens
-```
-
-Supply grows without a hard cap but decelerates logarithmically — effectively approaching a practical ceiling. Inflation rate drops below 1% within the first two decades and continues decreasing toward zero. This means:
-
-- **Early years:** Strong minting incentives drive network growth
-- **Middle years:** Inflation decreases, token value stabilizes
-- **Long term:** Near-zero inflation, supply effectively fixed
-
-**Burn mechanisms (deflationary pressure):**
-
-- **Dispute resolution fees** — tokens staked for arbitration are partially burned (not returned to either party)
-- **Priority service fees** — a percentage of paid-tier service fees are burned
-- **Expired staking penalties** — staked tokens from nodes that go permanently offline are burned after a grace period
-
-**MEV (Maximal Extractable Value) Prevention:**
-
-In blockchain systems, validators can reorder transactions for profit. In the Elara Protocol, witness attestation order does not affect outcome (trust scores are order-independent — the same witnesses produce the same trust score regardless of when they attest). This eliminates MEV by design. There is nothing to extract from reordering.
+See the Tokenomics Paper for the complete supply model, distribution schedule, and economic equilibrium analysis.
 
 ### 11.18 Protocol Upgrade Mechanism
 
@@ -1939,39 +1895,20 @@ Record flagged as spam/anomaly:             -10 reputation
 
 A witness that attests to everything — including spam and disputed records — rapidly loses reputation. Reputation loss reduces the weight of future attestations (Section 11.12), reducing earned rewards. Indiscriminate witnessing is therefore economically irrational.
 
-A witness that carefully evaluates records before attesting — checking for rate limit compliance, duplicate content, identity trust, and causal consistency — maintains high reputation and earns more. Selective, honest witnessing is the Nash equilibrium.
+A witness that carefully evaluates records before attesting — checking for rate limit compliance, duplicate content, identity trust, and causal consistency — maintains high reputation and earns more. Selective, honest witnessing is the Nash equilibrium. See the Tokenomics Paper for the complete witness incentive model and reward mechanics.
 
 The related problem of **reputation escape** — where an entity destroys a damaged identity to start fresh — is addressed in Section 11.33, which introduces identity continuity scoring and organizational binding as countermeasures.
 
 ### 11.21 Securities Law and Regulatory Classification
 
-**The risk:** If the ELA token is classified as a security under the Howey test (US) or equivalent frameworks (EU MiCA regulation), the entire token model faces regulatory action — mandatory registration, restricted sale, compliance costs that could cripple a decentralized project.
+> **Full analysis moved to the Elara Tokenomics Paper.** The regulatory classification of the ELA token — including Howey test analysis, MiCA compliance strategy, utility-first design rationale, and jurisdictional considerations — is specified in the companion Tokenomics Paper. This section notes only the protocol-level design choices that support regulatory compliance:
 
-**The Howey test asks four questions:**
+- **Layer 1 is always free** — no token is required for local validation (Section 3.5, Section 11.10)
+- **Utility, not speculation** — the token is consumed through use (witnessing, priority propagation, governance). It is network fuel, not an investment vehicle.
+- **No ICO, no pre-sale** — the token launches with utility, distributed through participation
+- **Decentralization threshold** (Section 11.4) — governance transitions from founding team to token-weighted voting at 1,000+ active nodes
 
-1. Is there an investment of money? — Yes, if tokens are purchased.
-2. In a common enterprise? — Arguable, but likely yes.
-3. With an expectation of profit? — This is the critical question.
-4. Derived from the efforts of others? — This is the second critical question.
-
-**Mitigation through utility-first design:**
-
-The ELA token is designed to fail the Howey test on questions 3 and 4:
-
-**No expectation of profit:** ELA tokens are consumed through use — paying for priority propagation, AI layer access, and governance participation. They are network fuel, not investment vehicles. The whitepaper, documentation, and all communications explicitly state that ELA is a utility token with no expectation of price appreciation. No marketing materials reference investment returns.
-
-**Not derived from efforts of others:** The network's value comes from its participants' collective activity, not from the founding team's efforts. After the decentralization threshold (Section 11.4), the founding team has no privileged role. Token value (if any) reflects network utility, not team performance.
-
-**Additional safeguards:**
-
-- **No ICO, no pre-sale** (already specified in Section 9.4) — eliminates the "investment of money" argument for initial distribution
-- **4-year vesting for founding team** — prevents dump-and-run, demonstrates long-term alignment
-- **Launch on DEX only** — no centralized exchange listing campaign that could be characterized as securities marketing
-- **Regulatory counsel engaged pre-launch** — formal legal opinions from qualified securities lawyers in US, EU, and Singapore jurisdictions
-- **Swiss or Cayman foundation structure** — if needed, the protocol foundation is established in a jurisdiction with clear utility token frameworks
-- **MiCA compliance (EU)** — the Markets in Crypto-Assets regulation provides a clear framework for utility tokens. The protocol will pursue MiCA classification as a utility token where applicable.
-
-**Honest acknowledgment:** regulatory classification is ultimately determined by regulators, not by protocol designers. The above measures minimize risk but cannot eliminate it. The protocol's design prioritizes genuine utility over speculative value, which is the strongest possible defense. Regulatory posture toward digital assets varies by jurisdiction and administration, and can shift rapidly. The protocol's utility-first design is intentionally administration-agnostic — it does not rely on favorable regulatory climate but rather on structural compliance with existing legal frameworks.
+The protocol's design prioritizes genuine utility over speculative value. See the Tokenomics Paper for the complete regulatory analysis.
 
 ### Protocol Mechanics (11.22–11.33)
 
