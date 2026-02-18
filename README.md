@@ -104,7 +104,7 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 ## License
 
-Whitepapers are published for review, collaboration, and academic citation. The protocol specification and reference implementation are open for non-commercial use. See individual documents for details.
+[Business Source License 1.1](LICENSE) — free to read, fork, modify, and use for personal, educational, academic, and internal purposes. Commercial use of the protocol specification to build competing products requires a separate license. Converts to Apache 2.0 on February 18, 2030.
 
 ## Author
 
