@@ -564,9 +564,11 @@ Post-quantum cryptography provides stronger security at a measurable cost in siz
 
 | Algorithm           | Key Size    | Signature Size | Classical Equivalent   |
 |---------------------|-------------|----------------|------------------------|
-| CRYSTALS-Dilithium3 | 1,952 bytes | 3,293 bytes    | ECDSA: 33 + 72 bytes   |
+| CRYSTALS-Dilithium3 | 1,952 bytes | 3,293 bytes†   | ECDSA: 33 + 72 bytes   |
 | SPHINCS+-SHA2-192f  | 48 bytes    | 35,664 bytes   | Ed25519: 32 + 64 bytes |
 | CRYSTALS-Kyber768   | 1,184 bytes | 1,088 bytes    | X25519: 32 bytes       |
+
+†liboqs Round 3 implementation value; FIPS 204 final specifies 3,309 bytes for ML-DSA-65 (see Section 4.2 for migration plan).
 
 Dilithium signatures are **~46x larger** than ECDSA signatures (3,293 vs ~72 bytes). For a datacenter or laptop, this is negligible. For an ESP32 sending thousands of signed readings over LoRa (max payload ~242 bytes), it is prohibitive.
 
@@ -2086,7 +2088,7 @@ End users see a simple app: create, validate, browse. The underlying DAM complex
 
 **Layer 2 (network propagation + witnessing):**
 
-- **Gossip propagation:** Network traffic comparable to a peer-to-peer file-sharing swarm. Each node sends/receives ~1 KB per record to √n peers. For 1 million nodes: ~1 MB total network traffic per record. Energy: ~0.01 Wh across all participating nodes.
+- **Gossip propagation:** Network traffic comparable to a peer-to-peer file-sharing swarm. Each node sends/receives a compact record announcement (~1 KB header + hash, not the full ~4.5 KB record) to √n peers per hop; full records are fetched on demand by interested nodes. Records propagate within their zone (Section 7), not globally — zone partitioning bounds the effective fanout. For a zone with ~10,000 active nodes, epidemic gossip converges in ~4 rounds of √n fan-out. Most records are created by leaf nodes and propagated to their zone's witness set, not broadcast to the entire network. The energy estimate below uses network-wide averages accounting for zone partitioning and leaf-node locality.
 
 - **Witness attestation (PoWaS):** The proof-of-work component is calibrated to be lightweight — ~0.1 seconds of CPU per attestation (vs. ~10 minutes of ASIC-scale computation in proof-of-work blockchains). Energy per attestation: ~0.005 Wh. For 1,000 witnesses per record: ~5 Wh total.
 

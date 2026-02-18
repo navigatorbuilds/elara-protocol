@@ -964,7 +964,8 @@ A critical design decision (v0.10.4): **every thinking run produces its own time
 │   │   ├── round-01.md     # Phase 1: Summarize
 │   │   ├── round-02.md     # Phase 2: Patterns
 │   │   ├── ...
-│   │   ├── round-14.md     # Phase 14: Synthesis
+│   │   ├── round-14.md     # Phase 14: Self-Review
+│   │   ├── round-15.md     # Phase 15: Evolution
 │   │   ├── findings.md     # Consolidated findings
 │   │   └── meta.json       # Run metadata
 │   └── 18-54/              # Run started at 18:54
@@ -1274,7 +1275,7 @@ The lean profile (v0.10.7, February 2026) introduces a two-tier tool registratio
 `elara_remember`, `elara_recall`, `elara_recall_conversation`, `elara_mood`, `elara_status`, `elara_context`, `elara_handoff`
 
 **Meta-dispatcher** (`elara_do`):
-A single tool that routes to all 38 non-core tools by name. The dispatcher accepts a `tool` parameter (string, tool name without `elara_` prefix) and a `params` parameter (JSON string of arguments). Internally, it validates the tool name against a registry, deserializes parameters, and delegates to the original handler function.
+A single tool that routes to all 37 non-core tools by name. The dispatcher accepts a `tool` parameter (string, tool name without `elara_` prefix) and a `params` parameter (JSON string of arguments). Internally, it validates the tool name against a registry, deserializes parameters, and delegates to the original handler function.
 
 ```python
 # Client calls:
@@ -1569,7 +1570,7 @@ The confidence mechanics, crystallization algorithm, and emotional decay functio
 
 ### 15.5 Network-Scale Deployment
 
-As described in Section 13.3, the Layer 1↔Layer 3 bridge is now operational (v0.10.8, hardened in v0.11.0), and a 2-node testnet (v0.11.0) demonstrates end-to-end record exchange and witness attestation across HTTP. The remaining path to network-scale requires model federation, prediction markets, and principle consensus. This is the primary research direction.
+As described in Section 13.3, the Layer 1↔Layer 3 bridge is now operational (v0.10.8, hardened in v0.11.0), and a minimal 2-node stub testnet (v0.11.0) demonstrates end-to-end record exchange and witness attestation across HTTP. The remaining path to network-scale requires model federation, prediction markets, and principle consensus. This is the primary research direction.
 
 ---
 
