@@ -21,8 +21,8 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 |----------|-------|----------|
 | **Elara Protocol Whitepaper v0.4.1** | 67 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.4.1.pdf) |
 | *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 33 attack vector analysis, Phase 6 native hardware. Unified trust model (node-level + record-level), combined governance formula, AWC implementation status.* |||
-| **Elara Core Whitepaper v1.3.7** | 34 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.3.7.pdf) |
-| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), reflexive memory hippocampus (compound queries, rolling buffer, injection dedup), prompt-level intention resolution, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking, deployment modularity — 45 tools, 15 modules* |||
+| **Elara Core Whitepaper v1.4.0** | 50 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.4.0.pdf) |
+| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking — 45 tools, 15 modules, 222 tests* |||
 | **Elara Hardware Whitepaper v0.1.7** | 51 | *Available on request* |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference* |||
 | **Elara Tokenomics Paper v0.2.0** | 15 | *Available on request* |
@@ -90,7 +90,7 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 | Document | Hash (SHA-256) |
 |----------|---------------|
 | Protocol v0.4.1 | `4f0ea34aa76800ed3d8fafffc87a34d1318f0493d55389da15f6bbabad189e46` |
-| Core v1.3.7 | `616303687de39a3dc00149125ce99f9e45ccf67753739721ad45b3b17853ae8f` |
+| Core v1.4.0 | `d713d249019aa1c73a4c31b27456fdb7e12e84506fc984ae88115d51ff481ef0` |
 | Hardware v0.1.7 | `1a2fbc5101ea221ca2ca4d58a5cfa5588bbf65bf294c6b747feab53c14785dee` |
 | Tokenomics v0.2.0 | `9e50ddc10aa2df36e242dbe6294d83b7e20be09564ea7f1117e18e6ff109d613` |
 
