@@ -19,14 +19,14 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Pages | Download |
 |----------|-------|----------|
-| **Elara Protocol Whitepaper v0.4.1** | 67 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.4.1.pdf) |
-| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 33 attack vector analysis, Phase 6 native hardware. Unified trust model (node-level + record-level), combined governance formula, AWC implementation status.* |||
+| **Elara Protocol Whitepaper v0.5.0** | 70 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.0.pdf) |
+| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 33 attack vector analysis, Phase 6 native hardware. Unified trust model, combined governance formula, AWC implementation status. NEW: Private networks, NETWORK_PUBLISH protocol, Validation IPO model.* |||
 | **Elara Core Whitepaper v1.4.0** | 51 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.4.0.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking — 45 tools, 15 modules, 222 tests* |||
 | **Elara Hardware Whitepaper v0.1.7** | 51 | *Available on request* |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference* |||
-| **Elara Tokenomics Paper v0.2.0** | 15 | *Available on request* |
-| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy* |||
+| **Elara Tokenomics Paper v0.3.0** | 20 | *Available on request* |
+| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy. NEW: Long-term energy dynamics, private networks, Validation IPO economics.* |||
 
 All documents have undergone 8 audit passes for cross-reference consistency, formula verification, numerical accuracy, and cross-document coherence. Previous versions and source files are maintained privately.
 
@@ -89,10 +89,10 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.4.1 | `bb77d75cface9951c95c7c73451454aba322647f1a8adf3ee28bf78914ece4e7` |
+| Protocol v0.5.0 | `4659b4b565ca2963e2b5d524170c576b7af7192aa8bd9288c3a845eaa9c1c1d7` |
 | Core v1.4.0 | `5c8cb304be3e4515984b5d4121b86cc05890b95f9f945152d8853abd4052607f` |
 | Hardware v0.1.7 | `28b31f35acc530077cc6801810685ea98fe5f130266a9974f27ac33936bba52a` |
-| Tokenomics v0.2.0 | `ccb2a67722dd1a8fc3c6e6600d7099085982483b3e424f54af982a64092f1f4a` |
+| Tokenomics v0.3.0 | `437a7e5af1cbbb391d482aa8964fed7e22eb2b69d1c2ffe66ff88f2f7174c490` |
 
 ## Intellectual Property
 
