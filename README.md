@@ -89,10 +89,10 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.5.0 | `996e9d1c11a8f38e95c0b97e9bf35cc5f3a05cfd9c5c7b27de8c25d42496de2f` |
+| Protocol v0.5.0 | `4b704d9cd16fa032fadba6c883f7f6892025e2aee7b5bbc6b5c49c02ae7b8499` |
 | Core v1.4.0 | `5c8cb304be3e4515984b5d4121b86cc05890b95f9f945152d8853abd4052607f` |
 | Hardware v0.1.7 | `28b31f35acc530077cc6801810685ea98fe5f130266a9974f27ac33936bba52a` |
-| Tokenomics v0.3.0 | `44692d44b0bff02b1f249bf7c72da8a22cf42f27d7ddaf57c17156e40fba3357` |
+| Tokenomics v0.3.0 | `fb3b43d02baf1efc6ec764bf2563163bba9e3decaf07f18eb4022d95dea0c2c9` |
 
 ## Intellectual Property
 
