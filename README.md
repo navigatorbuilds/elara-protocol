@@ -20,7 +20,7 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | Document | Pages | Download |
 |----------|-------|----------|
 | **Elara Protocol Whitepaper v0.5.0** | 70 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.0.pdf) |
-| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 33 attack vector analysis, Phase 6 native hardware. Unified trust model, combined governance formula, AWC implementation status. NEW: Private networks, NETWORK_PUBLISH protocol, Validation IPO model.* |||
+| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 34 attack vector analysis, Phase 6 native hardware. Unified trust model, combined governance formula, AWC implementation status. NEW: Private networks, NETWORK_PUBLISH protocol, Validation IPO model, mega-publication economic shock defense.* |||
 | **Elara Core Whitepaper v1.4.0** | 51 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.4.0.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking — 45 tools, 15 modules, 222 tests* |||
 | **Elara Hardware Whitepaper v0.1.7** | 51 | *Available on request* |
@@ -89,10 +89,10 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.5.0 | `4659b4b565ca2963e2b5d524170c576b7af7192aa8bd9288c3a845eaa9c1c1d7` |
+| Protocol v0.5.0 | `996e9d1c11a8f38e95c0b97e9bf35cc5f3a05cfd9c5c7b27de8c25d42496de2f` |
 | Core v1.4.0 | `5c8cb304be3e4515984b5d4121b86cc05890b95f9f945152d8853abd4052607f` |
 | Hardware v0.1.7 | `28b31f35acc530077cc6801810685ea98fe5f130266a9974f27ac33936bba52a` |
-| Tokenomics v0.3.0 | `437a7e5af1cbbb391d482aa8964fed7e22eb2b69d1c2ffe66ff88f2f7174c490` |
+| Tokenomics v0.3.0 | `44692d44b0bff02b1f249bf7c72da8a22cf42f27d7ddaf57c17156e40fba3357` |
 
 ## Intellectual Property
 
