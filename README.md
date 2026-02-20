@@ -23,9 +23,9 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 33 attack vector analysis, Phase 6 native hardware. Unified trust model (node-level + record-level), combined governance formula, AWC implementation status.* |||
 | **Elara Core Whitepaper v1.4.0** | 51 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.4.0.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking — 45 tools, 15 modules, 222 tests* |||
-| **Elara Hardware Whitepaper v0.1.7** | 51 | *Available on request* |
+| **Elara Hardware Whitepaper v0.1.7** | 51 | [**PDF**](ELARA-HARDWARE-WHITEPAPER.v0.1.7.pdf) |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference* |||
-| **Elara Tokenomics Paper v0.2.0** | 15 | *Available on request* |
+| **Elara Tokenomics Paper v0.2.0** | 15 | [**PDF**](ELARA-TOKENOMICS.v0.2.0.pdf) |
 | *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy* |||
 
 All documents have undergone 8 audit passes for cross-reference consistency, formula verification, numerical accuracy, and cross-document coherence. Previous versions and source files are maintained privately.
