@@ -243,7 +243,7 @@ Layer 1 defines the protocol semantics — what a valid record is, how it is sig
 
 The Elara Runtime (Layer 1.5) implements:
 
-- A **DAM Virtual Machine** with all 9 primitive operations defined in the Hardware Whitepaper (v0.1.7, Section 5.2): `DAM_INSERT`, `DAM_QUERY`, `DAM_WITNESS`, `DAM_HASH`, `DAM_SIGN`, `DAM_VERIFY`, `DAM_MERGE`, `DAM_CLASSIFY`, `DAM_ANALYZE`
+- A **DAM Virtual Machine** with all 9 primitive operations defined in the Hardware Whitepaper (v0.1.8, Section 5.2): `DAM_INSERT`, `DAM_QUERY`, `DAM_WITNESS`, `DAM_HASH`, `DAM_SIGN`, `DAM_VERIFY`, `DAM_MERGE`, `DAM_CLASSIFY`, `DAM_ANALYZE`
 - **5-tuple dimensional addressing** `(T, C, Z, K, A)` — the same addressing model that native hardware will implement physically
 - **Tiled storage** with in-memory DAG index for sub-millisecond record lookup
 - **Parallel batch verification** via Rayon — verifying multiple signatures concurrently on multi-core hardware
@@ -2232,7 +2232,7 @@ End users see a simple app: create, validate, browse. The underlying DAM complex
 
 **Estimation by component:**
 
-**Layer 1 (local validation):** Negligible. Hashing + signing = milliseconds of CPU time. Energy cost: ~183 μJ (~50.8 nWh) per validation on a smartphone (see Hardware Whitepaper v0.1.7, Section 10.2 for detailed breakdown). Orders of magnitude less than sending a text message.
+**Layer 1 (local validation):** Negligible. Hashing + signing = milliseconds of CPU time. Energy cost: ~183 μJ (~50.8 nWh) per validation on a smartphone (see Hardware Whitepaper v0.1.8, Section 10.2 for detailed breakdown). Orders of magnitude less than sending a text message.
 
 **Layer 2 (network propagation + witnessing):**
 

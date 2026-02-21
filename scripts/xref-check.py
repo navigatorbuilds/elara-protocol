@@ -3,7 +3,8 @@
 
 Scans all 4 current whitepapers and finds every version reference
 to other Elara documents. Reports mismatches, stale references,
-and builds a full dependency map.
+builds a full dependency map, checks OTS timestamps, and verifies
+GitHub/deployment readiness.
 
 Usage:
     python scripts/xref-check.py              # scan and report
@@ -12,6 +13,7 @@ Usage:
 """
 
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -198,6 +200,195 @@ def print_full_report(all_refs: list[dict]):
     return stale_count
 
 
+# Which papers are PUBLIC (pushed to GitHub) vs PRIVATE (local only)
+PUBLIC_PAPERS = {"protocol", "core"}
+PRIVATE_PAPERS = {"hardware", "tokenomics"}
+
+# Expected root-level PDFs on GitHub (public papers only)
+ROOT_PDFS = {
+    "protocol": f"ELARA-PROTOCOL-WHITEPAPER.v{CURRENT_VERSIONS['protocol']}.pdf",
+    "core": f"ELARA-CORE-WHITEPAPER.v{CURRENT_VERSIONS['core']}.pdf",
+}
+
+
+def check_ots_timestamps() -> int:
+    """Check that all current whitepapers have OTS timestamps."""
+    print("\n OTS TIMESTAMP CHECK")
+    print("=" * 60)
+
+    issues = 0
+    for name, filename in PAPERS.items():
+        md_path = DOCS_DIR / filename
+        pdf_path = DOCS_DIR / filename.replace(".md", ".pdf")
+
+        for path, label in [(md_path, "md"), (pdf_path, "pdf")]:
+            ots_path = Path(str(path) + ".ots")
+            if not path.exists():
+                print(f"  !! {name} {label}: FILE MISSING — {path.name}")
+                issues += 1
+            elif not ots_path.exists():
+                print(f"  !! {name} {label}: NO OTS — run: ots stamp {path.name}")
+                issues += 1
+            else:
+                # Check OTS is newer than source (not stale)
+                if ots_path.stat().st_mtime < path.stat().st_mtime:
+                    print(f"  !! {name} {label}: STALE OTS — source modified after stamping")
+                    issues += 1
+                else:
+                    print(f"     {name} {label}: OK")
+
+    print()
+    if issues > 0:
+        print(f"  !! {issues} OTS issue(s) found")
+    else:
+        print("  All timestamps present and current.")
+
+    return issues
+
+
+def check_file_placement() -> int:
+    """Check that files are in the right places (root PDFs, docs/ folder)."""
+    print("\n FILE PLACEMENT CHECK")
+    print("=" * 60)
+
+    repo_root = DOCS_DIR.parent
+    issues = 0
+
+    # Check root-level PDFs for public papers
+    for name, pdf_name in ROOT_PDFS.items():
+        root_pdf = repo_root / pdf_name
+        docs_pdf = DOCS_DIR / pdf_name
+        if not root_pdf.exists():
+            print(f"  !! {name}: ROOT PDF MISSING — {pdf_name}")
+            issues += 1
+        elif not docs_pdf.exists():
+            print(f"  !! {name}: DOCS PDF MISSING — docs/{pdf_name}")
+            issues += 1
+        else:
+            print(f"     {name}: root + docs/ PDF present")
+
+    # Check docs/ has md + pdf for ALL papers
+    for name, filename in PAPERS.items():
+        md_path = DOCS_DIR / filename
+        pdf_path = DOCS_DIR / filename.replace(".md", ".pdf")
+        if not md_path.exists():
+            print(f"  !! {name}: docs/ MD MISSING — {filename}")
+            issues += 1
+        if not pdf_path.exists():
+            print(f"  !! {name}: docs/ PDF MISSING — {filename.replace('.md', '.pdf')}")
+            issues += 1
+
+    # Check for stale root PDFs (old versions still in root)
+    for pdf_file in sorted(repo_root.glob("ELARA-*.pdf")):
+        if pdf_file.name == "LICENSE.pdf":
+            continue
+        if pdf_file.name not in ROOT_PDFS.values():
+            print(f"  ?? STALE ROOT PDF: {pdf_file.name} — consider removing")
+            issues += 1
+
+    print()
+    if issues > 0:
+        print(f"  !! {issues} placement issue(s) found")
+    else:
+        print("  All files in correct locations.")
+
+    return issues
+
+
+def check_github_status() -> int:
+    """Check git status — uncommitted changes, unpushed commits, tracked files."""
+    print("\n GITHUB STATUS CHECK")
+    print("=" * 60)
+
+    repo_root = DOCS_DIR.parent
+    issues = 0
+
+    # Check for uncommitted changes in tracked files
+    try:
+        result = subprocess.run(
+            ["git", "status", "--porcelain"],
+            capture_output=True, text=True, cwd=repo_root
+        )
+        changes = [
+            line for line in result.stdout.strip().split("\n")
+            if line.strip()
+        ]
+        if changes:
+            print(f"  !! {len(changes)} uncommitted change(s):")
+            for c in changes[:10]:
+                print(f"     {c}")
+            issues += len(changes)
+        else:
+            print("     Working tree clean")
+    except FileNotFoundError:
+        print("  ?? git not found")
+        issues += 1
+
+    # Check for unpushed commits
+    try:
+        result = subprocess.run(
+            ["git", "log", "--oneline", "@{u}..HEAD"],
+            capture_output=True, text=True, cwd=repo_root
+        )
+        unpushed = [
+            line for line in result.stdout.strip().split("\n")
+            if line.strip()
+        ]
+        if unpushed:
+            print(f"  !! {len(unpushed)} unpushed commit(s):")
+            for c in unpushed[:5]:
+                print(f"     {c}")
+            issues += 1
+        else:
+            print("     All commits pushed")
+    except FileNotFoundError:
+        pass
+
+    # Check that public papers are tracked in git
+    try:
+        result = subprocess.run(
+            ["git", "ls-files"],
+            capture_output=True, text=True, cwd=repo_root
+        )
+        tracked = set(result.stdout.strip().split("\n"))
+
+        for name in PUBLIC_PAPERS:
+            md_file = f"docs/{PAPERS[name]}"
+            pdf_root = ROOT_PDFS.get(name, "")
+            pdf_docs = f"docs/{PAPERS[name].replace('.md', '.pdf')}"
+            ots_md = f"docs/{PAPERS[name]}.ots"
+            ots_pdf = f"docs/{PAPERS[name].replace('.md', '.pdf')}.ots"
+
+            for f, label in [
+                (md_file, "docs/ md"),
+                (pdf_root, "root pdf"),
+                (pdf_docs, "docs/ pdf"),
+                (ots_md, "md.ots"),
+                (ots_pdf, "pdf.ots"),
+            ]:
+                if f and f not in tracked:
+                    print(f"  !! {name}: NOT TRACKED — {f}")
+                    issues += 1
+
+        # Verify private papers are NOT tracked
+        for name in PRIVATE_PAPERS:
+            md_file = f"docs/{PAPERS[name]}"
+            if md_file in tracked:
+                print(f"  !! {name}: TRACKED BUT SHOULD BE PRIVATE — {md_file}")
+                issues += 1
+
+    except FileNotFoundError:
+        pass
+
+    print()
+    if issues > 0:
+        print(f"  !! {issues} GitHub issue(s) found")
+    else:
+        print("  GitHub is clean and up to date.")
+
+    return issues
+
+
 def main():
     args = set(sys.argv[1:])
     deps_only = "--deps" in args
@@ -241,7 +432,30 @@ def main():
                 f"    {ref['context']}\n"
             )
 
-    return 1 if stale_count > 0 else 0
+    # Post-reference checks: OTS, file placement, GitHub
+    ots_issues = check_ots_timestamps()
+    placement_issues = check_file_placement()
+    github_issues = check_github_status()
+
+    total_issues = stale_count + ots_issues + placement_issues + github_issues
+
+    print()
+    print("=" * 60)
+    if total_issues == 0:
+        print(" ALL CHECKS PASSED — ready to ship")
+    else:
+        print(f" {total_issues} TOTAL ISSUE(S) — fix before shipping")
+        if stale_count:
+            print(f"   {stale_count} stale cross-reference(s)")
+        if ots_issues:
+            print(f"   {ots_issues} OTS timestamp issue(s)")
+        if placement_issues:
+            print(f"   {placement_issues} file placement issue(s)")
+        if github_issues:
+            print(f"   {github_issues} GitHub issue(s)")
+    print("=" * 60)
+
+    return 1 if total_issues > 0 else 0
 
 
 if __name__ == "__main__":
