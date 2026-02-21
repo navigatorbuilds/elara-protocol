@@ -50,10 +50,10 @@ VERSION_PATTERNS = {
         r"Core.*?[Vv]ersion\s+(\d+\.\d+\.\d+)",
     ],
     "hardware": [
-        r"Hardware.*?[Ww]hitepaper.*?v(\d+\.\d+\.\d+)",
-        r"Hardware.*?[Vv]ersion\s+(\d+\.\d+\.\d+)",
+        r"Hardware\s+[Ww]hitepaper.*?v(\d+\.\d+\.\d+)",
+        r"Hardware\s+[Ww]hitepaper.*?[Vv]ersion\s+(\d+\.\d+\.\d+)",
         r"Hardware\s+WP.*?v(\d+\.\d+\.\d+)",
-        r"Hardware.*?v(\d+\.\d+\.\d+).*?Vasic",
+        r"Hardware\s+[Ww]hitepaper.*?v(\d+\.\d+\.\d+).*?Vasic",
     ],
     "tokenomics": [
         r"Tokenomics.*?[Ww]hitepaper.*?v(\d+\.\d+\.\d+)",
