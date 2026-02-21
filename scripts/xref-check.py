@@ -19,10 +19,10 @@ DOCS_DIR = Path(__file__).parent.parent / "docs"
 
 # Current versions — UPDATE THESE when bumping any paper
 CURRENT_VERSIONS = {
-    "protocol": "0.4.1",
-    "core": "1.4.0",
-    "hardware": "0.1.7",
-    "tokenomics": "0.2.0",
+    "protocol": "0.5.2",
+    "core": "1.5.1",
+    "hardware": "0.1.8",
+    "tokenomics": "0.3.2",
 }
 
 # Map paper names to their current filenames
