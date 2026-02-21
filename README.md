@@ -11,7 +11,7 @@ The Elara Protocol is a layered architecture for cryptographically validating al
 - **Layer 1: Local Validation** — Hash, sign, prove. Works offline, on any device, in under 2ms. Post-quantum from genesis.
 - **Layer 1.5: Performance Runtime** — Optional Rust DAM VM with 9 ISA operations, parallel batch verify, and PyO3 bindings. Same wire format as Layer 1.
 - **Layer 2: Network Consensus** — Adaptive Witness Consensus (AWC) across partitioned networks, including interplanetary delays.
-- **Layer 3: AI Intelligence** — Persistent cognitive architecture for pattern recognition, anomaly detection, and collective learning across the network.
+- **Layer 3: AI Intelligence** — Persistent cognitive architecture with Cognitive Continuity Chain, tier-based capability gating, pattern recognition, anomaly detection, and collective learning across the network.
 
 The minimum viable network is **one device**. No blockchain required. No cloud dependency. No subscription.
 
@@ -19,26 +19,27 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Pages | Download |
 |----------|-------|----------|
-| **Elara Protocol Whitepaper v0.5.0** | 70 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.0.pdf) |
-| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 34 attack vector analysis, Phase 6 native hardware. Unified trust model, combined governance formula, AWC implementation status. NEW: Private networks, NETWORK_PUBLISH protocol, Validation IPO model, mega-publication economic shock defense.* |||
-| **Elara Core Whitepaper v1.4.0** | 51 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.4.0.pdf) |
-| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking — 45 tools, 15 modules, 222 tests* |||
-| **Elara Hardware Whitepaper v0.1.7** | 51 | *Available on request* |
+| **Elara Protocol Whitepaper v0.5.2** | 80 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.2.pdf) |
+| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 35 attack vector analysis, Phase 6 native hardware. Cognitive Continuity Chain, module tier system, industrial scale deployment (factory scenario), NIST PQC on-ramp. Private networks, NETWORK_PUBLISH protocol, Validation IPO model, mega-publication economic shock defense, cognitive checkpoint integrity.* |||
+| **Elara Core Whitepaper v1.5.1** | 55 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.5.1.pdf) |
+| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking, Cognitive Continuity Chain, tier system (VALIDATE/REMEMBER/THINK/CONNECT) — 45 tools, 15 modules, 222 tests* |||
+| **Elara Hardware Whitepaper v0.1.8** | 51 | *Available on request* |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference* |||
-| **Elara Tokenomics Paper v0.3.0** | 20 | *Available on request* |
-| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy. NEW: Long-term energy dynamics, private networks, Validation IPO economics.* |||
+| **Elara Tokenomics Paper v0.3.2** | 28 | *Available on request* |
+| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy. Module tier economic mapping, cognitive checkpoint storage economics, zero-friction bootstrap. Long-term energy dynamics, private networks, Validation IPO economics.* |||
 
-All documents have undergone 8 audit passes for cross-reference consistency, formula verification, numerical accuracy, and cross-document coherence. Previous versions and source files are maintained privately.
+All documents have undergone 8+ audit passes for cross-reference consistency, formula verification, numerical accuracy, and cross-document coherence. Previous versions and source files are maintained privately.
 
 ## Architecture
 
 ```
-Device Spectrum                      What They Run
-─────────────────────────────────────────────────────
-Microcontroller (factory sensor)     Layer 1 only
-$30 Phone (Kenya)                    Layer 1 only
-Laptop (developer)                   Layer 1 + 1.5 (Rust) + 2
-GPU Server (network node)            Layer 1 + 1.5 + 2 + 3 (Elara Core)
+Device Spectrum                      What They Run              Module Tier
+──────────────────────────────────────────────────────────────────────────────
+Microcontroller (factory sensor)     Layer 1 only               Tier 0: VALIDATE
+$30 Phone (Kenya)                    Layer 1 only               Tier 0: VALIDATE
+Raspberry Pi (gateway)               Layer 1 + 1.5 (Rust)       Tier 1: REMEMBER
+Laptop (developer)                   Layer 1 + 1.5 + 2          Tier 2: THINK
+GPU Server (network node)            Layer 1 + 1.5 + 2 + 3      Tier 3: CONNECT
 ```
 
 **No layer depends on the layers above it.** Layer 1 is universal. Layer 2 is accessible. Layer 3 is powerful.
@@ -57,6 +58,18 @@ The architecture is designed for dimensional expansion — additional structural
 
 This is not a blockchain. It is a mesh that works when nodes are offline, when light-speed delays span 4-22 minutes, and when the network is partitioned across planets.
 
+## Industrial Scale
+
+The same architecture scales from one poem to one million sensors:
+
+```
+10,000 sensors × 86,400 readings/day = 864M readings/day
+Profile C batch signing (1,000 per batch) = 864K signatures/day
+Storage: 2.85 GB/day (vs 2.85 TB without batching)
+```
+
+100 factories × 864M = **86.4 billion readings/day**, validated with post-quantum cryptography on commodity hardware. No blockchain fees.
+
 ## Implementations
 
 ### Layer 1: Elara Layer 1 (Local Validation)
@@ -71,7 +84,7 @@ Reference implementation of Layer 1 — post-quantum local validation with Dilit
 
 Rust implementation of DAM concepts with PyO3 bindings — crypto, wire format, dimensional storage, and all 9 DAM operations. Byte-identical wire format with Layer 1. Callable from Python as an optional fast path.
 
-- **Repository:** Private (patent pending)
+- **Repository:** [github.com/navigatorbuilds/elara-runtime](https://github.com/navigatorbuilds/elara-runtime)
 - **Crypto:** Same liboqs algorithms via `oqs` Rust crate (vendored), cross-language sign/verify verified
 - **Features:** 5-tuple addressing, tiled storage, in-memory DAG index, parallel batch verify via rayon
 
@@ -89,10 +102,10 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.5.0 | `4b704d9cd16fa032fadba6c883f7f6892025e2aee7b5bbc6b5c49c02ae7b8499` |
-| Core v1.4.0 | `5c8cb304be3e4515984b5d4121b86cc05890b95f9f945152d8853abd4052607f` |
-| Hardware v0.1.7 | `28b31f35acc530077cc6801810685ea98fe5f130266a9974f27ac33936bba52a` |
-| Tokenomics v0.3.0 | `fb3b43d02baf1efc6ec764bf2563163bba9e3decaf07f18eb4022d95dea0c2c9` |
+| Protocol v0.5.2 | `9345db358ff544ec3645f6afa668ba415d1fc1aad9910cf2ca53f2c296138dc0` |
+| Core v1.5.1 | `efea23783ec6f71807e4f59bbf3dc40f714b0430eddd844fdc9f6675fa660664` |
+| Hardware v0.1.8 | `a29c2436abbf68e98c532e3f00b84798e22a431e21df4111286df3ee22da8a82` |
+| Tokenomics v0.3.2 | `671f1c22ff886933ee6284421a864d3857e78da90c634469d6b8c3925222c1bf` |
 
 ## Intellectual Property
 
