@@ -24,7 +24,7 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 | **Elara Core Whitepaper v1.5.1** | 55 | [**PDF**](https://github.com/navigatorbuilds/elara-core/raw/main/ELARA-CORE-WHITEPAPER.v1.5.1.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking, Cognitive Continuity Chain, tier system (VALIDATE/REMEMBER/THINK/CONNECT) — 45 tools, 15 modules, 222 tests* |||
 | **Elara Hardware Whitepaper v0.2.0** | 55 | *Available on request* |
-| *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference. **New in v0.1.9:** Electromagnetic Precedent (Section 3.7) — Faraday field concept, Maxwell cross-dimensional coupling, Tesla multi-phase parallelism, historical divergence analysis (1945–1970), Ohm's law as computation; electromagnetic foundations in Sections 4.2–4.5; 6 new references [39]–[44]. **New in v0.2.0:** Algebraic Structure (Section 3.8) — minimum dimensionality principle, two-triad die decomposition, 3×3 ISA algebraic closure, NTT cyclic group structure, conservation as algebraic invariant (Noether's theorem); 1 new reference [45]* |||
+| *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference. **New in v0.1.9:** Physical Substrate Rationale (Section 3.7) — dimensional mismatch analysis, cross-dimensional coupling, polarization orthogonality, event-driven computation, historical divergence (1945–1970), memristive compute-in-place; 5 new references [39]–[43]. **New in v0.2.0:** Algebraic Structure (Section 3.8) — minimum dimensionality principle, two-triad die decomposition, 3×3 ISA algebraic closure, NTT cyclic group structure, conservation as algebraic invariant (Noether's theorem); 1 new reference [44]* |||
 | **Elara Tokenomics Paper v0.3.3** | 28 | *Available on request* |
 | *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy. Module tier economic mapping, cognitive checkpoint storage economics, zero-friction bootstrap. Long-term energy dynamics, private networks, Validation IPO economics. **New in v0.3.3:** Conservation as algebraic invariant (Noether's theorem, Section 2.1), cyclic structure of phase transitions (Section 14.3).* |||
 
@@ -102,10 +102,10 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.5.3 | `1139e2f68706e2f20d53dad7e433a426baf456724defc75d991ce4e7fe5f124d` |
+| Protocol v0.5.3 | `0a6eb6facfa340b94f01dcafa1c34853bd98aa3f7b7a9ab72f0f55615692b988` |
 | Core v1.5.1 | `ea15110e42859773421a1c2dd72ffec06ccbb50ef023bdbb8ebde4184427280b` |
-| Hardware v0.2.0 | `1cdfb2849c04e61c601a563d808aeb6c143564d3ed233a08e81c0ff276d7ab00` |
-| Tokenomics v0.3.3 | `abc332a0dad64f8619f16859c26c7d45836dad281b988aeebe3177ff7e3f92e2` |
+| Hardware v0.2.0 | `fb098d251f81ec93fefb01d356221984d4c1044cf19af279a6fe0561ec38fe89` |
+| Tokenomics v0.3.3 | `288bc2f1ff34a9c5cde428239096631cd14277b80332e0c3fdf30bf4c3db07b6` |
 
 ## Intellectual Property
 
