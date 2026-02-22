@@ -1809,7 +1809,7 @@ During a network partition, each partition maintains its own witness sets. Trust
 
 A full formal proof is deferred to the Protocol Specification Document (Appendix A), but the mechanism is derived from established BFT literature adapted for continuous trust scoring.
 
-> **Implementation status:** AWC is specified here as a formal consensus mechanism. The current reference implementation (Elara Core v0.13.0) includes a Layer 1↔Layer 3 bridge for cryptographic signing and a hardened 2-node testnet for HTTP-based record exchange and witness attestation with signature verification, rate limiting, and weighted trust scoring. The full AWC consensus — including correlation-discounted trust, zone-settled records, and BFT guarantees — is not yet implemented in any codebase. The stub testnet validates the basic record exchange and witnessing flow; AWC consensus is the primary engineering target for the Layer 2 implementation.
+> **Implementation status:** AWC is specified here as a formal consensus mechanism. The current reference implementation (Elara Core v0.15.0) includes a Layer 1↔Layer 3 bridge for cryptographic signing and a hardened 2-node testnet for HTTP-based record exchange and witness attestation with signature verification, rate limiting, and weighted trust scoring. The full AWC consensus — including correlation-discounted trust, zone-settled records, and BFT guarantees — is not yet implemented in any codebase. The stub testnet validates the basic record exchange and witnessing flow; AWC consensus is the primary engineering target for the Layer 2 implementation.
 
 ### 11.13 Dispute Resolution
 
