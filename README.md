@@ -19,14 +19,14 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Pages | Download |
 |----------|-------|----------|
-| **Elara Protocol Whitepaper v0.5.2** | 80 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.2.pdf) |
-| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 35 attack vector analysis, Phase 6 native hardware. Cognitive Continuity Chain, module tier system, industrial scale deployment (factory scenario), NIST PQC on-ramp. Private networks, NETWORK_PUBLISH protocol, Validation IPO model, mega-publication economic shock defense, cognitive checkpoint integrity.* |||
+| **Elara Protocol Whitepaper v0.5.3** | 80 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.3.pdf) |
+| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 35 attack vector analysis, Phase 6 native hardware. Cognitive Continuity Chain, module tier system, industrial scale deployment (factory scenario), NIST PQC on-ramp. Private networks, NETWORK_PUBLISH protocol, Validation IPO model, mega-publication economic shock defense, cognitive checkpoint integrity. **New in v0.5.3:** Minimum capability completeness (Section 3.2), minimum mesh dimensionality (Section 3.3).* |||
 | **Elara Core Whitepaper v1.5.1** | 55 | [**PDF**](https://github.com/navigatorbuilds/elara-core/raw/main/ELARA-CORE-WHITEPAPER.v1.5.1.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking, Cognitive Continuity Chain, tier system (VALIDATE/REMEMBER/THINK/CONNECT) — 45 tools, 15 modules, 222 tests* |||
-| **Elara Hardware Whitepaper v0.1.8** | 51 | *Available on request* |
-| *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference* |||
-| **Elara Tokenomics Paper v0.3.2** | 28 | *Available on request* |
-| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy. Module tier economic mapping, cognitive checkpoint storage economics, zero-friction bootstrap. Long-term energy dynamics, private networks, Validation IPO economics.* |||
+| **Elara Hardware Whitepaper v0.2.0** | 55 | *Available on request* |
+| *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference. **New in v0.1.9:** Electromagnetic Precedent (Section 3.7) — Faraday field concept, Maxwell cross-dimensional coupling, Tesla multi-phase parallelism, historical divergence analysis (1945–1970), Ohm's law as computation; electromagnetic foundations in Sections 4.2–4.5; 6 new references [39]–[44]. **New in v0.2.0:** Structural Harmonics (Section 3.8) — minimum dimensionality principle, two-triad die decomposition, 3x3 ISA algebraic closure, NTT cyclic group connection, conservation as algebraic invariant (Noether's theorem); 3 new references [45]–[47]* |||
+| **Elara Tokenomics Paper v0.3.3** | 28 | *Available on request* |
+| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy. Module tier economic mapping, cognitive checkpoint storage economics, zero-friction bootstrap. Long-term energy dynamics, private networks, Validation IPO economics. **New in v0.3.3:** Conservation as algebraic invariant (Noether's theorem, Section 2.1), cyclic structure of phase transitions (Section 14.3).* |||
 
 All documents have undergone 8+ audit passes for cross-reference consistency, formula verification, numerical accuracy, and cross-document coherence. Previous versions and source files are maintained privately.
 
@@ -102,10 +102,10 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.5.2 | `d086ec0815e90f73b703d45ca53586f3f670e04f052de1f218036bfd8ee4724f` |
+| Protocol v0.5.3 | `1139e2f68706e2f20d53dad7e433a426baf456724defc75d991ce4e7fe5f124d` |
 | Core v1.5.1 | `50169da6833780de1bfcb3fd6150615ad587699c2ed0f4f9b1dd3d46dcc3a129` |
-| Hardware v0.1.8 | `1471cccaf66c69da12226fea305d4aced1297a648ebdfe9958dfbd504e1311ad` |
-| Tokenomics v0.3.2 | `671f1c22ff886933ee6284421a864d3857e78da90c634469d6b8c3925222c1bf` |
+| Hardware v0.2.0 | `376d48bef189f4ba39fef664077dff928a253d19397d366e95cae7d6e851244e` |
+| Tokenomics v0.3.3 | `abc332a0dad64f8619f16859c26c7d45836dad281b988aeebe3177ff7e3f92e2` |
 
 ## Intellectual Property
 

@@ -1,7 +1,7 @@
 # Elara Protocol: A Post-Quantum Universal Validation Layer for Digital Work
 
-**Version 0.5.2**
-**Date:** February 21, 2026
+**Version 0.5.3**
+**Date:** February 22, 2026
 **Author:** Nenad Vasic
 **Contact:** nenadvasic@protonmail.com
 
@@ -243,7 +243,7 @@ Layer 1 defines the protocol semantics — what a valid record is, how it is sig
 
 The Elara Runtime (Layer 1.5) implements:
 
-- A **DAM Virtual Machine** with all 9 primitive operations defined in the Hardware Whitepaper (v0.1.8, Section 5.2): `DAM_INSERT`, `DAM_QUERY`, `DAM_WITNESS`, `DAM_HASH`, `DAM_SIGN`, `DAM_VERIFY`, `DAM_MERGE`, `DAM_CLASSIFY`, `DAM_ANALYZE`
+- A **DAM Virtual Machine** with all 9 primitive operations defined in the Hardware Whitepaper (v0.2.0, Section 5.2): `DAM_INSERT`, `DAM_QUERY`, `DAM_WITNESS`, `DAM_HASH`, `DAM_SIGN`, `DAM_VERIFY`, `DAM_MERGE`, `DAM_CLASSIFY`, `DAM_ANALYZE`
 - **5-tuple dimensional addressing** `(T, C, Z, K, A)` — the same addressing model that native hardware will implement physically
 - **Tiled storage** with in-memory DAG index for sub-millisecond record lookup
 - **Parallel batch verification** via Rayon — verifying multiple signatures concurrently on multi-core hardware
@@ -276,6 +276,8 @@ The optional AI layer provides:
 - **Natural language interface** — querying the validation history in human language
 
 Layer 3 is explicitly optional. The protocol is fully functional without AI. This layer exists for nodes that choose to contribute computational resources in exchange for enhanced capabilities.
+
+**Minimum capability completeness:** The three capability layers — validation (Layer 1), network consensus (Layer 2), and intelligence (Layer 3) — represent the minimum layering for a self-sustaining distributed validation system. This parallels the physical minimum dimensionality principle: Tesla's three-phase alternating current is the minimum for smooth rotation in a plane; three phases of the token economy (Tokenomics Paper, Section 14.3: computation, storage, attention) are the minimum for a self-sustaining economic cycle; and three capability layers are the minimum for a system that can validate locally (Layer 1), propagate trust across networks (Layer 2), and discover patterns in validated data (Layer 3). Fewer than three layers produces an incomplete system — validation without networking is isolated; networking without intelligence is blind to cross-dimensional patterns. Layer 1.5 (Rust performance runtime) is an acceleration of Layer 1, not a fourth capability — it implements the same 9 operations on the same 5-tuple addressing with byte-identical wire format. On native hardware (Hardware Whitepaper, Section 8), Layer 1.5's operations are absorbed directly into the ISA, and the three-layer capability structure is physically implemented by the two die triads (see Hardware Whitepaper, Section 3.8.2).
 
 ### 3.3 From DAG to DAM: The Directed Acyclic Mesh
 
@@ -322,6 +324,8 @@ DAG (2D):        ●───●───●───●
 | **Intelligence**   | AI pattern recognition        | Cross-zone, cross-classification, cross-temporal analysis — connections invisible to any single node or zone                             |
 
 A blockchain is a line. A DAG is a surface. The Elara structure is a **mesh** — a network of interconnected DAGs that appears simple locally (each zone is a standard DAG) but forms a self-healing, multi-path topology globally.
+
+**Minimum mesh dimensionality:** The three structural dimensions (time, concurrency, zone topology) are the minimum for a directed acyclic mesh. Removing any single structural dimension reduces the DAM to a previously known data structure: without time (D1), the structure is an unordered concurrent set — no causal reasoning is possible; without concurrency (D2), the structure is a single-threaded DAG — a blockchain; without zone topology (D3), the structure is a single-zone DAG — scalable within one partition but unable to survive or heal from network splits. Three structural dimensions is the minimum for a data structure that simultaneously supports causal ordering, concurrent state, and partition-tolerant topology. This is the data-structural analog of Tesla's minimum dimensionality result for rotating fields: three phases (120° apart) is the minimum for smooth rotation because the roots of unity in Z/3Z sum to zero; three structural dimensions is the minimum for mesh completeness because each dimension eliminates a distinct failure mode. The two operational layers (classification, AI analysis) project onto this mesh without modifying its topology — they are views of the existing dimensional coordinates, not additional axes.
 
 <div style="page-break-before: always;"></div>
 
@@ -1233,7 +1237,7 @@ Private-to-public transitions create governance events:
 
 **The analogy to traditional markets is deliberate:** a private network choosing to publish is structurally similar to a company filing an IPO — historical records are disclosed, public trust is established based on track record, and the entity gains access to the broader ecosystem's resources (public witnessing, storage delegation, cross-network attestation) in exchange for transparency.
 
-The Elara Tokenomics Paper v0.3.2 (Section 15) provides detailed analysis of the economic dynamics of this transition, including token demand modeling, anti-gaming mechanisms, and the long-term implications of dual-direction network growth.
+The Elara Tokenomics Paper v0.3.3 (Section 15) provides detailed analysis of the economic dynamics of this transition, including token demand modeling, anti-gaming mechanisms, and the long-term implications of dual-direction network growth.
 
 ---
 
@@ -2232,7 +2236,7 @@ End users see a simple app: create, validate, browse. The underlying DAM complex
 
 **Estimation by component:**
 
-**Layer 1 (local validation):** Negligible. Hashing + signing = milliseconds of CPU time. Energy cost: ~183 μJ (~50.8 nWh) per validation on a smartphone (see Hardware Whitepaper v0.1.8, Section 10.2 for detailed breakdown). Orders of magnitude less than sending a text message.
+**Layer 1 (local validation):** Negligible. Hashing + signing = milliseconds of CPU time. Energy cost: ~183 μJ (~50.8 nWh) per validation on a smartphone (see Hardware Whitepaper v0.2.0, Section 10.2 for detailed breakdown). Orders of magnitude less than sending a text message.
 
 **Layer 2 (network propagation + witnessing):**
 
@@ -3387,8 +3391,9 @@ The following companion documents will be published separately during Phase 1 de
 
 ---
 
-**Document Hash (SHA-256, v0.5.2):** *see previous version for hash chain*
+**Document Hash (SHA-256, v0.5.3):** *computed after final edit*
 **Hash verification:** To verify, replace the hash on the line above with the literal string `HASH_PLACEHOLDER` and compute SHA-256 of the file.
+**Previous Hash (v0.5.2):** *see ELARA-PROTOCOL-WHITEPAPER.v0.5.2.md.ots*
 **Previous Hash (v0.5.1):** *see ELARA-PROTOCOL-WHITEPAPER.v0.5.1.md.ots*
 **Previous Hash (v0.5.0):** *see ELARA-PROTOCOL-WHITEPAPER.v0.5.0.md.ots*
 **Previous Hash (v0.2.9):** `5db16af282aded38d34802f4b0f8a15ef0f65f4c945d53a513b59d6e99ee4339`
@@ -3397,7 +3402,7 @@ The following companion documents will be published separately during Phase 1 de
 **Previous Hash (v0.2.6):** `ec1c676b447c9082a4ecd3079f4b74057f64d7f41bdd282e77af31e84d667e26`
 **Previous Hash (v0.2.5):** `25dfbe17d91208ad28feb1263105b818a367680539a9d506ac6191d80c5b4c12`
 **Previous Hash (v0.2.3):** `b7220126fc907685ee946ea0226f49688a6fc3e585c1055811368d0c223a6336`
-**OpenTimestamps Proof:** `ELARA-PROTOCOL-WHITEPAPER.v0.5.2.md.ots`
+**OpenTimestamps Proof:** `ELARA-PROTOCOL-WHITEPAPER.v0.5.3.md.ots`
 **Genesis Document:** `ELARA-PROTOCOL-GENESIS.md` (2026-02-09, OpenTimestamps verified on Bitcoin blocks 935812, 935817, 935820, 935861)
 
 ---
