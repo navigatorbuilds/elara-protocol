@@ -103,7 +103,7 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 | Document | Hash (SHA-256) |
 |----------|---------------|
 | Protocol v0.5.3 | `1139e2f68706e2f20d53dad7e433a426baf456724defc75d991ce4e7fe5f124d` |
-| Core v1.5.1 | `50169da6833780de1bfcb3fd6150615ad587699c2ed0f4f9b1dd3d46dcc3a129` |
+| Core v1.5.1 | `ea15110e42859773421a1c2dd72ffec06ccbb50ef023bdbb8ebde4184427280b` |
 | Hardware v0.2.0 | `376d48bef189f4ba39fef664077dff928a253d19397d366e95cae7d6e851244e` |
 | Tokenomics v0.3.3 | `abc332a0dad64f8619f16859c26c7d45836dad281b988aeebe3177ff7e3f92e2` |
 
