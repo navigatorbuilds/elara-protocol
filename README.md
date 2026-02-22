@@ -21,8 +21,8 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 |----------|-------|----------|
 | **Elara Protocol Whitepaper v0.5.2** | 80 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.2.pdf) |
 | *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 35 attack vector analysis, Phase 6 native hardware. Cognitive Continuity Chain, module tier system, industrial scale deployment (factory scenario), NIST PQC on-ramp. Private networks, NETWORK_PUBLISH protocol, Validation IPO model, mega-publication economic shock defense, cognitive checkpoint integrity.* |||
-| **Elara Core Whitepaper v2.0.0** | 16 | [**PDF**](ELARA-CORE-WHITEPAPER.v2.0.0.pdf) |
-| *Universal data integrity via the DAM protocol applied across 7 domains: medical (HIPAA/GDPR/FDA), industrial (ISO 9001/IEC 62443), AI companion (cognitive continuity), education (FERPA), finance (SOX/AML/KYC), defense (NIST 800-171/CMMC), agriculture (FDA FSMA/GlobalG.A.P.). Thin adapter pattern — one protocol, 14 compliance standards. Post-quantum dual signatures, hash-chained continuity, causal DAG storage.* |||
+| **Elara Core Whitepaper v1.5.1** | 55 | [**PDF**](ELARA-CORE-WHITEPAPER.v1.5.1.pdf) |
+| *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking, Cognitive Continuity Chain, tier system (VALIDATE/REMEMBER/THINK/CONNECT) — 45 tools, 15 modules, 222 tests* |||
 | **Elara Hardware Whitepaper v0.1.8** | 51 | *Available on request* |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference* |||
 | **Elara Tokenomics Paper v0.3.2** | 28 | *Available on request* |
@@ -103,7 +103,7 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 | Document | Hash (SHA-256) |
 |----------|---------------|
 | Protocol v0.5.2 | `2e37074294ab13a5d24e3d5a8cfc4093e9ef49b29d537634c043b6d88327eb06` |
-| Core v2.0.0 | `3e97abdefa096e62cfdd6166582aff85af84fc8e7729ffff09815852cbba0004` |
+| Core v1.5.1 | `50169da6833780de1bfcb3fd6150615ad587699c2ed0f4f9b1dd3d46dcc3a129` |
 | Hardware v0.1.8 | `a29c2436abbf68e98c532e3f00b84798e22a431e21df4111286df3ee22da8a82` |
 | Tokenomics v0.3.2 | `671f1c22ff886933ee6284421a864d3857e78da90c634469d6b8c3925222c1bf` |
 
