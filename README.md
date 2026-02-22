@@ -102,9 +102,9 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.5.2 | `2e37074294ab13a5d24e3d5a8cfc4093e9ef49b29d537634c043b6d88327eb06` |
+| Protocol v0.5.2 | `d086ec0815e90f73b703d45ca53586f3f670e04f052de1f218036bfd8ee4724f` |
 | Core v1.5.1 | `50169da6833780de1bfcb3fd6150615ad587699c2ed0f4f9b1dd3d46dcc3a129` |
-| Hardware v0.1.8 | `a29c2436abbf68e98c532e3f00b84798e22a431e21df4111286df3ee22da8a82` |
+| Hardware v0.1.8 | `1471cccaf66c69da12226fea305d4aced1297a648ebdfe9958dfbd504e1311ad` |
 | Tokenomics v0.3.2 | `671f1c22ff886933ee6284421a864d3857e78da90c634469d6b8c3925222c1bf` |
 
 ## Intellectual Property
