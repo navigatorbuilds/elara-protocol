@@ -6,7 +6,7 @@
 
 ## What is this?
 
-The Elara Protocol is a layered architecture for cryptographically validating all forms of digital work — from a poem written on a $30 phone in Kenya to telemetry data from a Mars colony operations center.
+The Elara Protocol is a layered architecture for cryptographically validating all forms of digital execution and creation — from a factory sensor reading to satellite telemetry to a poem written on a $30 phone.
 
 - **Layer 1: Local Validation** — Hash, sign, prove. Works offline, on any device, in under 2ms. Post-quantum from genesis.
 - **Layer 1.5: Performance Runtime** — Optional Rust DAM VM with 9 ISA operations, parallel batch verify, and PyO3 bindings. Same wire format as Layer 1.
@@ -19,15 +19,12 @@ The minimum viable network is **one device**. No blockchain required. No cloud d
 
 | Document | Pages | Download |
 |----------|-------|----------|
-| **Elara Protocol Whitepaper v0.5.3** | 80 | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.5.3.pdf) |
-| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, token economics (summary), 35 attack vector analysis, Phase 6 native hardware. Cognitive Continuity Chain, module tier system, industrial scale deployment (factory scenario), NIST PQC on-ramp. Private networks, NETWORK_PUBLISH protocol, Validation IPO model, mega-publication economic shock defense, cognitive checkpoint integrity. **New in v0.5.3:** Minimum capability completeness (Section 3.2), minimum mesh dimensionality (Section 3.3).* |||
+| **Elara Protocol Whitepaper v0.6.0** | 80+ | [**PDF**](ELARA-PROTOCOL-WHITEPAPER.v0.6.0.pdf) |
+| *Complete protocol specification: DAM architecture, dimensional extensibility, Layer 1.5 performance runtime, Layer 2 testnet, post-quantum cryptography, zero-knowledge validation, interplanetary operations, 35 attack vector analysis, Phase 6 native hardware. Cognitive Continuity Chain, module tier system, industrial scale deployment (factory scenario), NIST PQC on-ramp. Private networks, NETWORK_PUBLISH protocol, cognitive checkpoint integrity. **New in v0.6.0:** Industrial-first reframing — enterprise/defense/manufacturing validation leads. Token layer explicitly scoped to public permissionless network only. Private deployments presented as primary deployment model with zero token involvement.* |||
 | **Elara Core Whitepaper v1.5.1** | 55 | [**PDF**](https://github.com/navigatorbuilds/elara-core/raw/main/ELARA-CORE-WHITEPAPER.v1.5.1.pdf) |
 | *Layer 3 reference implementation: persistent memory, 3D Cognition (models, predictions, principles, workflow patterns), Cortical Execution Model (5-layer concurrent architecture: reflex cache, reactive event bus, deliberative worker pools, contemplative brain, social network), long-range temporal memory with landmarks, reflexive memory hippocampus, knowledge graph, Layer 1↔Layer 3 bridge, Layer 2 network stub, emotional modeling, continuous autonomous thinking, Cognitive Continuity Chain, tier system (VALIDATE/REMEMBER/THINK/CONNECT) — 45 tools, 15 modules, 222 tests* |||
 | **Elara Hardware Whitepaper v0.2.0** | 55 | *Available on request* |
 | *Native hardware architecture for the DAM: 9-op ISA, dimensional extensibility, dimensional memory model, photonic mesh interconnect, heterogeneous chiplet design, PQC acceleration, security analysis, storage economics cross-reference. **New in v0.1.9:** Physical Substrate Rationale (Section 3.7) — dimensional mismatch analysis, cross-dimensional coupling, polarization orthogonality, event-driven computation, historical divergence (1945–1970), memristive compute-in-place; 5 new references [39]–[43]. **New in v0.2.0:** Algebraic Structure (Section 3.8) — minimum dimensionality principle, two-triad die decomposition, 3×3 ISA algebraic closure, NTT cyclic group structure, conservation as algebraic invariant (Noether's theorem); 1 new reference [44]* |||
-| **Elara Tokenomics Paper v0.3.3** | 28 | *Available on request* |
-| *Token economic model: conservation supply, storage delegation market, witness incentive mechanics, anti-centralization mechanisms, governance economics (with combined formula), two-level trust model, launch strategy. Module tier economic mapping, cognitive checkpoint storage economics, zero-friction bootstrap. Long-term energy dynamics, private networks, Validation IPO economics. **New in v0.3.3:** Conservation as algebraic invariant (Noether's theorem, Section 2.1), cyclic structure of phase transitions (Section 14.3).* |||
-
 All documents have undergone 8+ audit passes for cross-reference consistency, formula verification, numerical accuracy, and cross-document coherence. Previous versions and source files are maintained privately.
 
 ## Architecture
@@ -102,10 +99,9 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 | Document | Hash (SHA-256) |
 |----------|---------------|
-| Protocol v0.5.3 | `0a6eb6facfa340b94f01dcafa1c34853bd98aa3f7b7a9ab72f0f55615692b988` |
+| Protocol v0.6.0 | `b25a318befeda999cf8acbd0484ebeddd315d2ebaae1c65e3935565698b446f4` |
 | Core v1.5.1 | `ea15110e42859773421a1c2dd72ffec06ccbb50ef023bdbb8ebde4184427280b` |
 | Hardware v0.2.0 | `fb098d251f81ec93fefb01d356221984d4c1044cf19af279a6fe0561ec38fe89` |
-| Tokenomics v0.3.3 | `288bc2f1ff34a9c5cde428239096631cd14277b80332e0c3fdf30bf4c3db07b6` |
 
 ## Intellectual Property
 
@@ -126,4 +122,4 @@ All documents are timestamped using [OpenTimestamps](https://opentimestamps.org/
 
 ---
 
-*The same math for the teenager in Kenya and the colonist on Mars.*
+*The same math for the factory floor in Stuttgart, the satellite in orbit, and the teenager in Kenya.*
